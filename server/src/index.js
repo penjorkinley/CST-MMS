@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import moongoose from "mongoose";
-import { usersRouter } from "./routes/users.js";
+import { usersRouter } from "./router/users.js";
 
 const app = express();
 const port = 3001;
