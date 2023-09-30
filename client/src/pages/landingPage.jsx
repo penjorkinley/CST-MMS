@@ -27,6 +27,13 @@ function LandingPage() {
           Get Meal
         </button>
       </div>
+      <div className="absolute inset-0 flex justify-center items-center">
+        <div className="bg-white h-96 w-3/5 rounded-3xl">
+            <div className="flex items-center justify-center font-extrabold text-black text-4xl">
+              <p className="mt-4">Today's Menu</p>
+            </div>
+        </div>
+      </div>
     </div>
   );
 }
