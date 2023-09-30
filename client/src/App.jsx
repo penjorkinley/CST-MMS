@@ -13,12 +13,14 @@ import AdminTopNavbar from "./components/AdminTopNavbar";
 import { useLocation } from "react-router-dom";
 import MealOrder from "./pages/MealOrder";
 
+
 function App() {
   return (
     <div className="App">
       <Router>
         <Navigation />
         <Routes>
+          <Route path="/dashboard" element={<AdminDashboard />} />
           <Route path="/adminfeedback" element={<AdminFeedback />} />
           <Route path="/orderMeal" element={<MealOrder />} />
           <Route path="/" element={<LandingPage />} />
