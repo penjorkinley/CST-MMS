@@ -28,10 +28,15 @@ function LandingPage() {
         </button>
       </div>
       <div className="absolute inset-0 flex justify-center items-center">
-        <div className="bg-white h-96 w-3/5 rounded-3xl">
-            <div className="flex items-center justify-center font-extrabold text-black text-4xl">
-              <p className="mt-4">Today's Menu</p>
-            </div>
+        <div className="bg-white h-96 w-3/5 rounded-3xl opacity-75">
+          <p className="mt-4 font-extrabold text-black text-4xl flex items-center justify-center">
+            Today's Menu
+          </p>
+          <div className="flex justify-between items-center">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
         </div>
       </div>
     </div>
