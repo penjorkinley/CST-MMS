@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import RegularNav from "./components/RegularNav";
 import LandingPage from "./pages/landingPage";
 import Feedback from "./pages/Feedback";
+import AdminFeedback from "./pages/AdminFeedback";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
     <Router>
       <RegularNav/>
       <Routes>
+        <Route>path="/adminfeedback" element={<AdminFeedback/>}</Route>
         <Route path="/" element={<LandingPage/>}/>
         <Route path="/feedback" element={<Feedback/>}/>
         <Route path="/aboutus" element={<About />} />
