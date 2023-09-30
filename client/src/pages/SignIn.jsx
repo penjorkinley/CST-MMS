@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Logo from "../assets/Logo.PNG";
 import SignUpImg from "../assets/SignUp.png";
 import {
@@ -30,7 +31,6 @@ function SignIn({ changePage }) {
     tempErrors.password = formData.password ? "" : "Password is required.";
 
     setErrors(tempErrors);
-
     return Object.values(tempErrors).every((x) => x === "");
   };
 
@@ -42,16 +42,18 @@ function SignIn({ changePage }) {
   };
 
   return (
-    <div className="flex h-screen bg-F0F7F9">
-      <div className="w-1/2 flex justify-center items-center">
-        <div className="bg-ABB7BA p-5 rounded-lg shadow-md relative max-w-md w-full">
-          <h2 className="text-2xl font-bold mb-10 text-center">Sign In</h2>
+    <div className="flex h-screen">
+      <div className="w-1/2 flex justify-center items-center bg-card">
+        <div className="rounded-lg">
+          <h2 className="text-6xl font-bold mb-10 text-center text-white">
+            Sign Up
+          </h2>
 
           {/* Input Fields */}
           <div className="mb-4 relative">
             <UserIcon className="absolute w-6 h-6 left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
             <input
-              className="pl-10 w-full px-3 py-2 placeholder-gray-300 border rounded-md bg-white"
+              className="pl-10 w-full px-3 py-2  border rounded-md "
               placeholder="Name"
               value={formData.name}
               onChange={(e) =>
@@ -66,7 +68,7 @@ function SignIn({ changePage }) {
           <div className="mb-4 relative">
             <IdentificationIcon className="absolute w-6 h-6 left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
             <input
-              className="pl-10 w-full px-3 py-2 placeholder-gray-300 border rounded-md bg-white"
+              className="pl-10 w-full px-3 py-2 placeholder-gray-300 border rounded-md bg-F0F7F9"
               placeholder="Student ID"
               value={formData.studentID}
               onChange={(e) =>
@@ -81,7 +83,7 @@ function SignIn({ changePage }) {
           <div className="mb-4 relative">
             <PhoneIcon className="absolute w-6 h-6 left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
             <input
-              className="pl-10 w-full px-3 py-2 placeholder-gray-300 border rounded-md bg-white"
+              className="pl-10 w-full px-3 py-2 placeholder-gray-300 border rounded-md bg-F0F7F9"
               placeholder="Phone Number"
               value={formData.phoneNumber}
               onChange={(e) =>
@@ -96,7 +98,7 @@ function SignIn({ changePage }) {
           <div className="mb-4 relative">
             <MailIcon className="absolute w-6 h-6 left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
             <input
-              className="pl-10 w-full px-3 py-2 placeholder-gray-300 border rounded-md bg-white"
+              className="pl-10 w-full px-3 py-2 placeholder-gray-300 border rounded-md bg-F0F7F9"
               placeholder="Email"
               value={formData.email}
               onChange={(e) =>
@@ -111,7 +113,7 @@ function SignIn({ changePage }) {
           <div className="mb-4 relative">
             <LockClosedIcon className="absolute w-6 h-6 left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
             <input
-              className="pl-10 w-full px-3 py-2 placeholder-gray-300 border rounded-md bg-white"
+              className="pl-10 w-full px-3 py-2 placeholder-gray-300 border rounded-md bg-F0F7F9"
               type="password"
               placeholder="Password"
               value={formData.password}
@@ -126,21 +128,34 @@ function SignIn({ changePage }) {
 
           <button
             onClick={handleSubmit}
-            className="w-full p-2 bg-61BDD5 text-black rounded-md"
+            className="w-full p-2 bg-61BDD5 text-white rounded-md"
           >
             Sign Up
           </button>
+
+          <div className="bg-white h-1 w-full mt-2"></div>
+
+          <button className="w-full p-2 bg-white text-61BDD5 mt-2 border border-gray-300 rounded-md">
+            Continue with Google
+          </button>
+
+          <div className="text-center mt-4">
+            Already have an account?
+            <Link to="/login" className="text-61BDD5 underline ml-1">
+              Login
+            </Link>
+          </div>
         </div>
       </div>
 
-      <div className="w-1/2 relative">
+      <div className="w-1/2 relative bg-F0F7F9">
         <img
           src={Logo}
           alt="Logo"
-          className="absolute top-5 right-5 w-16 h-16"
+          className="absolute top-5 right-5 w-30 h-20"
         />
         <img
-          className="h-full w-full object-cover"
+          className="h-150 w-150 object-cover"
           src={SignUpImg}
           alt="Sign In Illustration"
         />
