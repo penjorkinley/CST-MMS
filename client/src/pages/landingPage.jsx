@@ -17,13 +17,17 @@ function LandingPage() {
         <img src={logo} alt="logo" className="h-32 w-34" />
 
         <button
-          onClick={navigateToSignup}
+          onClick={() => {
+            alert("button clicked");
+            navigateToSignup();
+          }}
           type="submit"
-          className="bg-btn hover:bg-blue-500 h-11 w-40 rounded-md text-white font-semibold"
+          className="bg-btn hover:bg-blue-500 h-11 w-40 rounded-md text-white font-semibold z-10"
         >
           Get Meal
         </button>
       </div>
+
       <div className="absolute inset-0 flex items-center justify-center">
         <img
           src={land}
