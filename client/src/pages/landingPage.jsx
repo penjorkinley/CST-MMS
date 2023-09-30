@@ -1,4 +1,4 @@
-function landingPage() {
+function LandingPage() {
   return (
     <div className="bg-blue-100 h-screen">
       Hi please work sa doebey mabey
@@ -6,4 +6,4 @@ function landingPage() {
   )
 }
 
-export default landingPage
+export default LandingPage

@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import logo from '../assets/Logo.PNG'
 
 export default function RegularNav() {
   return (
@@ -6,15 +8,30 @@ export default function RegularNav() {
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center"> {/* Container for logo and navigation */}
           <div>
-            <img src="client\src\assets\Logo.PNG" alt="Logo" className="box-border h-32 w-32 p-4 border-4 ..." /> 
+            <img src={logo} alt="Logo" className="h-32 w-32 p-4 border-none" /> 
           </div>
-          
         </div>
         <ul className="flex space-x-4">
-          <li><a href="#" className="text-black hover:text-blue-300">Menu</a></li>
-          <li><a href="#" className="text-black hover:text-blue-300">Order</a></li>
-          <li><a href="#" className="text-black hover:text-blue-300">Feedback</a></li>
-          <li><a href="#" className="text-black hover:text-blue-300">About</a></li>
+          <li>
+            <Link to="/signin" className="text-black hover:text-blue-300">
+              Menu
+            </Link>
+          </li>
+          <li>
+            <Link to="/login" className="text-black hover:text-blue-300">
+              Order
+            </Link>
+          </li>
+          <li>
+            <Link to="/" className="text-black hover:text-blue-300">
+              Feedback
+            </Link>
+          </li>
+          <li>
+            <Link to="/about" className="text-black hover:text-blue-300">
+              About
+            </Link>
+          </li>
         </ul>
       </div>
     </nav>
