@@ -8,6 +8,7 @@ function MealCard({ meal, time, one, two, three }) {
       <p className="mt-2 text-white">{one}</p>
       <p className="mt-2 text-white">{two}</p>
       <p className="mt-2 text-white">{three}</p>
+      
     </div>
   );
 }
