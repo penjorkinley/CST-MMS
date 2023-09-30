@@ -126,15 +126,6 @@ function SignIn({ changePage }) {
 
       <div className="w-3/5 flex justify-center items-center relative bg-cute">
         <img
-          src={Logo}
-          alt="Logo"
-          className="absolute top-5 right-5 w-30 h-20"
-          onClick={() => {
-            navigate("/");
-          }}
-        />
-
-        <img
           className="w-3/4 h-auto object-cover mx-auto my-auto"
           src={SignUpImg}
           alt="Sign Up Illustration"
