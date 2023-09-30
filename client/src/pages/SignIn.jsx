@@ -46,7 +46,7 @@ function SignIn({ changePage }) {
   };
 
   return (
-    <div className="flex h-[93vh]">
+    <div className="flex h-[79vh]">
       <div className="w-2/5 flex justify-center items-center bg-card">
         <div className="rounded-lg w-3/5">
           <h2 className="text-6xl font-bold mb-10 text-center text-white">
@@ -104,20 +104,24 @@ function SignIn({ changePage }) {
 
           <button
             onClick={handleSubmit}
-            className="w-full p-2 bg-buttons text-white text-xl font-bold rounded-xl mb-2"
+            className="w-full p-2 bg-buttons text-white text-xl font-bold rounded-2xl mb-2 mt-5"
           >
             Sign Up
           </button>
 
           <hr className="border-white mb-2" />
 
-          <button className="w-full p-2 bg-buttons text-white text-xl font-bold flex justify-center items-center rounded-xl mb-2">
+          <button className="w-full p-2 bg-buttons text-white text-xl font-bold flex justify-center items-center rounded-2xl mb-2">
             <FcGoogle className="mr-2" /> Continue with Google
           </button>
 
           <div className="text-white">
             Already have an account?
-            <Link to="/login" className="text-white underline ml-1">
+            <Link
+              to="/login"
+              className="text-white underline ml-1"
+              style={{ fontWeight: "bold" }}
+            >
               Login
             </Link>
           </div>
@@ -126,7 +130,7 @@ function SignIn({ changePage }) {
 
       <div className="w-3/5 flex justify-center items-center relative bg-cute">
         <img
-          className="w-3/4 h-auto object-cover mx-auto my-auto"
+          className="w-3/5 h-auto object-cover mx-auto my-auto"
           src={SignUpImg}
           alt="Sign Up Illustration"
         />
