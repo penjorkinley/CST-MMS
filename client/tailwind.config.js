@@ -8,6 +8,7 @@ export default {
       },
       backgroundColor: {
         cute: "#F0F7F9",
+        btn: "#83CDDD"
       },
       colors: {
         card: "#ABB7BA",
