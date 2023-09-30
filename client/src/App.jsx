@@ -9,6 +9,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import LandingPage from "./pages/landingPage";
 import Feedback from "./pages/Feedback";
 import AdminFeedback from "./pages/AdminFeedback";
+import AdminTopNavbar from "./components/AdminTopNavbar";
 import { useLocation } from "react-router-dom";
 
 function App() {
@@ -40,6 +41,12 @@ function Navigation() {
 
   // Conditional rendering of RegularNav
   return shouldShowNav ? <RegularNav /> : null;
+
+    // Check if the current route is not the landing page
+    const ShowNav = location.pathname == "/admin";
+
+    // Conditional rendering of RegularNav
+    return ShowNav ? <AdminTopNavbar/> : null;
 }
 
 export default App;
