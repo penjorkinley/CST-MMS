@@ -6,7 +6,7 @@ export default function RegularNav() {
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center"> {/* Container for logo and navigation */}
           <div>
-            <img src="" alt="Logo" className="box-border h-32 w-32 p-4 border-4 ..." /> 
+            <img src="client\src\assets\Logo.PNG" alt="Logo" className="box-border h-32 w-32 p-4 border-4 ..." /> 
           </div>
           
         </div>
