@@ -12,22 +12,22 @@ import AdminFeedback from "./pages/AdminFeedback";
 
 function App() {
   return (
-    <div className="App"> 
-    <Router>
-      <RegularNav/>
-      <Routes>
-        <Route>path="/adminfeedback" element={<AdminFeedback/>}</Route>
-        <Route path="/" element={<LandingPage/>}/>
-        <Route path="/feedback" element={<Feedback/>}/>
-        <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/aboutus" element={<About />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
-      <Footer />
-    </Router>
+    <div className="App">
+      <Router>
+        <RegularNav />
+        <Routes>
+          <Route path="/adminfeedback" element={<AdminFeedback />} />
+
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/feedback" element={<Feedback />} />
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/aboutus" element={<About />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+        <Footer />
+      </Router>
     </div>
-  
   );
 }
 
