@@ -1,7 +1,7 @@
-import React from 'react';
+
 import './AboutUs.css';
 
-function MyComponent() {
+function AboutUs() {
   return (
     <div style={{ backgroundColor: 'blue' }}>
       {/* Your component content here */}
@@ -9,4 +9,4 @@ function MyComponent() {
   );
 }
 
-export default MyComponent;
+export default AboutUs;

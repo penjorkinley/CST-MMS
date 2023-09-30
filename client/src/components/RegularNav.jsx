@@ -1,9 +1,9 @@
+import React from 'react'
 
-
-export default function RegularNav() {
+function RegularNav() {
   return (
-    <div>
-        
-    </div>
+    <div>RegularNav</div>
   )
 }
+
+export default RegularNav

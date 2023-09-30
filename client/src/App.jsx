@@ -1,17 +1,20 @@
 import "./App.css";
 import Footer from "./components/footer";
-
+import LandingPage from "./pages/landingPage";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import AboutUs from "./pages/AboutUs";
 
 function App() {
   return (
     <>
-      
-      <h1 className="text-3xl font-bold underline text-red-400">
+      <Router>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/about" element={<AboutUs />} />
+        </Routes>
+      </Router>
 
-        Hello world!
-      </h1>
-      <Footer/>
-        
+      <Footer />
     </>
   );
 }
