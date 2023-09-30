@@ -3,7 +3,6 @@ import './AboutUs.css';
 
 function MyComponent() {
   return (
-<<<<<<< HEAD
     <div className="flex bg-F0F7F9">
       <div className="w-40">
         <img src={AboutUsImg} alt="About Us Image" className="w-full" />
@@ -22,12 +21,6 @@ function MyComponent() {
           {/* Add more team members as needed */}
         </ul>
       </div>
-=======
-    <div style={{ backgroundColor: 'blue' }}>
-      {
-      
-      }
->>>>>>> 46730445441e31a440459f7414e91875462449e7
     </div>
   );
 }
