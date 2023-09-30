@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // Switch is removed and Routes is imported
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import About from "./pages/AboutUs";
 import Footer from "./components/footer";
 import SignIn from "./pages/SignIn";
@@ -8,12 +8,17 @@ import RegularNav from "./components/RegularNav";
 import AdminDashboard from "./pages/AdminDashboard";
 import LandingPage from "./pages/landingPage";
 import Feedback from "./pages/Feedback";
+<<<<<<< Updated upstream
 import AdminFeedback from "./pages/AdminFeedback";
+=======
+import { useLocation } from "react-router-dom";
+>>>>>>> Stashed changes
 
 function App() {
   return (
     <div className="App">
       <Router>
+<<<<<<< Updated upstream
         <RegularNav />
         <Routes>
           <Route path="/adminfeedback" element={<AdminFeedback />} />
@@ -27,8 +32,31 @@ function App() {
         </Routes>
         <Footer />
       </Router>
+=======
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/feedback" element={<Feedback />} />
+        <Route path="/aboutus" element={<About />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+      </Router>
+      <Footer />
+>>>>>>> Stashed changes
     </div>
   );
+}
+
+function Navigation() {
+  // Import useLocation here
+  const location = useLocation();
+
+  // Check if the current route is not the landing page
+  const shouldShowNav = location.pathname !== "/";
+
+  // Conditional rendering of RegularNav
+  return shouldShowNav ? <RegularNav /> : null;
 }
 
 export default App;
