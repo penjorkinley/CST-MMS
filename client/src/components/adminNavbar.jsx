@@ -11,6 +11,7 @@ export default function adminNavbar() {
         <ul className="menu p-4 w-80 min-h-full text-blackText bg-adminDash">
           <li>
             <a className="text-2xl items-center"><TbDeviceDesktopAnalytics/> Dashboard</a>
+            
           </li>
           <li>
             <a className="text-2xl items-center"><BiSolidAddToQueue/> Add Menu</a>
