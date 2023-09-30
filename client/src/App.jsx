@@ -37,16 +37,11 @@ function Navigation() {
   const location = useLocation();
 
   // Check if the current route is not the landing page
-  const shouldShowNav = location.pathname !== "/";
+  const shouldShowNav = location.pathname !== "/"
 
   // Conditional rendering of RegularNav
   return shouldShowNav ? <RegularNav /> : null;
 
-    // Check if the current route is not the landing page
-    const ShowNav = location.pathname == "/admin";
-
-    // Conditional rendering of RegularNav
-    return ShowNav ? <AdminTopNavbar/> : null;
 }
 
 export default App;
