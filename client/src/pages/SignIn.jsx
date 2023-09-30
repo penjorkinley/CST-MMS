@@ -9,9 +9,10 @@ import {
   MailIcon,
   LockClosedIcon,
 } from "@heroicons/react/solid";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function SignIn({ changePage }) {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     studentID: "",
@@ -128,6 +129,9 @@ function SignIn({ changePage }) {
           src={Logo}
           alt="Logo"
           className="absolute top-5 right-5 w-30 h-20"
+          onClick={() => {
+            navigate("/");
+          }}
         />
 
         <img
