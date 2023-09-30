@@ -1,4 +1,3 @@
-import React from "react";
 import signInImg from "../assets/SignUp.png";
 
 function SignIn({ changePage }) {
