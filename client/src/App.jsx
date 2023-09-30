@@ -4,19 +4,24 @@ import About from "./pages/AboutUs";
 import Footer from "./components/footer";
 import SignIn from "./pages/SignIn";
 import Login from "./pages/Login";
+import RegularNav from "./components/RegularNav";
 import LandingPage from "./pages/landingPage";
 
 function App() {
   return (
+    <div className="App"> 
     <Router>
+      <RegularNav/>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<LandingPage/>}/>
         <Route path="/about" element={<About />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/login" element={<Login />} />
       </Routes>
       <Footer />
     </Router>
+    </div>
+  
   );
 }
 
