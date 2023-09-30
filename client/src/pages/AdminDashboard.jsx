@@ -4,9 +4,13 @@ import AdminTopNavbar from '../components/AdminTopNavbar';
 
 function AdminDashboard() {
   return (
-    <div>
-      <AdminTopNavbar />
-      <AdminNavbar />
+    <div className="flex">
+      <div className="w-1/5"> {/* Adjust the width as per your design */}
+        <AdminNavbar />
+      </div>
+      <div className="w-4/5"> {/* Adjust the width as per your design */}
+        <AdminTopNavbar />
+      </div>
     </div>
   );
 }
