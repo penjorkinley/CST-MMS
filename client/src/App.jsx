@@ -6,6 +6,7 @@ import SignIn from "./pages/SignIn";
 import Login from "./pages/Login";
 import RegularNav from "./components/RegularNav";
 import LandingPage from "./pages/landingPage";
+import Feedback from "./pages/Feedback";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       {/* <RegularNav/> */}
       <Routes>
         <Route path="/" element={<LandingPage/>}/>
+        <Route path="/feedback" element={<Feedback/>}/>
         <Route path="/aboutus" element={<About />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/login" element={<Login />} />
