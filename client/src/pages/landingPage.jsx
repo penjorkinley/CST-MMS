@@ -1,13 +1,8 @@
-import landing from '../assets/LandingPage.svg'
-
-function landingPage() {
+import React from "react";
+function LandingPage() {
   return (
-    <>
-      <div className="bg-cute h-screen">
-          <img src={landing}/>
-      </div>
-    </>
+    <div className="bg-blue-100 h-screen">Hi please work sa doebey mabey</div>
   );
 }
 
-export default landingPage;
+export default LandingPage;
