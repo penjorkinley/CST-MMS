@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Logo from "../assets/Logo.PNG";
 import SignUpImg from "../assets/SignUp.png";
 import { FcGoogle } from "react-icons/fc";
 import {
@@ -45,8 +44,8 @@ function SignIn({ changePage }) {
   };
 
   return (
-    <div className="flex h-screen">
-      <div className="w-1/2 flex justify-center items-center bg-card">
+    <div className="flex h-[93vh]">
+      <div className="w-2/5 flex justify-center items-center bg-card">
         <div className="rounded-lg w-3/5">
           <h2 className="text-6xl font-bold mb-10 text-center text-white">
             Sign Up
@@ -88,7 +87,7 @@ function SignIn({ changePage }) {
               <Icon className="absolute w-6 h-6 left-3 top-1/2 transform -translate-y-1/2 text-customIconColor" />
               <input
                 type={type}
-                className="pl-10 w-full px-3 py-2 border rounded-md bg-cute "
+                className="pl-10 w-full px-3 py-2 border rounded-xl bg-cute "
                 placeholder={placeholder}
                 value={formData[key]}
                 onChange={(e) =>
@@ -103,14 +102,14 @@ function SignIn({ changePage }) {
 
           <button
             onClick={handleSubmit}
-            className="w-full p-2 bg-buttons text-white text-xl font-bold rounded-md mb-2"
+            className="w-full p-2 bg-buttons text-white text-xl font-bold rounded-xl mb-2"
           >
             Sign Up
           </button>
 
           <hr className="border-white mb-2" />
 
-          <button className="w-full p-2 bg-buttons text-white text-xl font-bold flex justify-center items-center rounded-md mb-2">
+          <button className="w-full p-2 bg-buttons text-white text-xl font-bold flex justify-center items-center rounded-xl mb-2">
             <FcGoogle className="mr-2" /> Continue with Google
           </button>
 
@@ -123,14 +122,9 @@ function SignIn({ changePage }) {
         </div>
       </div>
 
-      <div className="w-1/2 relative bg-cute">
+      <div className="w-3/5 flex justify-center items-center relative bg-cute">
         <img
-          src={Logo}
-          alt="Logo"
-          className="absolute top-5 right-5 w-30 h-20"
-        />
-        <img
-          className="h-150 w-150 object-cover"
+          className="w-3/4 h-auto object-cover mx-auto my-auto"
           src={SignUpImg}
           alt="Sign Up Illustration"
         />
