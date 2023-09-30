@@ -8,10 +8,10 @@ export default function RegularNav() {
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center"> {/* Container for logo and navigation */}
           <div>
-            <img src={logo} alt="Logo" className="h-32 w- p50-4 border-none" /> 
+            <img src={logo} alt="Logo" className="h-32 w- p50-4 border-none " /> 
           </div>
         </div>
-        <ul className="flex space-x-4 font-semibold text-black text-2xl" >
+        <ul className="flex space-x-4 font-semibold text-black text-2xl mr-7 " >
           <li>
             <Link to="/menu" className="text-black hover:text-blue-300">
               Menu

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import SignUpImg from "../assets/SignUp.png";
+import Logo from "../assets/Logo.png";
 import { FcGoogle } from "react-icons/fc";
 import {
   UserIcon,
@@ -8,9 +9,10 @@ import {
   MailIcon,
   LockClosedIcon,
 } from "@heroicons/react/solid";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function SignIn({ changePage }) {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     studentID: "",
