@@ -1,9 +1,9 @@
 import React from 'react'
 import AdminNavbar from '../components/adminNavbar'
 
-export default function AdminDashboard() {
+function AdminDashboard() {
   return (
       <AdminNavbar/>
   );
 }
-
+export default AdminDashboard;
