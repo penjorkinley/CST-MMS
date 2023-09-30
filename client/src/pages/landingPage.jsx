@@ -1,4 +1,4 @@
-function landingPage() {
+function LandingPage() {
   return (
 
   <div className="h-screen bg-cover bg-center bg-no-repeat" style={{backgroundImage: "url('client/src/assets/Landing Page.svg')"}}>
@@ -7,4 +7,4 @@ function landingPage() {
   );
 }
 
-export default landingPage;
+export default LandingPage;
