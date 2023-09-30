@@ -8,17 +8,16 @@ function LandingPage() {
 
   const navigateToSignup = () => {
     console.log("I am working");
-    navigate("/signin");
+    navigate("/login");
   };
 
   return (
-    <div className="relative h-screen bg-cute">
+    <div className="relative h-[93vh] bg-cute">
       <div className="z-10 flex justify-between items-center h-50 bg-transparent w-full pr-8">
         <img src={logo} alt="logo" className="h-32 w-34" />
 
         <button
           onClick={() => {
-            alert("button clicked");
             navigateToSignup();
           }}
           type="submit"
@@ -31,7 +30,7 @@ function LandingPage() {
       <div className="absolute inset-0 flex items-center justify-center">
         <img
           src={land}
-          className="h-screen mt-14 bg-center bg-cover"
+          className="h-[92vh] mt-14 bg-center bg-cover"
           alt="image please sho"
         />
       </div>
