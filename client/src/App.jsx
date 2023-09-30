@@ -5,6 +5,7 @@ import Footer from "./components/footer";
 import SignIn from "./pages/SignIn";
 import Login from "./pages/Login";
 import RegularNav from "./components/RegularNav";
+import AdminDashboard from "./pages/AdminDashboard";
 import LandingPage from "./pages/landingPage";
 import Feedback from "./pages/Feedback";
 import AdminFeedback from "./pages/AdminFeedback";
@@ -18,6 +19,7 @@ function App() {
         <Route>path="/adminfeedback" element={<AdminFeedback/>}</Route>
         <Route path="/" element={<LandingPage/>}/>
         <Route path="/feedback" element={<Feedback/>}/>
+        <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/aboutus" element={<About />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/login" element={<Login />} />
