@@ -10,6 +10,27 @@ export default {
         'cute' : '#F0F7F9'
       }
     },
+    mytheme: {
+          
+      "card": "#ABB7BA",
+               
+      "whiteText": "F0F7F9",
+               
+      "buttons": "#61BDD5",
+               
+      "blackText": "#161727",
+               
+      "background": "#f1f7f8",
+               
+      "adminDash": "#83CDDD",
+               
+      "success": "#1ea96f",
+               
+      "warning": "#F1C644",
+               
+      "error": "#e76e74",
+               },
+
   },
   plugins: [require("daisyui")],
 };
