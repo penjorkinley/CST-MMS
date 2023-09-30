@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import Logo from "../assets/Logo.PNG";
 import SignUpImg from "../assets/SignUp.png";
 import {
@@ -9,6 +8,7 @@ import {
   MailIcon,
   LockClosedIcon,
 } from "@heroicons/react/solid";
+import { Link } from "react-router-dom";
 
 function SignIn({ changePage }) {
   const [formData, setFormData] = useState({
@@ -31,6 +31,7 @@ function SignIn({ changePage }) {
     tempErrors.password = formData.password ? "" : "Password is required.";
 
     setErrors(tempErrors);
+
     return Object.values(tempErrors).every((x) => x === "");
   };
 
@@ -48,107 +49,75 @@ function SignIn({ changePage }) {
           <h2 className="text-6xl font-bold mb-10 text-center text-white">
             Sign Up
           </h2>
-
-          {/* Input Fields */}
-          <div className="mb-4 relative">
-            <UserIcon className="absolute w-6 h-6 left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-            <input
-              className="pl-10 w-full px-3 py-2  border rounded-md "
-              placeholder="Name"
-              value={formData.name}
-              onChange={(e) =>
-                setFormData({ ...formData, name: e.target.value })
-              }
-            />
-            {errors.name && (
-              <div className="text-red-500 text-sm">{errors.name}</div>
-            )}
-          </div>
-
-          <div className="mb-4 relative">
-            <IdentificationIcon className="absolute w-6 h-6 left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-            <input
-              className="pl-10 w-full px-3 py-2 placeholder-gray-300 border rounded-md bg-F0F7F9"
-              placeholder="Student ID"
-              value={formData.studentID}
-              onChange={(e) =>
-                setFormData({ ...formData, studentID: e.target.value })
-              }
-            />
-            {errors.studentID && (
-              <div className="text-red-500 text-sm">{errors.studentID}</div>
-            )}
-          </div>
-
-          <div className="mb-4 relative">
-            <PhoneIcon className="absolute w-6 h-6 left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-            <input
-              className="pl-10 w-full px-3 py-2 placeholder-gray-300 border rounded-md bg-F0F7F9"
-              placeholder="Phone Number"
-              value={formData.phoneNumber}
-              onChange={(e) =>
-                setFormData({ ...formData, phoneNumber: e.target.value })
-              }
-            />
-            {errors.phoneNumber && (
-              <div className="text-red-500 text-sm">{errors.phoneNumber}</div>
-            )}
-          </div>
-
-          <div className="mb-4 relative">
-            <MailIcon className="absolute w-6 h-6 left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-            <input
-              className="pl-10 w-full px-3 py-2 placeholder-gray-300 border rounded-md bg-F0F7F9"
-              placeholder="Email"
-              value={formData.email}
-              onChange={(e) =>
-                setFormData({ ...formData, email: e.target.value })
-              }
-            />
-            {errors.email && (
-              <div className="text-red-500 text-sm">{errors.email}</div>
-            )}
-          </div>
-
-          <div className="mb-4 relative">
-            <LockClosedIcon className="absolute w-6 h-6 left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-            <input
-              className="pl-10 w-full px-3 py-2 placeholder-gray-300 border rounded-md bg-F0F7F9"
-              type="password"
-              placeholder="Password"
-              value={formData.password}
-              onChange={(e) =>
-                setFormData({ ...formData, password: e.target.value })
-              }
-            />
-            {errors.password && (
-              <div className="text-red-500 text-sm">{errors.password}</div>
-            )}
-          </div>
-
+          {[
+            {
+              icon: UserIcon,
+              placeholder: "Name",
+              key: "name",
+              errorKey: "name",
+            },
+            {
+              icon: IdentificationIcon,
+              placeholder: "Student ID",
+              key: "studentID",
+              errorKey: "studentID",
+            },
+            {
+              icon: PhoneIcon,
+              placeholder: "Phone Number",
+              key: "phoneNumber",
+              errorKey: "phoneNumber",
+            },
+            {
+              icon: MailIcon,
+              placeholder: "Email",
+              key: "email",
+              errorKey: "email",
+            },
+            {
+              icon: LockClosedIcon,
+              placeholder: "Password",
+              key: "password",
+              errorKey: "password",
+              type: "password",
+            },
+          ].map(({ icon: Icon, placeholder, key, errorKey, type = "text" }) => (
+            <div key={key} className="mb-4 relative">
+              <Icon className="absolute w-6 h-6 left-3 top-1/2 transform -translate-y-1/2 text-customIconColor" />
+              <input
+                type={type}
+                className="pl-10 w-full px-3 py-2 border rounded-md bg-cute opacity-60"
+                placeholder={placeholder}
+                value={formData[key]}
+                onChange={(e) =>
+                  setFormData({ ...formData, [key]: e.target.value })
+                }
+              />
+              {errors[errorKey] && (
+                <div className="text-red-500 text-sm">{errors[errorKey]}</div>
+              )}
+            </div>
+          ))}
           <button
             onClick={handleSubmit}
-            className="w-full p-2 bg-61BDD5 text-white rounded-md"
+            className="w-full p-2 bg-buttons text-white rounded-md mb-2"
           >
             Sign Up
           </button>
-
-          <div className="bg-white h-1 w-full mt-2"></div>
-
-          <button className="w-full p-2 bg-white text-61BDD5 mt-2 border border-gray-300 rounded-md">
+          <hr className="border-white mb-2" />
+          <button className="w-full p-2 bg-buttons text-white rounded-md mb-2">
             Continue with Google
           </button>
-
-          <div className="text-center mt-4">
+          <div className="text-white ">
             Already have an account?
-            <Link to="/login" className="text-61BDD5 underline ml-1">
+            <Link to="/login" className="text-white underline">
               Login
             </Link>
           </div>
         </div>
       </div>
 
-      <div className="w-1/2 relative bg-F0F7F9">
+      <div className="w-1/2 relative bg-cute">
         <img
           src={Logo}
           alt="Logo"
@@ -157,7 +126,7 @@ function SignIn({ changePage }) {
         <img
           className="h-150 w-150 object-cover"
           src={SignUpImg}
-          alt="Sign In Illustration"
+          alt="Sign Up Illustration"
         />
       </div>
     </div>
