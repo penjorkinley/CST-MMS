@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import logo from "../assets/Logo.PNG";
 
@@ -15,7 +14,7 @@ export default function RegularNav() {
         </div>
         <ul className="flex space-x-4 font-semibold text-black text-2xl mr-7 ">
           <li>
-            <Link to="/menu" className="text-black hover:text-blue-300">
+            <Link to="/" className="text-black hover:text-blue-300">
               Menu
             </Link>
           </li>
