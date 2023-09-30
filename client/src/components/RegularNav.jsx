@@ -28,7 +28,7 @@ export default function RegularNav() {
             </Link>
           </li>
           <li>
-            <Link to="/about" className="text-black hover:text-blue-300">
+            <Link to="/aboutus" className="text-black hover:text-blue-300">
               About
             </Link>
           </li>
