@@ -19,8 +19,8 @@ export default function Feedback() {
     <h2 className="card-title font-semibold text-black text-2xl italic">Rate Your Experience!!!</h2><br></br>
     <h4 className="text-xl font-semibold text-black">How happy are you with our meal?</h4>
     <div className="rating rating-lg">
-        <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400 " />
-        <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" checked />
+        <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400 "checked />
+        <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
         <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
         <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
         <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
