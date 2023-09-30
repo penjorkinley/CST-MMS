@@ -19,7 +19,7 @@ function App() {
       <Router>
         <Navigation/>
         <Routes>
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={<AdminDashboard />} />
           <Route path="/adminfeedback" element={<AdminFeedback />} />
 
           <Route path="/" element={<LandingPage />} />
