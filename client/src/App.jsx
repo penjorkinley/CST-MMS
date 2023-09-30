@@ -11,6 +11,7 @@ import Feedback from "./pages/Feedback";
 import AdminFeedback from "./pages/AdminFeedback";
 import AdminTopNavbar from "./components/AdminTopNavbar";
 import { useLocation } from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Router>
         <Navigation/>
         <Routes>
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/adminfeedback" element={<AdminFeedback />} />
           <Route path="/" element={<LandingPage />} />
           <Route path="/feedback" element={<Feedback />} />
