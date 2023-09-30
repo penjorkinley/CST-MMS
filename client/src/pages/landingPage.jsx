@@ -1,10 +1,13 @@
-function LandingPage() {
+import landing from '../assets/LandingPage.svg'
+
+function landingPage() {
   return (
-
-  <div className="h-screen bg-cover bg-center bg-no-repeat" style={{backgroundImage: "url('client/src/assets/Landing Page.svg')"}}>
-
-  </div>
+    <>
+      <div className="bg-cute h-screen">
+          <img src={landing}/>
+      </div>
+    </>
   );
 }
 
-export default LandingPage;
+export default landingPage;
