@@ -17,9 +17,8 @@ export default function adminNavbar() {
           </li>
           <hr className="my-4 border-t-2 border-black w-full" />
           <li>
-            <a className="text-2xl items-center">
-              <TbDeviceDesktopAnalytics /> Dashboard
-            </a>
+            <a className="text-2xl items-center"><TbDeviceDesktopAnalytics/> Dashboard</a>
+            
           </li>
           <li>
             <a className="text-2xl items-center">

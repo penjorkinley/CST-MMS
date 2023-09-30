@@ -1,13 +1,11 @@
-
-
 import AboutUsImg from "../assets/AboutUs.png";
 
 function MyComponent() {
   return (
-    <div className="bg-background mx-auto px-20 flex justify-center h-screen">
+    <div className="bg-background mx-auto px-20 flex justify-center h-[80vh]">
       <div className="flex pt-10">
         <div className="w-1/3">
-          <img src={AboutUsImg} alt="About Us Image" className="w-full" />
+          <img src={AboutUsImg} alt="About Us Image" className="w-5/6" />
         </div>
         <div className="w-2/3 px-4 text-black ">
           <h1 className="text-4xl font-bold mb-4">About Us</h1>
