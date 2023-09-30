@@ -18,7 +18,6 @@ function App() {
         <Navigation/>
         <Routes>
           <Route path="/adminfeedback" element={<AdminFeedback />} />
-
           <Route path="/" element={<LandingPage />} />
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/admin" element={<AdminDashboard />} />
