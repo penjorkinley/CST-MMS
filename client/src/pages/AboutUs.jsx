@@ -1,4 +1,4 @@
-import React from "react";
+
 
 import AboutUsImg from "../assets/AboutUs.png";
 

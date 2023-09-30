@@ -1,3 +1,4 @@
+
 import { useNavigate } from "react-router-dom";
 import land from "../assets/Menu-Background.png";
 import logo from "../assets/Logo.PNG";
@@ -34,7 +35,7 @@ function LandingPage() {
       <div className="absolute inset-0 flex justify-center items-center ">
         <div className="bg-white h-96 w-3/5 rounded-3xl ">
           <p className="mt-4 font-extrabold text-black text-4xl flex items-center justify-center">
-            Today's Menu
+            Todays Menu
           </p>
           <div className="flex justify-between items-center">
             <MealCard

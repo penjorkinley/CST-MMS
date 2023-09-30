@@ -8,18 +8,14 @@ import RegularNav from "./components/RegularNav";
 import AdminDashboard from "./pages/AdminDashboard";
 import LandingPage from "./pages/landingPage";
 import Feedback from "./pages/Feedback";
-<<<<<<< Updated upstream
 import AdminFeedback from "./pages/AdminFeedback";
-=======
 import { useLocation } from "react-router-dom";
->>>>>>> Stashed changes
 
 function App() {
   return (
     <div className="App">
       <Router>
-<<<<<<< Updated upstream
-        <RegularNav />
+        <Navigation/>
         <Routes>
           <Route path="/adminfeedback" element={<AdminFeedback />} />
           <Route path="/" element={<LandingPage />} />
@@ -31,18 +27,6 @@ function App() {
         </Routes>
         <Footer />
       </Router>
-=======
-      <Navigation />
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/feedback" element={<Feedback />} />
-        <Route path="/aboutus" element={<About />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
-      </Router>
-      <Footer />
->>>>>>> Stashed changes
     </div>
   );
 }
