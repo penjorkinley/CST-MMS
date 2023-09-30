@@ -1,23 +1,17 @@
 import "./App.css";
-import Footer from "./components/Footer";
-import LandingPage from "./pages/landingPage";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import AboutUs from "./pages/AboutUs";
-import SignIn from "./pages/SignIn";
-import LogIn from "./pages/LogIn";
+import Footer from "./components/footer";
+
+
 function App() {
   return (
     <>
-      <Router>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/login" element={<LogIn />} />
-        </Routes>
-      </Router>
+      
+      <h1 className="text-3xl font-bold underline text-red-400">
 
-      <Footer />
+        Hello world!
+      </h1>
+      <Footer/>
+        
     </>
   );
 }
