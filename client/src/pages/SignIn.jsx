@@ -42,10 +42,10 @@ function SignIn({ changePage }) {
   };
 
   return (
-    <div className="flex h-screen bg-F0F7F9">
-      <div className="w-1/2 flex justify-center items-center">
-        <div className="bg-ABB7BA p-5 rounded-lg shadow-md relative max-w-md w-full">
-          <h2 className="text-2xl font-bold mb-10 text-center">Sign In</h2>
+    <div className="flex h-screen">
+      <div className="w-1/2 flex justify-center items-center bg-ABB7BA ">
+        <div className="rounded-lg ">
+          <h2 className="text-5xl font-bold mb-10 text-center">Sign In</h2>
 
           {/* Input Fields */}
           <div className="mb-4 relative">
@@ -133,14 +133,14 @@ function SignIn({ changePage }) {
         </div>
       </div>
 
-      <div className="w-1/2 relative">
+      <div className="w-1/2 relative bg-F0F7F9">
         <img
           src={Logo}
           alt="Logo"
-          className="absolute top-5 right-5 w-16 h-16"
+          className="absolute top-5 right-5 w-30 h-20"
         />
         <img
-          className="h-full w-full object-cover"
+          className="h-150 w-150 object-cover"
           src={SignUpImg}
           alt="Sign In Illustration"
         />
