@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Logo from "../assets/Logo.PNG";
 import SignUpImg from "../assets/SignUp.png";
+import { FcGoogle } from "react-icons/fc";
 import {
   UserIcon,
   IdentificationIcon,
@@ -18,6 +19,7 @@ function SignIn({ changePage }) {
     email: "",
     password: "",
   });
+
   const [errors, setErrors] = useState({});
 
   const validate = () => {
@@ -45,7 +47,7 @@ function SignIn({ changePage }) {
   return (
     <div className="flex h-screen">
       <div className="w-1/2 flex justify-center items-center bg-card">
-        <div className="rounded-lg">
+        <div className="rounded-lg w-3/5">
           <h2 className="text-6xl font-bold mb-10 text-center text-white">
             Sign Up
           </h2>
@@ -86,7 +88,7 @@ function SignIn({ changePage }) {
               <Icon className="absolute w-6 h-6 left-3 top-1/2 transform -translate-y-1/2 text-customIconColor" />
               <input
                 type={type}
-                className="pl-10 w-full px-3 py-2 border rounded-md bg-cute opacity-60"
+                className="pl-10 w-full px-3 py-2 border rounded-md bg-cute "
                 placeholder={placeholder}
                 value={formData[key]}
                 onChange={(e) =>
@@ -98,19 +100,23 @@ function SignIn({ changePage }) {
               )}
             </div>
           ))}
+
           <button
             onClick={handleSubmit}
-            className="w-full p-2 bg-buttons text-white rounded-md mb-2"
+            className="w-full p-2 bg-buttons text-white text-xl font-bold rounded-md mb-2"
           >
             Sign Up
           </button>
+
           <hr className="border-white mb-2" />
-          <button className="w-full p-2 bg-buttons text-white rounded-md mb-2">
-            Continue with Google
+
+          <button className="w-full p-2 bg-buttons text-white text-xl font-bold flex justify-center items-center rounded-md mb-2">
+            <FcGoogle className="mr-2" /> Continue with Google
           </button>
-          <div className="text-white ">
+
+          <div className="text-white">
             Already have an account?
-            <Link to="/login" className="text-white underline">
+            <Link to="/login" className="text-white underline ml-1">
               Login
             </Link>
           </div>
