@@ -5,6 +5,9 @@ export default {
     extend: {
       backgroundImage: {
         'landing': "url('/client/src/assets/Landing Page.svg')"
+      },
+      backgroundColor: {
+        'cute' : '#F0F7F9'
       }
     },
   },
