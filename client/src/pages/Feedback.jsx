@@ -7,13 +7,13 @@ export default function Feedback() {
 
           <div className="bg-cute pl-9" >
           <img src={pic}
-          className="h-150 w-150 object-cover"
+          className="h-96 w-max object-cover"
           alt="FeedbackPic"
         /> 
           </div>
     
 
-    <div className="card card-compact w-4/12 h-96 bg-base-100 shadow-2xl mr-6">
+    <div className="card card-compact w-min h-96 bg-base-100 shadow-2xl mr-6">
   {/* <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure> */}
   <div className="card-body "><br></br>
     <h2 className="card-title font-semibold text-black text-2xl">Rate Your Experience!!!</h2><br></br>
