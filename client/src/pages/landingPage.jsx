@@ -102,11 +102,14 @@ function LandingPage() {
           alt="background"
         />
         <div className="absolute flex justify-center items-center">
-          <div className="bg-white rounded-3xl" ref={menuRef}>
-            <p className="mt-4 font-extrabold text-black text-4xl flex items-center justify-center">
+          <div
+            className="bg-white rounded-3xl w-[1000px] p-8 shadow-lg"
+            ref={menuRef}
+          >
+            <p className="mt-4 font-extrabold text-black text-4xl flex items-center justify-center mb-4">
               Todays Menu
             </p>
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center mb-6">
               <MealCard
                 meal={"Breakfast"}
                 time={"7:00AM - 8:00AM"}
@@ -128,6 +131,15 @@ function LandingPage() {
                 two={"Chicken Chilli"}
                 three={"Lentils Soup"}
               />
+            </div>
+
+            <div className="flex justify-center">
+              <button
+                onClick={() => navigate("/order")}
+                className="text-black hover:bg-black text-lg font-bold hover:text-white  transition-all duration-500 px-6 py-3 rounded-lg bg-buttons "
+              >
+                Order Meal
+              </button>
             </div>
           </div>
         </div>
