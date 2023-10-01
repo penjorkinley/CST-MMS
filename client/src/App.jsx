@@ -14,7 +14,6 @@ import { useLocation } from "react-router-dom";
 import MealOrder from "./pages/MealOrder";
 import AddUser from "./pages/AddUser";
 
-
 function App() {
   return (
     <div className="App">
