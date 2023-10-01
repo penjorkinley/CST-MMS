@@ -62,7 +62,7 @@ export default function RegularNav() {
                     to="/"
                     className="flex items-center justify-center mt-[-7px]"
                   >
-                    <HiOutlineLogout size={50} />
+                    <HiOutlineLogout size={50} className="text-buttons  hover:text-black "/>
                   </Link>
                 </li>
               )}

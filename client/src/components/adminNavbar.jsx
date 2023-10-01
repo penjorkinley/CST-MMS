@@ -22,7 +22,7 @@ export default function adminNavbar() {
           <li className="max-w-xs ">
             <Link
               to="/dashboard"
-              className="text-2xl items-center py-4 transition duration-300 ease-in-out hover:scale-105"
+              className="text-2xl items-center py-4 transition duration-300 ease-in-out hover:scale-105 hover:shadow-lg dark:hover:shadow-black"
             >
               <TbDeviceDesktopAnalytics className="text-4xl " /> Dashboard
             </Link>
@@ -30,7 +30,7 @@ export default function adminNavbar() {
           <li>
             <Link
               to="/admin/addmenu"
-              className="text-2xl items-center py-4  transition duration-300 ease-in-out hover:scale-105"
+              className="text-2xl items-center py-4  transition duration-300 ease-in-out hover:scale-105 hover:shadow-lg dark:hover:shadow-black"
             >
               <BiSolidAddToQueue className="text-4xl" /> Add Menu
             </Link>
@@ -38,21 +38,21 @@ export default function adminNavbar() {
           <li>
             <Link
               to="/admin/dailyattendent"
-              className="text-2xl items-center py-4  transition duration-300 ease-in-out hover:scale-105"
+              className="text-2xl items-center py-4  transition duration-300 ease-in-out hover:scale-105 hover:shadow-lg dark:hover:shadow-black"
             >
               <TiTickOutline className="text-4xl" /> Daily Attendant
             </Link>
           </li>
           <li>
             <Link to ="/admin/inventory" 
-            className="transition duration-300 ease-in-out hover:scale-105 text-2xl items-center py-4">
+            className="transition duration-300 ease-in-out hover:scale-105 text-2xl items-center py-4 hover:shadow-lg dark:hover:shadow-black">
               <MdOutlineInventory2 className="text-4xl" /> Inventory
                </Link>
           </li>
           <li>
             <Link
               to="/admin/adduser"
-              className="transition duration-300 ease-in-out hover:scale-105 text-2xl items-center py-4 "
+              className="transition duration-300 ease-in-out hover:scale-105 text-2xl items-center py-4 hover:shadow-lg dark:hover:shadow-black "
             >
               <AiOutlineUserAdd className="text-4xl" /> Add User
             </Link>
@@ -60,7 +60,7 @@ export default function adminNavbar() {
           <li>
             <Link
               to="/admin/viewfeedback"
-              className=" transition duration-300 ease-in-out hover:scale-105 text-2xl items-center py-4 "
+              className=" transition duration-300 ease-in-out hover:scale-105 text-2xl items-center py-4 hover:shadow-lg dark:hover:shadow-black"
             >
               <VscFeedback className="text-4xl" /> View Feedback
             </Link>
@@ -72,7 +72,7 @@ export default function adminNavbar() {
             <li>
               <Link
                 to=""
-                className="transition duration-300 ease-in-out hover:scale-105 text-2xl items-center py-4"
+                className="transition duration-300 ease-in-out hover:scale-105 text-2xl items-center py-4 "
               >
                 <TbLogout className="text-4xl" /> Log Out
               </Link>
