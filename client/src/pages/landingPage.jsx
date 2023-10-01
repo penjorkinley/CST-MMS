@@ -58,7 +58,7 @@ function LandingPage() {
 
                 {/* Text with Enhanced Styling and Button */}
                 <div className="absolute inset-0 flex justify-center items-center flex-col">
-                  <span className="text-white text-5xl font-bold tracking-wider mb-4 shadow-text stroke-text">
+                  <span className="text-white text-5xl font-bold tracking-wider mb-4 shadow-text s">
                     {item.text}
                   </span>
                   <button
