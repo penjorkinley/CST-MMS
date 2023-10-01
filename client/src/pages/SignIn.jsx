@@ -127,7 +127,7 @@ function SignIn({ changePage }) {
         </div>
       </div>
 
-      <div className="w-3/5 flex justify-center items-center relative bg-cute">
+      <div className="w-3/5 flex justify-center items-center relative bg-cute border-l-4">
         <img
           className="w-3/5 h-auto object-cover mx-auto my-auto"
           src={SignUpImg}
