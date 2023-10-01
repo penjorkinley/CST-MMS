@@ -13,39 +13,42 @@ export default function adminNavbar() {
       <div className="drawer-side">
         <ul className="menu min-h-full w-72 text-blackText bg-adminDash">
           <li className=" py-2">
-            <p className="text-3xl items-center">Hello, Admin</p>
+            <p className="text-3xl items-center hover:bg-transparent">Hello, Admin</p>
           </li>
-          <hr className="my-4 border-t-2 border-black w-full" />
+          <hr className="my-4 border-t-2 border-black w-full " />
+          <li className="max-w-xs ">
+            <a className="text-2xl items-center py-4 transition duration-300 ease-in-out hover:scale-105">
+              <TbDeviceDesktopAnalytics className="text-4xl " /> Dashboard
+            </a>
+            
+          </li>
           <li>
-            <a className="text-2xl items-center">
-              <TbDeviceDesktopAnalytics /> Dashboard
+            <a className="text-2xl items-center py-4  transition duration-300 ease-in-out hover:scale-105">
+              <BiSolidAddToQueue className="text-4xl" /> Add Menu
             </a>
           </li>
           <li>
-            <a className="text-2xl items-center">
-              <BiSolidAddToQueue /> Add Menu
+            <a className="text-2xl items-center py-4  transition duration-300 ease-in-out hover:scale-105">
+              <TiTickOutline className="text-4xl"/> Daily Attendent
             </a>
           </li>
           <li>
-            <a className="text-2xl items-center">
-              <TiTickOutline /> Daily Attendent
+            <a className="transition duration-300 ease-in-out hover:scale-105 text-2xl items-center py-4 ">
+              <AiOutlineUserAdd className="text-4xl"/> Add User
             </a>
           </li>
           <li>
-            <a className="text-2xl items-center">
-              <AiOutlineUserAdd /> Add User
+            <a className=" transition duration-300 ease-in-out hover:scale-105 text-2xl items-center py-4 ">
+              <VscFeedback className="text-4xl" /> View Feedback
             </a>
           </li>
+          <div className="mt-auto"> {/* This ensures the item sticks to the bottom */}
           <li>
-            <a className="text-2xl items-center">
-              <VscFeedback /> View Feedback
+            <a className="transition duration-300 ease-in-out hover:scale-105 text-2xl items-center py-4">
+              <TbLogout className="text-4xl" /> Log Out
             </a>
           </li>
-          <li>
-            <a className="text-2xl items-center">
-              <TbLogout /> Log Out
-            </a>
-          </li>
+        </div>
         </ul>
       </div>
     </div>
