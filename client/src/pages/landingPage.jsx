@@ -1,20 +1,31 @@
+import React, { useState, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import land from "../assets/Menu-Background.png";
 import logo from "../assets/Logo.PNG";
 import MealCard from "../components/MenuCard";
-import aboutUs from "../assets/AboutUs.png";
-import feedbackBackground from "../assets/KSI.png";
-import ksi from "../assets/KSI.png";
+import mess1 from "../assets/mess1.JPG";
+import mess2 from "../assets/mess2.JPG";
+import mess3 from "../assets/mess3.jpg";
+import mess4 from "../assets/mess4.JPG";
 
 function LandingPage() {
   const navigate = useNavigate();
   const location = useLocation();
+  const menuRef = useRef(null); // Reference to the menu
+
+  const [activeCarouselItem, setActiveCarouselItem] = useState(1);
+
+  const carouselItems = [
+    { image: mess3, text: "Welcome To CST Mess System" },
+    { image: mess1, text: "Menu Background" },
+    { image: mess2, text: "Feedback Background" },
+    { image: mess4, text: "KSI" },
+  ];
 
   return (
     <div className="relative h-[screen] bg-cute">
       <div className="z-10 flex justify-between items-center h-50 bg-transparent w-full pr-8">
         <img src={logo} alt="logo" className="h-32 w-34" />
-
         <div className="space-x-4 flex items-center">
           <button
             onClick={() => navigate("/signin")}
@@ -22,7 +33,6 @@ function LandingPage() {
           >
             Sign Up
           </button>
-
           <button
             onClick={() => navigate("/login")}
             className="text-white hover:bg-white text-lg hover:text-black hover:border-buttons hover:border-2 transition-all duration-500 px-5 py-2 rounded-lg bg-blackText border-2 z-20"
@@ -31,37 +41,50 @@ function LandingPage() {
           </button>
         </div>
       </div>
+
       <div className="carousel w-full h-[550px]">
-        <div id="item1" className="carousel-item w-full">
-          <img src={aboutUs} className="w-full" alt="About Us" />
-        </div>
-        <div id="item2" className="carousel-item w-full">
-          <img src={land} className="w-full" alt="Menu Background" />
-        </div>
-        <div id="item3" className="carousel-item w-full">
-          <img
-            src={feedbackBackground}
-            className="w-full"
-            alt="Feedback Background"
-          />
-        </div>
-        <div id="item4" className="carousel-item w-full">
-          <img src={ksi} className="w-full" alt="KSI" />
-        </div>
+        {carouselItems.map(
+          (item, index) =>
+            index + 1 === activeCarouselItem && (
+              <div key={index} className="carousel-item w-full relative">
+                <img
+                  src={item.image}
+                  className="w-full"
+                  alt={`Carousel Item ${index + 1}`}
+                />
+
+                {/* Dark Overlay */}
+                <div className="absolute inset-0 bg-black opacity-10"></div>
+
+                {/* Text with Enhanced Styling and Button */}
+                <div className="absolute inset-0 flex justify-center items-center flex-col">
+                  <span className="text-white text-5xl font-bold tracking-wider mb-4 shadow-text stroke-text">
+                    {item.text}
+                  </span>
+                  <button
+                    onClick={() =>
+                      menuRef.current.scrollIntoView({ behavior: "smooth" })
+                    }
+                    className="text-white hover:bg-black text-xl font-bold hover:text-white transition-all duration-500 px-5 py-3 rounded-lg bg-buttons "
+                  >
+                    View Menu
+                  </button>
+                </div>
+              </div>
+            )
+        )}
       </div>
+
       <div className="flex justify-center w-full py-2 gap-2">
-        <a href="#item1" className="btn btn-xs">
-          1
-        </a>
-        <a href="#item2" className="btn btn-xs">
-          2
-        </a>
-        <a href="#item3" className="btn btn-xs">
-          3
-        </a>
-        <a href="#item4" className="btn btn-xs">
-          4
-        </a>
+        {carouselItems.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setActiveCarouselItem(index + 1)}
+            className="btn btn-xs"
+          >
+            {index + 1}
+          </button>
+        ))}
       </div>
 
       <div className="flex items-center justify-center">
@@ -71,7 +94,7 @@ function LandingPage() {
           alt="background"
         />
         <div className="absolute flex justify-center items-center">
-          <div className="bg-white rounded-3xl">
+          <div className="bg-white rounded-3xl" ref={menuRef}>
             <p className="mt-4 font-extrabold text-black text-4xl flex items-center justify-center">
               Todays Menu
             </p>
