@@ -1,5 +1,5 @@
-import React, { useState, useRef } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import React, { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import land from "../assets/Menu-Background.png";
 import logo from "../assets/Logo.PNG";
 import MealCard from "../components/MenuCard";
@@ -10,10 +10,19 @@ import mess4 from "../assets/mess4.JPG";
 
 function LandingPage() {
   const navigate = useNavigate();
-  const location = useLocation();
-  const menuRef = useRef(null); // Reference to the menu
+  const menuRef = useRef(null);
 
   const [activeCarouselItem, setActiveCarouselItem] = useState(1);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveCarouselItem((prevItem) =>
+        prevItem === carouselItems.length ? 1 : prevItem + 1
+      );
+    }, 3500);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const carouselItems = [
     { image: mess3, text: "Welcome To CST Mess System" },
@@ -42,39 +51,38 @@ function LandingPage() {
         </div>
       </div>
 
-      <div className="carousel w-full h-[550px]">
-        {carouselItems.map(
-          (item, index) =>
-            index + 1 === activeCarouselItem && (
-              <div key={index} className="carousel-item w-full relative">
-                <img
-                  src={item.image}
-                  className="w-full"
-                  alt={`Carousel Item ${index + 1}`}
-                />
-
-                {/* Dark Overlay */}
-                <div className="absolute inset-0 bg-black opacity-10"></div>
-
-                {/* Text with Enhanced Styling and Button */}
-                <div className="absolute inset-0 flex justify-center items-center flex-col">
-                  <span className="text-white text-5xl font-bold tracking-wider mb-4 shadow-text s">
-                    {item.text}
-                  </span>
-                  <button
-                    onClick={() =>
-                      menuRef.current.scrollIntoView({ behavior: "smooth" })
-                    }
-                    className="text-white hover:bg-black text-xl font-bold hover:text-white transition-all duration-500 px-5 py-3 rounded-lg bg-buttons "
-                  >
-                    View Menu
-                  </button>
-                </div>
+      <div className="carousel w-full h-[550px] overflow-hidden">
+        <div
+          className="carousel-inner flex transition-transform duration-500"
+          style={{
+            transform: `translateX(-${(activeCarouselItem - 1) * 100}%)`,
+          }}
+        >
+          {carouselItems.map((item, index) => (
+            <div key={index} className="carousel-item w-full relative">
+              <img
+                src={item.image}
+                className="w-full"
+                alt={`Carousel Item ${index + 1}`}
+              />
+              <div className="absolute inset-0 bg-black opacity-10"></div>
+              <div className="absolute inset-0 flex justify-center items-center flex-col">
+                <span className="text-white text-5xl font-bold tracking-wider mb-4 bg-black bg-opacity-70 px-4 py-1">
+                  {item.text}
+                </span>
+                <button
+                  onClick={() =>
+                    menuRef.current.scrollIntoView({ behavior: "smooth" })
+                  }
+                  className="text-white hover:bg-black text-xl font-bold hover:text-white transition-all duration-500 px-5 py-3 rounded-lg bg-buttons "
+                >
+                  View Menu
+                </button>
               </div>
-            )
-        )}
+            </div>
+          ))}
+        </div>
       </div>
-
       <div className="flex justify-center w-full py-2 gap-2">
         {carouselItems.map((_, index) => (
           <button

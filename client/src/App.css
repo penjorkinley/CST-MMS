@@ -1,4 +1,3 @@
-.stroke-text {
-  -webkit-text-stroke: 2px black; /* Webkit-based browsers (Chrome, Safari, etc.) support */
-  text-stroke: 2px black; /* Future browsers might support this without prefix */
+.carousel-inner {
+  width: calc(100% * 4);
 }
