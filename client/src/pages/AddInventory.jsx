@@ -182,10 +182,10 @@ function AddInventory() {
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold pl-96">Inventory Management</h1>
+      <h1 className="text-2xl font-bold">Inventory Management</h1>
 
-      <div className="mt-4 pl-96">
-        <h2 className="text-xl font-semibold pl-96">Add Inventory</h2>
+      <div className="mt-4 ">
+        <h2 className="text-xl font-semibold italic">Add Inventory</h2>
         <div className="flex space-x-4">
           <input
             type="text"
@@ -235,9 +235,9 @@ function AddInventory() {
       </div>
 
       {storeType === 'Essentials' && (
-        <div className="mt-8 pl-96">
+        <div className="mt-8 ">
           <h2 className="text-xl font-semibold pl-96">Essentials Inventory</h2>
-          <table className="w-full mt-4 pl-96">
+          <table className="w-full mt-4 ">
             <thead>
               <tr>
                 <th>Date</th>
@@ -394,7 +394,7 @@ function AddInventory() {
         </div>
       )}
 
-      <div className="mt-4 pl-96 pb-48">
+      <div className="mt-4 pl-9 pb-48">
         <button onClick={handleExportPDF} className="bg-black text-white p-2 rounded-xl ">
           Export to PDF
         </button>
