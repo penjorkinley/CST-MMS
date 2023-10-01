@@ -11,14 +11,15 @@ export default function adminNavbar() {
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-side">
-        <ul className="menu  w-80 min-h-full text-blackText bg-adminDash">
-          <li className=" py-5">
-            <p className="text-4xl items-center">Hello, Admin</p>
+        <ul className="menu min-h-full w-72 text-blackText bg-adminDash">
+          <li className=" py-2">
+            <p className="text-3xl items-center">Hello, Admin</p>
           </li>
           <hr className="my-4 border-t-2 border-black w-full" />
           <li>
-            <a className="text-2xl items-center"><TbDeviceDesktopAnalytics/> Dashboard</a>
-            
+            <a className="text-2xl items-center">
+              <TbDeviceDesktopAnalytics /> Dashboard
+            </a>
           </li>
           <li>
             <a className="text-2xl items-center">
