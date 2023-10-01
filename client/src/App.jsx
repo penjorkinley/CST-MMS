@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Route, Routes,  } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import About from "./pages/AboutUs";
 import Footer from "./components/footer";
 import SignIn from "./pages/SignIn";
@@ -19,7 +19,6 @@ function App() {
       <Router>
         <Navigation />
         <Routes>
-          <Route path="/adduser" element={<AddUser />} />
           <Route path="/dashboard" element={<AdminDashboard />} />
           {/* <Route path="/adminfeedback" element={<AdminFeedback />} /> */}
           <Route path="/order" element={<MealOrder />} />
@@ -27,6 +26,7 @@ function App() {
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/admin" element={<AdminDashboard />}>
             <Route path="viewfeedback" element={<AdminFeedback />} />
+            <Route path="adduser" element={<AddUser />} />
           </Route>
           <Route path="/aboutus" element={<About />} />
           <Route path="/signin" element={<SignIn />} />
