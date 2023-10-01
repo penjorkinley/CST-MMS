@@ -39,7 +39,7 @@ export default function adminNavbar() {
             </Link>
           </li>
           <li>
-            <Link to= "viewfeedback" className=" transition duration-300 ease-in-out hover:scale-105 text-2xl items-center py-4 ">
+            <Link to= "/admin/viewfeedback" className=" transition duration-300 ease-in-out hover:scale-105 text-2xl items-center py-4 ">
               <VscFeedback className="text-4xl" /> View Feedback
             </Link>
           </li>
