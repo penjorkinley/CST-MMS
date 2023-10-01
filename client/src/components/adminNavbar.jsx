@@ -72,7 +72,7 @@ export default function adminNavbar() {
             <li>
               <Link
                 to=""
-                className="transition duration-300 ease-in-out hover:scale-105 text-2xl items-center py-4 "
+                className="transition duration-300 ease-in-out hover:scale-105 text-2xl items-center hover:text-white hover:bg-transparent"
               >
                 <TbLogout className="text-4xl" /> Log Out
               </Link>
