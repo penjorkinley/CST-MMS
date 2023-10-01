@@ -393,7 +393,7 @@ function AddInventory() {
         </div>
       )}
 
-      <div className="mt-4 pl-9 pb-48">
+      <div className="mt-4  pb-48">
         <button onClick={handleExportPDF} className="bg-black text-white p-2 rounded-xl ">
           Export to PDF
         </button>
