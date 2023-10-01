@@ -22,7 +22,7 @@ function App() {
         <Routes>
           <Route path="/dashboard" element={<AdminDashboard />} />
           <Route path="/adminfeedback" element={<AdminFeedback />} />
-          <Route path="/orderMeal" element={<MealOrder />} />
+          <Route path="/order" element={<MealOrder />} />
           <Route path="/" element={<LandingPage />} />
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/admin" element={<AdminDashboard />} />
