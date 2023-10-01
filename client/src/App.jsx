@@ -13,7 +13,6 @@ import AdminTopNavbar from "./components/AdminTopNavbar";
 import { useLocation } from "react-router-dom";
 import MealOrder from "./pages/MealOrder";
 
-
 function App() {
   return (
     <div className="App">
