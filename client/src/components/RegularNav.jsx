@@ -5,7 +5,7 @@ import { HiOutlineLogout } from "react-icons/hi";
 
 export default function RegularNav() {
   // Mock-up state to keep track of the user's login status
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { isLoggedIn } = useContext(AuthContext);
 
   // Get the current location
   const location = useLocation();
