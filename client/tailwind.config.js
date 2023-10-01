@@ -31,6 +31,8 @@ export default {
 
         customIconColor: "black",
 
+        hovercolor: "3EADCC",
+
       },
     },
   },
