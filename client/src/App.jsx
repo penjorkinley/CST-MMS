@@ -12,7 +12,11 @@ import AdminFeedback from "./pages/AdminFeedback";
 import { useLocation } from "react-router-dom";
 import MealOrder from "./pages/MealOrder";
 import AddUser from "./pages/AddUser";
+<<<<<<< HEAD
+import AddInventory from "./pages/AddInventory";
+=======
 import AddMenu from "./components/AddMenu";
+>>>>>>> 52f218c313a06bb8cc039de35f6ee29f4c0b77ee
 
 function App() {
   return (
@@ -20,6 +24,13 @@ function App() {
       <Router>
         <Navigation />
         <Routes>
+<<<<<<< HEAD
+          <Route path="/addinventory" element={<AddInventory />} />
+          <Route path="/adduser" element={<AddUser />} />
+          <Route path="/dashboard" element={<AdminDashboard />} />
+          {/* <Route path="/adminfeedback" element={<AdminFeedback />} /> */}
+=======
+>>>>>>> 52f218c313a06bb8cc039de35f6ee29f4c0b77ee
           <Route path="/order" element={<MealOrder />} />
           <Route path="/" element={<LandingPage />} />
           <Route path="/feedback" element={<Feedback />} />
