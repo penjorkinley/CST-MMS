@@ -19,8 +19,6 @@ function App() {
       <Router>
         <Navigation />
         <Routes>
-          <Route path="/dashboard" element={<AdminDashboard />} />
-          {/* <Route path="/adminfeedback" element={<AdminFeedback />} /> */}
           <Route path="/order" element={<MealOrder />} />
           <Route path="/" element={<LandingPage />} />
           <Route path="/feedback" element={<Feedback />} />
@@ -44,7 +42,10 @@ function Navigation() {
 
   // Check if the current route is not the landing page
   const shouldShowNav =
-    location.pathname !== "/" && location.pathname !== "/admin";
+    location.pathname !== "/" &&
+    location.pathname !== "/admin" &&
+    location.pathname !== "/admin/viewfeedback" &&
+    location.pathname !== "/admin/adduser";
 
   // Conditional rendering of RegularNav
   return shouldShowNav ? <RegularNav /> : null;
