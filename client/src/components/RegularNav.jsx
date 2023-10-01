@@ -15,22 +15,22 @@ export default function RegularNav() {
         </div>
         <ul className="flex space-x-4 font-semibold text-black text-2xl mr-7 ">
           <li>
-            <Link to="/" className="text-black hover:text-blue-300">
+            <Link to="/" className="text-black hover:text-buttons">
               Menu
             </Link>
           </li>
           <li>
-            <Link to="/order" className="text-black hover:text-blue-300">
+            <Link to="/order" className="text-black hover:text-buttons">
               Order
             </Link>
           </li>
           <li>
-            <Link to="/feedback" className="text-black hover:text-blue-300">
+            <Link to="/feedback" className="text-black hover:text-buttons">
               Feedback
             </Link>
           </li>
           <li>
-            <Link to="/aboutus" className="text-black hover:text-blue-300">
+            <Link to="/aboutus" className="text-black hover:text-buttons">
               About
             </Link>
           </li>
