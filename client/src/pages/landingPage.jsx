@@ -65,9 +65,9 @@ function LandingPage() {
                 className="w-full"
                 alt={`Carousel Item ${index + 1}`}
               />
-              <div className="absolute inset-0 bg-black opacity-10"></div>
+              <div className="absolute inset-0 bg-black opacity-30"></div>
               <div className="absolute inset-0 flex justify-center items-center flex-col">
-                <span className="text-white text-5xl font-bold tracking-wider mb-4 bg-black bg-opacity-70 px-4 py-1">
+                <span className="text-white text-5xl font-bold tracking-wider mb-4  px-4 py-1">
                   {item.text}
                 </span>
                 <button
