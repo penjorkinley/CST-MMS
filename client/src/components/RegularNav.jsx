@@ -5,14 +5,14 @@ import { HiOutlineLogout } from "react-icons/hi";
 
 export default function RegularNav() {
   return (
-    <div className="bg-cute py-4 pl-3 border-b-4 h-[120px] sticky top-0 z-50 flex justify-between items-center">
-      <div className="container  flex justify-between  items-center ">
-        <div className="flex items-center">
+    <div className="bg-cute pl-3 py-4 border-b-4 h-[120px] sticky top-0 z-50">
+    <div className="container mx-auto flex justify-between items-center">
+     <div className="flex items-center">
           <img src={logo} alt="Logo" className="h-[100px] border-none " />
         </div>
       
-        <ul className="flex justify-between items-center space-x-4 font-semibold text-black text-2xl">
-          <li>
+        <ul className="flex space-x-4 font-semibold text-black text-2xl mr-7 ">
+                  <li>
             <Link to="/" className="text-black hover:text-buttons">
               Menu
             </Link>
