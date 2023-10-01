@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SignUpImg from "../assets/SignUp.png";
-import Logo from "../assets/Logo.png";
 import { FcGoogle } from "react-icons/fc";
+
 import {
   UserIcon,
   IdentificationIcon,
