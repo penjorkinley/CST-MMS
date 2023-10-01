@@ -5,7 +5,7 @@ export default function AddUser() {
     fullName: "",
     email: "",
     contactNumber: "",
-    role: "user", // Default role
+    role: "user", // Default
     password: "",
     confirmPassword: "",
   });
