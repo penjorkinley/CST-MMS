@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 export default function AddUser() {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     contactNumber: "",
-    role: "user", // Default role
+    role: "user", // Default
     password: "",
     confirmPassword: "",
   });

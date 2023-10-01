@@ -2,7 +2,7 @@ import AboutUsImg from "../assets/AboutUs.png";
 
 function MyComponent() {
   return (
-    <div className="bg-background mx-auto px-20 flex justify-center h-[100vh]">
+    <div className="bg-background mx-auto px-20 flex justify-center h-[100vh] overflow-hidden">
       <div className="flex pt-10">
         <div className="w-1/3">
           <img src={AboutUsImg} alt="About Us Image" className="w-5/6" />

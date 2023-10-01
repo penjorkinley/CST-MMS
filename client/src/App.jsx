@@ -9,7 +9,6 @@ import AdminDashboard from "./pages/AdminDashboard";
 import LandingPage from "./pages/landingPage";
 import Feedback from "./pages/Feedback";
 import AdminFeedback from "./pages/AdminFeedback";
-import AdminTopNavbar from "./components/AdminTopNavbar";
 import { useLocation } from "react-router-dom";
 import MealOrder from "./pages/MealOrder";
 import AddUser from "./pages/AddUser";
@@ -20,13 +19,13 @@ function App() {
       <Router>
         <Navigation />
         <Routes>
-          <Route path="/adduser" element={<AddUser />} />
-          <Route path="/dashboard" element={<AdminDashboard />} />
-          <Route path="/adminfeedback" element={<AdminFeedback />} />
           <Route path="/order" element={<MealOrder />} />
           <Route path="/" element={<LandingPage />} />
           <Route path="/feedback" element={<Feedback />} />
-          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin" element={<AdminDashboard />}>
+            <Route path="viewfeedback" element={<AdminFeedback />} />
+            <Route path="adduser" element={<AddUser />} />
+          </Route>
           <Route path="/aboutus" element={<About />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/login" element={<Login />} />
@@ -43,7 +42,10 @@ function Navigation() {
 
   // Check if the current route is not the landing page
   const shouldShowNav =
-    location.pathname !== "/" && location.pathname !== "/admin";
+    location.pathname !== "/" &&
+    location.pathname !== "/admin" &&
+    location.pathname !== "/admin/viewfeedback" &&
+    location.pathname !== "/admin/adduser";
 
   // Conditional rendering of RegularNav
   return shouldShowNav ? <RegularNav /> : null;
