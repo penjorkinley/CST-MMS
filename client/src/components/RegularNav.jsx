@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import logo from "../assets/Logo.PNG";
-import { FaSignOutAlt } from "react-icons/fa";
+import { HiOutlineLogout } from "react-icons/hi";
 
 export default function RegularNav() {
   // Mock-up state to keep track of the user's login status
@@ -51,6 +51,15 @@ export default function RegularNav() {
                 className="text-white hover:bg-white text-lg hover:text-black hover:border-buttons hover:border-2 transition-all duration-500 px-5 py-2 rounded-lg bg-blackText border-2"
               >
                 Login
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/"
+                className="flex items-center justify-center mt-[-7px]"
+              >
+                <HiOutlineLogout size={50} />{" "}
+                {/* Increased the size attribute to 32 */}
               </Link>
             </li>
           </>
