@@ -185,7 +185,6 @@ function AddInventory() {
       <h1 className="text-2xl font-bold">Inventory Management</h1>
 
       <div className="mt-4 ">
-        <h2 className="text-xl font-semibold italic">Add Inventory</h2>
         <div className="flex space-x-4">
           <input
             type="text"
