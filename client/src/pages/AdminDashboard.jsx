@@ -10,7 +10,7 @@ export default function AdminDashboard() {
         {/* Adjust the width as per your design */}
         <AdminNavbar />
       </div>
-      <div className="w-5/6 bg-cute">
+      <div className="w-5/6 bg-cute flex justify-center items-center">
         {" "}
         {/* Adjust the width as per your design */}
         {/* <AdminTopNavbar /> */}
