@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import logo from "../assets/Logo.PNG";
 import { HiOutlineLogout } from "react-icons/hi";
@@ -6,6 +6,9 @@ import { HiOutlineLogout } from "react-icons/hi";
 export default function RegularNav() {
   // Mock-up state to keep track of the user's login status
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Get the current location
+  const location = useLocation();
 
   return (
     <div className="bg-cute p-4 border-b-4 h-[120px] sticky top-0 z-50">
@@ -35,7 +38,8 @@ export default function RegularNav() {
             </Link>
           </li>
 
-          <>
+          {/* Condition for Sign Up button */}
+          {!isLoggedIn && location.pathname !== "/signin" && (
             <li>
               <Link
                 to="/signin"
@@ -44,7 +48,10 @@ export default function RegularNav() {
                 Sign Up
               </Link>
             </li>
+          )}
 
+          {/* Condition for Login button */}
+          {!isLoggedIn && location.pathname !== "/login" && (
             <li>
               <Link
                 to="/login"
@@ -53,16 +60,19 @@ export default function RegularNav() {
                 Login
               </Link>
             </li>
+          )}
+
+          {/* Condition for Logout icon */}
+          {isLoggedIn && (
             <li>
               <Link
                 to="/"
                 className="flex items-center justify-center mt-[-7px]"
               >
-                <HiOutlineLogout size={50} />{" "}
-                {/* Increased the size attribute to 32 */}
+                <HiOutlineLogout size={50} />
               </Link>
             </li>
-          </>
+          )}
         </ul>
       </div>
     </div>
