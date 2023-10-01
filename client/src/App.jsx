@@ -12,6 +12,7 @@ import AdminFeedback from "./pages/AdminFeedback";
 import AdminTopNavbar from "./components/AdminTopNavbar";
 import { useLocation } from "react-router-dom";
 import MealOrder from "./pages/MealOrder";
+import AddUser from "./pages/AddUser";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <Router>
         <Navigation />
         <Routes>
+          <Route path="/adduser" element={<AddUser />} />
           <Route path="/dashboard" element={<AdminDashboard />} />
           <Route path="/adminfeedback" element={<AdminFeedback />} />
           <Route path="/order" element={<MealOrder />} />
