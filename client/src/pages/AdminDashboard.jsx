@@ -1,5 +1,5 @@
 import React from "react";
-import AdminNavbar from "../components/AdminNavbar";
+import AdminNavbar from "../components/adminNavbar";
 import AdminTopNavbar from "../components/AdminTopNavbar";
 
 export default function AdminDashboard() {
