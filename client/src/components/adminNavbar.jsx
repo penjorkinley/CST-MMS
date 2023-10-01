@@ -5,7 +5,7 @@ import { VscFeedback } from "react-icons/vsc";
 import { TiTickOutline } from "react-icons/ti";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { TbLogout } from "react-icons/tb";
-import {MdOutlineInventory2} from "react-icons/md";
+import { MdOutlineInventory2 } from "react-icons/md";
 
 export default function adminNavbar() {
   return (
@@ -35,19 +35,14 @@ export default function adminNavbar() {
               <BiSolidAddToQueue className="text-4xl" /> Add Menu
             </Link>
           </li>
+
           <li>
             <Link
-              to="/admin/dailyattendent"
-              className="text-2xl items-center py-4  transition duration-300 ease-in-out hover:scale-105 hover:shadow-lg dark:hover:shadow-black"
+              to="/admin/inventory"
+              className="transition duration-300 ease-in-out hover:scale-105 text-2xl items-center py-4 hover:shadow-lg dark:hover:shadow-black"
             >
-              <TiTickOutline className="text-4xl" /> Daily Attendant
-            </Link>
-          </li>
-          <li>
-            <Link to ="/admin/inventory" 
-            className="transition duration-300 ease-in-out hover:scale-105 text-2xl items-center py-4 hover:shadow-lg dark:hover:shadow-black">
               <MdOutlineInventory2 className="text-4xl" /> Inventory
-               </Link>
+            </Link>
           </li>
           <li>
             <Link
@@ -65,7 +60,7 @@ export default function adminNavbar() {
               <VscFeedback className="text-4xl" /> View Feedback
             </Link>
           </li>
-          
+
           <div className="mt-auto">
             {" "}
             {/* This ensures the item sticks to the bottom */}

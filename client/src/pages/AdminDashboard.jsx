@@ -13,6 +13,8 @@ export default function AdminDashboard() {
       <div className="w-5/6 bg-cute flex justify-center items-center">
         {" "}
         {/* Adjust the width as per your design */}
+        
+
         {/* <AdminTopNavbar /> */}
         <Outlet />
       </div>
