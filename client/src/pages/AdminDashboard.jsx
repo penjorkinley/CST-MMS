@@ -5,16 +5,15 @@ import AdminTopNavbar from "../components/AdminTopNavbar";
 export default function AdminDashboard() {
   return (
     <div className="flex">
-      <div className="w-1/5">
+      <div className="w-1/6">
         {" "}
         {/* Adjust the width as per your design */}
         <AdminNavbar />
       </div>
-      <div className="w-4/5">
+      <div className="w-5/6">
         {" "}
         {/* Adjust the width as per your design */}
         <AdminTopNavbar />
-       
       </div>
     </div>
   );
