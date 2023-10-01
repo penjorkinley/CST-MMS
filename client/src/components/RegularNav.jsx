@@ -3,7 +3,7 @@ import logo from "../assets/Logo.PNG";
 
 export default function RegularNav() {
   return (
-    <div className="bg-cute p-4 border-b-4 h-[120px]">
+    <div className="bg-cute p-4 border-b-4 h-[120px] sticky top-0 z-50">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
           {" "}
