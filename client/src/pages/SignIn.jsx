@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SignUpImg from "../assets/SignUp.png";
-import Logo from "../assets/Logo.png";
 import { FcGoogle } from "react-icons/fc";
+
 import {
   UserIcon,
   IdentificationIcon,
@@ -110,7 +110,7 @@ function SignIn({ changePage }) {
 
           <hr className="border-white mb-2" />
 
-          <button className="w-full p-2 bg-buttons text-white text-xl font-bold flex justify-center items-center rounded-2xl mb-2">
+          <button className="w-full p-2 bg-blackText text-white text-xl font-bold flex justify-center items-center rounded-2xl mb-2">
             <FcGoogle className="mr-2" /> Continue with Google
           </button>
 
