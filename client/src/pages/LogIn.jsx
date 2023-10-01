@@ -31,7 +31,7 @@ function Login() {
     <div className="flex h-[79vh]">
       <div className="w-3/5 flex justify-center items-center relative bg-cute border-r-4">
         <img
-          className="w-5/6 h-auto object-cover mx-auto my-auto"
+          className="w-4/6 h-auto object-cover mx-auto my-auto"
           src={LoginImg}
           alt="Login Illustration"
         />
