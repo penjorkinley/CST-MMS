@@ -13,6 +13,7 @@ import { useLocation } from "react-router-dom";
 import MealOrder from "./pages/MealOrder";
 import AddUser from "./pages/AddUser";
 import AddMenu from "./components/AddMenu";
+import AddInventory from "./pages/AddInventory";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Router>
         <Navigation />
         <Routes>
+          
           <Route path="/order" element={<MealOrder />} />
           <Route path="/" element={<LandingPage />} />
           <Route path="/feedback" element={<Feedback />} />
@@ -27,6 +29,7 @@ function App() {
             <Route path="viewfeedback" element={<AdminFeedback />} />
             <Route path="adduser" element={<AddUser />} />
             <Route path="addmenu" element={<AddMenu />} />
+            <Route path="inventory" element={<AddInventory />}/>
           </Route>
           <Route path="/aboutus" element={<About />} />
           <Route path="/signin" element={<SignIn />} />

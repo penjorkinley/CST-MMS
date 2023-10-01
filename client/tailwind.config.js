@@ -30,6 +30,7 @@ export default {
         error: "#e76e74",
 
         customIconColor: "black",
+
       },
     },
   },
