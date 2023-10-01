@@ -12,6 +12,7 @@ import AdminFeedback from "./pages/AdminFeedback";
 import { useLocation } from "react-router-dom";
 import MealOrder from "./pages/MealOrder";
 import AddUser from "./pages/AddUser";
+import AddMenu from "./components/AddMenu";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/admin" element={<AdminDashboard />}>
             <Route path="viewfeedback" element={<AdminFeedback />} />
             <Route path="adduser" element={<AddUser />} />
+            <Route path="addmenu" element={<AddMenu />} />
           </Route>
           <Route path="/aboutus" element={<About />} />
           <Route path="/signin" element={<SignIn />} />
@@ -45,7 +47,8 @@ function Navigation() {
     location.pathname !== "/" &&
     location.pathname !== "/admin" &&
     location.pathname !== "/admin/viewfeedback" &&
-    location.pathname !== "/admin/adduser";
+    location.pathname !== "/admin/adduser" &&
+    location.pathname !== "/admin/addmenu";
 
   // Conditional rendering of RegularNav
   return shouldShowNav ? <RegularNav /> : null;
