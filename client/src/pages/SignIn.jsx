@@ -103,14 +103,14 @@ function SignIn({ changePage }) {
 
           <button
             onClick={handleSubmit}
-            className="w-full p-2 bg-buttons text-white text-xl font-bold rounded-2xl mb-2 mt-5"
+            className="w-full p-2 bg-buttons text-white text-xl font-bold rounded-2xl mb-2 mt-5 transition duration-300 ease-in-out hover:scale-105"
           >
             Sign Up
           </button>
 
           <hr className="border-white mb-2" />
 
-          <button className="w-full p-2 bg-blackText text-white text-xl font-bold flex justify-center items-center rounded-2xl mb-2">
+          <button className="w-full p-2 bg-blackText text-white text-xl font-bold flex justify-center items-center rounded-2xl mb-2 transition duration-300 ease-in-out hover:scale-105">
             <FcGoogle className="mr-2" /> Continue with Google
           </button>
 
