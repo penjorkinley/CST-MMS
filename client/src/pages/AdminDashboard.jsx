@@ -1,6 +1,5 @@
-import React from "react";
+
 import AdminNavbar from "../components/adminNavbar";
-import AdminTopNavbar from "../components/AdminTopNavbar";
 import { Outlet } from "react-router-dom";
 
 export default function AdminDashboard() {
