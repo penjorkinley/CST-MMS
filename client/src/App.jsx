@@ -14,36 +14,39 @@ import MealOrder from "./pages/MealOrder";
 import AddUser from "./pages/AddUser";
 import AddMenu from "./components/AddMenu";
 import AddInventory from "./pages/AddInventory";
+import { AuthProvider } from "./contexts/AuthContext";
 
 function App() {
   return (
-    <div
-      className="App"
-      style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
-    >
-      <Router>
-        <Navigation />
-        <div style={{ flex: 1 }}>
-          {" "}
-          {/* This div will grow to take up all available space */}
-          <Routes>
-            <Route path="/order" element={<MealOrder />} />
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/feedback" element={<Feedback />} />
-            <Route path="/admin" element={<AdminDashboard />}>
-              <Route path="viewfeedback" element={<AdminFeedback />} />
-              <Route path="adduser" element={<AddUser />} />
-              <Route path="addmenu" element={<AddMenu />} />
-              <Route path="inventory" element={<AddInventory />} />
-            </Route>
-            <Route path="/aboutus" element={<About />} />
-            <Route path="/signin" element={<SignIn />} />
-            <Route path="/login" element={<Login />} />
-          </Routes>
-        </div>
-        <Footer />
-      </Router>
-    </div>
+    <AuthProvider>
+      <div
+        className="App"
+        style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
+      >
+        <Router>
+          <Navigation />
+          <div style={{ flex: 1 }}>
+            {" "}
+            {/* This div will grow to take up all available space */}
+            <Routes>
+              <Route path="/order" element={<MealOrder />} />
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/feedback" element={<Feedback />} />
+              <Route path="/admin" element={<AdminDashboard />}>
+                <Route path="viewfeedback" element={<AdminFeedback />} />
+                <Route path="adduser" element={<AddUser />} />
+                <Route path="addmenu" element={<AddMenu />} />
+                <Route path="inventory" element={<AddInventory />} />
+              </Route>
+              <Route path="/aboutus" element={<About />} />
+              <Route path="/signin" element={<SignIn />} />
+              <Route path="/login" element={<Login />} />
+            </Routes>
+          </div>
+          <Footer />
+        </Router>
+      </div>
+    </AuthProvider>
   );
 }
 

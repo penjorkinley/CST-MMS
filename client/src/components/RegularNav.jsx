@@ -1,9 +1,37 @@
-import { Link } from "react-router-dom"; // <-- import useLocation
-import { useState } from "react";
+import React, { useEffect, useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext.jsx";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/Logo.PNG";
 import { HiOutlineLogout } from "react-icons/hi";
 
 export default function RegularNav() {
+  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    if (window.confirm("Are you sure you want to log out?")) {
+      localStorage.removeItem("token");
+      setIsLoggedIn(false);
+      navigate("/");
+      window.dispatchEvent(new Event("loginChange"));
+    }
+  };
+
+  useEffect(() => {
+    const handleLoginChange = () => {
+      setIsLoggedIn(!!localStorage.getItem("token"));
+    };
+
+    window.addEventListener("loginChange", handleLoginChange);
+
+    // Initial check
+    handleLoginChange();
+
+    return () => {
+      window.removeEventListener("loginChange", handleLoginChange);
+    };
+  }, []);
+
   return (
     <div className="bg-cute pl-3 py-4 border-b-4 h-[120px] sticky top-0 z-50">
       <div className="container mx-auto flex justify-between items-center">
@@ -12,11 +40,14 @@ export default function RegularNav() {
         </div>
 
         <ul className="flex space-x-4 font-semibold text-black text-2xl mr-7 ">
-          <li>
-            <Link to="/" className="text-black hover:text-buttons">
-              Menu
-            </Link>
-          </li>
+          {!isLoggedIn && (
+            <li>
+              <Link to="/" className="text-black hover:text-buttons">
+                Menu
+              </Link>
+            </li>
+          )}
+
           <li>
             <Link to="/order" className="text-black hover:text-buttons">
               Order
@@ -33,41 +64,39 @@ export default function RegularNav() {
             </Link>
           </li>
 
-          {location.pathname !== "/signin" && ( // <-- Conditionally render the Sign Up button
-            <li>
-              <Link
-                to="/signin"
-                className=" text-white hover:bg-white text-lg hover:text-black hover:border-buttons hover:border-2 transition-all duration-500 px-5 py-2 rounded-lg bg-buttons border-2"
-              >
-                Sign Up
-              </Link>
-            </li>
-          )}
-          {location.pathname == "/signin" && ( // <-- Conditionally render the Login button
-            <li>
-              <Link
-                to="/login"
-                className="text-white hover:bg-white text-lg hover:text-black hover:border-buttons hover:border-2 transition-all duration-500 px-5 py-2 rounded-lg bg-buttons border-2"
-              >
-                Login
-              </Link>
-            </li>
-          )}
-
-          {location.pathname !== "/signin" &&
-            location.pathname !== "/login" && (
+          {!isLoggedIn && (
+            <>
               <li>
                 <Link
-                  to="/"
-                  className="flex items-center justify-center mt-[-7px]"
+                  to="/signin"
+                  className=" text-white hover:bg-white text-lg hover:text-black hover:border-buttons hover:border-2 transition-all duration-500 px-5 py-2 rounded-lg bg-buttons border-2"
                 >
-                  <HiOutlineLogout
-                    size={50}
-                    className="text-buttons  hover:text-black "
-                  />
+                  Sign Up
                 </Link>
               </li>
-            )}
+              <li>
+                <Link
+                  to="/login"
+                  className="text-white hover:bg-white text-lg hover:text-black hover:border-buttons hover:border-2 transition-all duration-500 px-5 py-2 rounded-lg bg-buttons border-2"
+                >
+                  Login
+                </Link>
+              </li>
+            </>
+          )}
+          {isLoggedIn && (
+            <li>
+              <button
+                onClick={handleLogout}
+                className="flex items-center justify-center mt-[-7px]"
+              >
+                <HiOutlineLogout
+                  size={50}
+                  className="text-buttons  hover:text-black "
+                />
+              </button>
+            </li>
+          )}
         </ul>
       </div>
     </div>

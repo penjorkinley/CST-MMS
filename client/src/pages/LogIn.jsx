@@ -36,10 +36,13 @@ function Login() {
           }),
         });
         const data = await response.json();
+        console.log("Received token:", data.token);
 
         if (response.status === 200) {
           console.log(data.message);
           localStorage.setItem("token", data.token);
+          // Dispatch the loginChange event here
+          window.dispatchEvent(new Event("loginChange"));
           alert("Successfully logged in!");
           console.log(data);
           navigate(data.redirectURL); // use redirectURL to navigate
