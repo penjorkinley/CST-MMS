@@ -77,7 +77,7 @@ function SignIn() {
   };
 
   return (
-    <div className="flex h-[79vh]">
+    <div className="flex h-[81vh]">
       <div className="w-2/5 flex justify-center items-center bg-card">
         <div className="rounded-lg w-3/5">
           <h2 className="text-6xl font-bold mb-10 text-center text-white">

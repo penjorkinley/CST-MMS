@@ -28,13 +28,13 @@ function LandingPage() {
     { image: mess3, text: "Welcome To CST Mess System" },
     { image: mess1, text: "Menu Background" },
     { image: mess2, text: "Feedback Background" },
-    { image: mess4, text: "KSI" },
+    { image: mess4, text: "Enjoy your meal" },
   ];
 
   return (
     <div className="relative h-[screen] bg-cute">
       <div className="z-10 flex justify-between items-center h-50 bg-transparent w-full pr-8">
-        <img src={logo} alt="logo" className="h-32 w-34" />
+        <img src={logo} alt="logo" className="h-[110px] w-34" />
         <div className="space-x-4 flex items-center">
           <button
             onClick={() => navigate("/signin")}
@@ -103,7 +103,11 @@ function LandingPage() {
         />
         <div className="absolute flex justify-center items-center">
           <div
-            className="bg-white rounded-3xl w-[1000px] p-8 shadow-lg"
+            className="rounded-3xl w-[1000px] p-8 shadow-2xl border-[1px] border-gray-300"
+            style={{
+              background: "rgba(255, 255, 255, 0.6)",
+              backdropFilter: "blur(1px)",
+            }}
             ref={menuRef}
           >
             <p className="mt-4 font-extrabold text-black text-4xl flex items-center justify-center mb-4">
@@ -136,7 +140,7 @@ function LandingPage() {
             <div className="flex justify-center">
               <button
                 onClick={() => navigate("/order")}
-                className="text-black hover:bg-black text-lg font-bold hover:text-white  transition-all duration-500 px-6 py-3 rounded-lg bg-buttons "
+                className="text-white hover:bg-black text-lg font-bold hover:text-white  transition-all duration-500 px-6 py-3 rounded-lg bg-buttons "
               >
                 Order Meal
               </button>

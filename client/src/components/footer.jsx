@@ -3,7 +3,7 @@ function Footer() {
     <footer
       style={{ backgroundColor: "#141515", color: "white", padding: "1rem" }}
     >
-      <div className="container mx-auto text-center bottom-0">
+      <div className="container mx-auto text-center bottom-0 ">
         <p>&copy; 2023 CST Mess Management. All rights reserved.</p>
       </div>
     </footer>

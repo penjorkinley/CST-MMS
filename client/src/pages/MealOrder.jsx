@@ -1,7 +1,8 @@
+import React, { useState, useRef } from "react";
 import Modal from "react-modal";
-import { useState, useRef } from "react";
 import MealCard from "../components/MenuCard";
 import html2canvas from "html2canvas"; // Import html2canvas library
+import land from "../assets/Menu-Background.png"; // Replace 'your-image-path.jpg' with the actual path to your image
 
 const customStyles = {
   overlay: {
@@ -13,7 +14,7 @@ const customStyles = {
     width: "80%",
     maxWidth: "400px",
     height: "150px",
-    maxHeight: "80vh",
+    maxHeight: "100vh",
     margin: "auto",
     padding: "20px",
     borderRadius: "8px",
@@ -53,45 +54,52 @@ function MealOrder() {
   };
 
   return (
-    <div className="h-[75vh]">
-      <div className="flex justify-center items-center">
-        <div
-          className="bg-white h-96 w-3/5 rounded-3xl p-8 relative"
-          ref={modalRef}
-        >
-          <p className="mt-4 font-extrabold text-black text-4xl flex items-center justify-center">
-            Todays Menu
-          </p>
-          <div className="flex justify-between items-center">
-            <MealCard
-              meal={"Breakfast"}
-              time={"7:00AM - 8:00AM"}
-              one={"Fried Rice"}
-              two={"Ezzay"}
-              three={"Tea"}
-            />
-            <MealCard
-              meal={"Lunch"}
-              time={"11:30AM - 1:00PM"}
-              one={"Rice"}
-              two={"Kewa Datsi"}
-              three={"Lentils Soup"}
-            />
-            <MealCard
-              meal={"Dinner"}
-              time={"7:00PM - 8:00PM"}
-              one={"Rice"}
-              two={"Chicken Chilli"}
-              three={"Lentils Soup"}
-            />
-          </div>
-          <button
-            onClick={handleOrder}
-            className="bg-emerald-500 w-[120px] h-11 mr-9 px-4 py-2 rounded-md text-white font-semibold"
-          >
-            Place Order
-          </button>
+    <div className="flex items-center justify-center h-[83vh] relative overflow-hidden">
+      <img
+        src={land}
+        className="absolute w-4/5 h-full object-cover"
+        alt="background"
+      />
+      <div
+        className="rounded-3xl w-3/5  p-8 shadow-2xl border-[1px] border-gray-300 relative"
+        style={{
+          background: "rgba(255, 255, 255, 0.7)",
+          backdropFilter: "blur(1px)",
+        }}
+        ref={modalRef}
+      >
+        <p className="mt-4 font-extrabold text-black text-4xl flex items-center justify-center mb-4">
+          Todays Menu
+        </p>
+        <div className="flex justify-between items-center mb-6">
+          <MealCard
+            meal={"Breakfast"}
+            time={"7:00AM - 8:00AM"}
+            one={"Fried Rice"}
+            two={"Ezzay"}
+            three={"Tea"}
+          />
+          <MealCard
+            meal={"Lunch"}
+            time={"11:30AM - 1:00PM"}
+            one={"Rice"}
+            two={"Kewa Datsi"}
+            three={"Lentils Soup"}
+          />
+          <MealCard
+            meal={"Dinner"}
+            time={"7:00PM - 8:00PM"}
+            one={"Rice"}
+            two={"Chicken Chilli"}
+            three={"Lentils Soup"}
+          />
         </div>
+        <button
+          onClick={handleOrder}
+          className="bg-emerald-500 w-[120px] h-11 px-4 py-2 rounded-md text-white font-semibold ml-4 hover:bg-black"
+        >
+          Place Order
+        </button>
       </div>
 
       <Modal
@@ -111,13 +119,13 @@ function MealOrder() {
             <p>Your meal has been ordered.</p>
             <button
               onClick={handleSave}
-              className="bg-emerald-500 mt-4 mr-2 px-4 py-2 rounded-md text-white font-semibold"
+              className="bg-emerald-500 mt-4 mr-2 px-4 py-2 rounded-md text-white font-semibold hover:bg-black"
             >
               Save
             </button>
             <button
               onClick={closeModal}
-              className="bg-emerald-500 mt-4 px-4 py-2 rounded-md text-white font-semibold"
+              className="bg-emerald-500 mt-4 px-4 py-2 rounded-md text-white font-semibold hover:bg-red-500"
             >
               Close
             </button>

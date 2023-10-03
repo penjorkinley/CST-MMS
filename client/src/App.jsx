@@ -17,24 +17,30 @@ import AddInventory from "./pages/AddInventory";
 
 function App() {
   return (
-    <div className="App">
+    <div
+      className="App"
+      style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
+    >
       <Router>
         <Navigation />
-        <Routes>
-          
-          <Route path="/order" element={<MealOrder />} />
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/feedback" element={<Feedback />} />
-          <Route path="/admin" element={<AdminDashboard />}>
-            <Route path="viewfeedback" element={<AdminFeedback />} />
-            <Route path="adduser" element={<AddUser />} />
-            <Route path="addmenu" element={<AddMenu />} />
-            <Route path="inventory" element={<AddInventory />}/>
-          </Route>
-          <Route path="/aboutus" element={<About />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
+        <div style={{ flex: 1 }}>
+          {" "}
+          {/* This div will grow to take up all available space */}
+          <Routes>
+            <Route path="/order" element={<MealOrder />} />
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/feedback" element={<Feedback />} />
+            <Route path="/admin" element={<AdminDashboard />}>
+              <Route path="viewfeedback" element={<AdminFeedback />} />
+              <Route path="adduser" element={<AddUser />} />
+              <Route path="addmenu" element={<AddMenu />} />
+              <Route path="inventory" element={<AddInventory />} />
+            </Route>
+            <Route path="/aboutus" element={<About />} />
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </div>
         <Footer />
       </Router>
     </div>

@@ -5,9 +5,9 @@ function MealCard({ meal, time, one, two, three }) {
       <h6 className="text-lg font-medium">{time}</h6>
       <br />
       <hr className="bg-black border border-black"></hr>
-      <p className="mt-2 text-white">{one}</p>
-      <p className="mt-2 text-white">{two}</p>
-      <p className="mt-2 text-white">{three}</p>
+      <p className="mt-2 text-black">{one}</p>
+      <p className="mt-2 text-black">{two}</p>
+      <p className="mt-2 text-black">{three}</p>
     </div>
   );
 }
