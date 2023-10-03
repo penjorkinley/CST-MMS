@@ -2,82 +2,79 @@ import express from "express";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import { UserModel } from "../model/UsersModel.js";
+import cors from "cors";
+import dotenv from "dotenv";
+
+dotenv.config();
+const JWT_SECRET = process.env.JWT_SECRET || "defaultSecret";
 
 const router = express.Router();
 
-// register user route
+//Registration
 router.post("/register", async (req, res) => {
-  const { username, studentId, phoneNumber, email, password } = req.body;
-
-  // Check if the username already exists
-  const existingUser = await UserModel.findOne({ username: username });
-  if (existingUser) {
-    res.status(400).json({ error: "Username already exists" });
-    return;
-  }
-
-  // Check if the email already exists
-  const existingEmail = await UserModel.findOne({ email: email });
-  if (existingEmail) {
-    res.status(400).json({ error: "Email already exists" });
-    return;
-  }
-
-  // Hash the password
-  const hashedPassword = await bcrypt.hash(password, 10);
-
-  // Create a new user with the provided fields
-  const newUser = new UserModel({
-    username: username,
-    studentId: studentId,
-    phoneNumber: phoneNumber,
-    email: email,
-    password: hashedPassword,
-  });
-
   try {
+    const { username, studentId, phoneNumber, email, password } = req.body;
+
+    const existingEmail = await UserModel.findOne({ email: email });
+    if (existingEmail) {
+      res.status(400).json({ error: "Email already exists." });
+      return;
+    }
+
+    const existingPhoneNumber = await UserModel.findOne({
+      phoneNumber: phoneNumber,
+    });
+    if (existingPhoneNumber) {
+      res.status(400).json({ error: "Phone number already exists." });
+      return;
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const newUser = new UserModel({
+      username: username,
+      studentId: studentId,
+      phoneNumber: phoneNumber,
+      email: email,
+      password: hashedPassword,
+    });
+
     await newUser.save();
-    res.status(201).json({ message: "User created successfully" });
+    res.status(201).json({ message: "User created successfully." });
   } catch (err) {
-    // Handle any database or validation errors here
-    res.status(500).json({ error: "Internal server error" });
+    console.error("Error during registration:", err);
+    if (err.name === "MongoError" && err.code === 11000) {
+      res.status(400).json({ error: "Duplicate field. Registration failed." });
+    } else {
+      res.status(500).json({ error: "Internal server error." });
+    }
   }
 });
 
-
-// login user route
+// login
 router.post("/login", async (req, res) => {
-  const { username, password } = req.body;
-  const user = await UserModel.findOne({ username: username });
+  const { email, password } = req.body; // Original version expecting username
+  const user = await UserModel.findOne({ email: email });
 
   if (!user) {
-    res.status(400).json({ error: "Username or Password is incorrect" });
+    res.status(400).json({ error: "email or Password is incorrect" });
     return;
   }
 
   const isPasswordCorrect = await bcrypt.compare(password, user.password);
   if (!isPasswordCorrect) {
-    res.status(400).json({ error: "Username or Password is incorrect" });
+    res.status(400).json({ error: "email or Password is incorrect" });
     return;
   }
 
-  // Check if the user is an admin
-  const isAdmin = user.username === 'CSTMMS'; 
-
-  // Generate a token
-  const token = jwt.sign({ id: user._id, isAdmin }, "secret");
-
-  // Determine the redirect URL based on the user's role
-  const redirectURL = isAdmin ? '/admin-dashboard' : '/user-dashboard';
-
-  // Send a success message with a specific message based on the user's role
+  const isAdmin = user.username === "CSTMMS";
+  const token = jwt.sign({ id: user._id, isAdmin }, JWT_SECRET);
+  const redirectURL = isAdmin ? "/admin-dashboard" : "/user-dashboard";
   const successMessage = isAdmin
     ? "Successfully logged in as admin"
     : "Successfully logged in as user";
 
-  // Include the success message, token, and redirect URL in the response JSON
   res.json({ message: successMessage, token, redirectURL });
 });
-
 
 export { router as usersRouter };

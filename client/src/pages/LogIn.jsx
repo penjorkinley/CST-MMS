@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import LoginImg from "../assets/Login.png"; // Make sure to have a different image for Login if you want
+import { useNavigate, Link } from "react-router-dom";
+import LoginImg from "../assets/Login.png";
 import { FcGoogle } from "react-icons/fc";
 import { MailIcon, LockClosedIcon } from "@heroicons/react/solid";
-import { Link } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -20,10 +21,35 @@ function Login() {
     return Object.values(tempErrors).every((x) => x === "");
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validate()) {
-      console.log("All validations passed!");
+      try {
+        const response = await fetch("http://localhost:3001/auth/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: formData.email,
+            password: formData.password,
+          }),
+        });
+        const data = await response.json();
+
+        if (response.status === 200) {
+          console.log(data.message);
+          localStorage.setItem("token", data.token);
+          alert("Successfully logged in!");
+          navigate("/order");
+        } else {
+          console.error(data.error);
+          alert("Failed to login: " + data.error);
+        }
+      } catch (error) {
+        console.error("Failed to login:", error);
+        alert("Failed to login: " + error.message);
+      }
     }
   };
 

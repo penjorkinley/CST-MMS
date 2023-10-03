@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import SignUpImg from "../assets/SignUp.png";
 import { FcGoogle } from "react-icons/fc";
-
 import {
   UserIcon,
   IdentificationIcon,
@@ -9,9 +9,9 @@ import {
   MailIcon,
   LockClosedIcon,
 } from "@heroicons/react/solid";
-import { Link } from "react-router-dom";
 
-function SignIn({ changePage }) {
+function SignIn() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     studentID: "",
@@ -23,24 +23,56 @@ function SignIn({ changePage }) {
   const [errors, setErrors] = useState({});
 
   const validate = () => {
-    let tempErrors = {};
-    tempErrors.name = formData.name ? "" : "Name is required.";
-    tempErrors.studentID = formData.studentID ? "" : "Student ID is required.";
-    tempErrors.phoneNumber = formData.phoneNumber
-      ? ""
-      : "Phone Number is required.";
-    tempErrors.email = formData.email ? "" : "Email is required.";
-    tempErrors.password = formData.password ? "" : "Password is required.";
-
+    const tempErrors = {
+      name: formData.name ? "" : "Name is required.",
+      studentID: formData.studentID ? "" : "Student ID is required.",
+      phoneNumber: formData.phoneNumber ? "" : "Phone Number is required.",
+      email: formData.email ? "" : "Email is required.",
+      password: formData.password ? "" : "Password is required.",
+    };
     setErrors(tempErrors);
-
     return Object.values(tempErrors).every((x) => x === "");
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validate()) {
-      console.log("All validations passed!");
+      try {
+        const response = await fetch("http://localhost:3001/auth/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: formData.name,
+            studentId: formData.studentID,
+            phoneNumber: formData.phoneNumber,
+            email: formData.email,
+            password: formData.password,
+          }),
+        });
+
+        const data = await response.json();
+        if (response.status === 201) {
+          alert("Successfully registered!");
+          navigate("/order"); // Redirect to /order page
+        } else {
+          if (data.error.includes("username")) {
+            alert("Username already exists.");
+          } else if (data.error.includes("email")) {
+            alert("Email already exists.");
+          } else if (data.error.includes("phoneNumber")) {
+            alert("Phone number already exists.");
+          } else {
+            alert(data.error || "Registration failed for an unknown reason.");
+          }
+        }
+      } catch (error) {
+        alert(
+          "Failed to register. Please check your connection and try again."
+        );
+        console.error("Failed to register:", error);
+      }
     }
   };
 
@@ -52,51 +84,38 @@ function SignIn({ changePage }) {
             Sign Up
           </h2>
           {[
-            {
-              icon: UserIcon,
-              placeholder: "Name",
-              key: "name",
-              errorKey: "name",
-            },
+            { icon: UserIcon, placeholder: "Name", key: "name" },
             {
               icon: IdentificationIcon,
               placeholder: "Student ID",
               key: "studentID",
-              errorKey: "studentID",
             },
             {
               icon: PhoneIcon,
               placeholder: "Phone Number",
               key: "phoneNumber",
-              errorKey: "phoneNumber",
             },
-            {
-              icon: MailIcon,
-              placeholder: "Email",
-              key: "email",
-              errorKey: "email",
-            },
+            { icon: MailIcon, placeholder: "Email", key: "email" },
             {
               icon: LockClosedIcon,
               placeholder: "Password",
               key: "password",
-              errorKey: "password",
               type: "password",
             },
-          ].map(({ icon: Icon, placeholder, key, errorKey, type = "text" }) => (
+          ].map(({ icon: Icon, placeholder, key, type = "text" }) => (
             <div key={key} className="mb-4 relative">
               <Icon className="absolute w-6 h-6 left-3 top-1/2 transform -translate-y-1/2 text-customIconColor" />
               <input
                 type={type}
-                className="pl-10 w-full px-3 py-2 border rounded-xl bg-cute "
+                className="pl-10 w-full px-3 py-2 border rounded-xl bg-cute"
                 placeholder={placeholder}
                 value={formData[key]}
                 onChange={(e) =>
                   setFormData({ ...formData, [key]: e.target.value })
                 }
               />
-              {errors[errorKey] && (
-                <div className="text-red-500 text-sm">{errors[errorKey]}</div>
+              {errors[key] && (
+                <div className="text-red-500 text-sm">{errors[key]}</div>
               )}
             </div>
           ))}
@@ -107,15 +126,12 @@ function SignIn({ changePage }) {
           >
             Sign Up
           </button>
-
           <hr className="border-white mb-2" />
-
           <button className="w-full p-2 bg-blackText text-white text-xl font-bold flex justify-center items-center rounded-2xl mb-2 transition duration-300 ease-in-out hover:scale-105">
             <FcGoogle className="mr-2" /> Continue with Google
           </button>
-
           <div className="text-white">
-            Already have an account?
+            Already have an account?{" "}
             <Link
               to="/login"
               className="text-white underline ml-1"
@@ -126,12 +142,11 @@ function SignIn({ changePage }) {
           </div>
         </div>
       </div>
-
       <div className="w-3/5 flex justify-center items-center relative bg-cute border-l-4">
         <img
-          className="w-3/5 h-auto object-cover mx-auto my-auto"
           src={SignUpImg}
           alt="Sign Up Illustration"
+          className="w-3/5 h-auto object-cover mx-auto my-auto"
         />
       </div>
     </div>
