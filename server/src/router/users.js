@@ -67,9 +67,10 @@ router.post("/login", async (req, res) => {
     return;
   }
 
-  const isAdmin = user.username === "CSTMMS";
+  // to check if the user is admin or not
+  const isAdmin = user.role === "admin";
   const token = jwt.sign({ id: user._id, isAdmin }, JWT_SECRET);
-  const redirectURL = isAdmin ? "/admin-dashboard" : "/user-dashboard";
+  const redirectURL = isAdmin ? "/admin" : "/order";
   const successMessage = isAdmin
     ? "Successfully logged in as admin"
     : "Successfully logged in as user";

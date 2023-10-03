@@ -41,7 +41,8 @@ function Login() {
           console.log(data.message);
           localStorage.setItem("token", data.token);
           alert("Successfully logged in!");
-          navigate("/order");
+          console.log(data);
+          navigate(data.redirectURL); // use redirectURL to navigate
         } else {
           console.error(data.error);
           alert("Failed to login: " + data.error);
