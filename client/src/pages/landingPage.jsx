@@ -1,5 +1,6 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext"; // Import AuthContext
 import land from "../assets/Menu-Background.png";
 import logo from "../assets/Logo.PNG";
 import MealCard from "../components/MenuCard";
@@ -11,6 +12,7 @@ import mess4 from "../assets/mess4.JPG";
 function LandingPage() {
   const navigate = useNavigate();
   const menuRef = useRef(null);
+  const { isLoggedIn } = useContext(AuthContext); // Destructure isLoggedIn from context
 
   const [activeCarouselItem, setActiveCarouselItem] = useState(1);
 
@@ -30,6 +32,15 @@ function LandingPage() {
     { image: mess2, text: "Feedback Background" },
     { image: mess4, text: "Enjoy your meal" },
   ];
+
+  const handleOrderClick = () => {
+    if (!isLoggedIn) {
+      alert("Please login or sign up first.");
+      navigate("login");
+    } else {
+      navigate("/order");
+    }
+  };
 
   return (
     <div className="relative h-[screen] bg-cute">
@@ -139,7 +150,7 @@ function LandingPage() {
 
             <div className="flex justify-center">
               <button
-                onClick={() => navigate("/order")}
+                onClick={handleOrderClick} // Updated onClick handler
                 className="text-white hover:bg-black text-lg font-bold hover:text-white  transition-all duration-500 px-6 py-3 rounded-lg bg-buttons "
               >
                 Order Meal
