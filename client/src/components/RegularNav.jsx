@@ -77,7 +77,7 @@ export default function RegularNav() {
               <li>
                 <Link
                   to="/login"
-                  className="text-white hover:bg-white text-lg hover:text-black hover:border-buttons hover:border-2 transition-all duration-500 px-5 py-2 rounded-lg bg-buttons border-2"
+                  className="text-white hover:bg-white text-lg hover:text-black hover:border-buttons hover:border-2 transition-all duration-500 px-5 py-2 rounded-lg bg-black border-2"
                 >
                   Login
                 </Link>
