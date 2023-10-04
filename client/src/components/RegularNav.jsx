@@ -16,6 +16,14 @@ export default function RegularNav() {
       window.dispatchEvent(new Event("loginChange"));
     }
   };
+  const handleOrderClick = () => {
+    if (!isLoggedIn) {
+      alert("Please login or sign up first.");
+      navigate("login");
+    } else {
+      navigate("/order");
+    }
+  };
 
   useEffect(() => {
     const handleLoginChange = () => {
@@ -49,9 +57,12 @@ export default function RegularNav() {
           )}
 
           <li>
-            <Link to="/order" className="text-black hover:text-buttons">
+            <button
+              onClick={handleOrderClick}
+              className="text-black hover:text-buttons font-semibold text-2xl"
+            >
               Order
-            </Link>
+            </button>
           </li>
           <li>
             <Link to="/feedback" className="text-black hover:text-buttons">
