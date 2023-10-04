@@ -50,6 +50,7 @@ function MealOrder() {
       downloadLink.href = image;
       downloadLink.download = "meal_order.png";
       downloadLink.click();
+      closeModal();
     });
   };
 
