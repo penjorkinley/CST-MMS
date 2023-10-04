@@ -54,8 +54,8 @@ function SignIn() {
 
         const data = await response.json();
         if (response.status === 201) {
-          alert("Successfully registered!");
-          navigate("/order"); // Redirect to /order page
+          alert("Successfully registered! Please login to continue.");
+          navigate("/login"); //redirect to login page
         } else {
           if (data.error.includes("username")) {
             alert("Username already exists.");
