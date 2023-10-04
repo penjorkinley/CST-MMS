@@ -11,6 +11,7 @@ function AddInventory() {
   const [vesselsData, setVesselsData] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
   const [pdfData, setPdfData] = useState(null);
+  
 
   const handleAddInventory = () => {
     if (storeType === 'Essentials') {
