@@ -18,8 +18,8 @@ function AddInventory() {
         date: new Date().toLocaleDateString(),
         inventoryName,
         quantity,
-        usedQuantity: 0,
-        remainingQuantity: quantity,
+        // usedQuantity: 0,
+        // remainingQuantity: quantity,
         singlePrice,
         subtotal: quantity * singlePrice,
       };
@@ -29,8 +29,8 @@ function AddInventory() {
         date: new Date().toLocaleDateString(),
         inventoryName,
         quantity,
-        usedQuantity: 0,
-        remainingQuantity: quantity,
+        // usedQuantity: 0,
+        // remainingQuantity: quantity,
         singlePrice,
         subtotal: quantity * singlePrice,
       };
@@ -70,7 +70,72 @@ function AddInventory() {
     setSinglePrice('');
   };
 
+  // const generatePDF = () => {
+  //   const doc = (
+  //     <Document>
+  //       <Page size="A4">
+  //         <View style={styles.header}>
+  //           <Text style={styles.headerText}>Inventory Management</Text>
+  //         </View>
+  //         <View style={styles.table}>
+  //           <View style={styles.row}>
+  //             <Text style={styles.headerCell}>Date</Text>
+  //             <Text style={styles.headerCell}>Inventory Name</Text>
+  //             <Text style={styles.headerCell}>Quantity</Text>
+  //             {/* <Text style={styles.headerCell}>Used Quantity</Text>
+  //             <Text style={styles.headerCell}>Remaining Quantity</Text> */}
+  //             <Text style={styles.headerCell}>Single Price</Text>
+  //             <Text style={styles.headerCell}>Sub Total</Text>
+  //           </View>
+  //           {essentialsData.map((item, index) => (
+  //             <View key={index} style={styles.row}>
+  //               <Text style={styles.cell}>{item.date}</Text>
+  //               <Text style={styles.cell}>{item.inventoryName}</Text>
+  //               <Text style={styles.cell}>{item.quantity}</Text>
+  //               {/* <Text style={styles.cell}>{item.usedQuantity}</Text>
+  //               <Text style={styles.cell}>{item.remainingQuantity}</Text> */}
+  //               <Text style={styles.cell}>{item.singlePrice}</Text>
+  //               <Text style={styles.cell}>{item.subtotal}</Text>
+  //             </View>
+  //           ))}
+  //           {vesselsData.map((item, index) => (
+  //             <View key={index} style={styles.row}>
+  //               <Text style={styles.cell}>{item.date}</Text>
+  //               <Text style={styles.cell}>{item.inventoryName}</Text>
+  //               <Text style={styles.cell}>{item.quantity}</Text>
+  //               {/* <Text style={styles.cell}>{item.usedQuantity}</Text>
+  //               <Text style={styles.cell}>{item.remainingQuantity}</Text> */}
+  //               <Text style={styles.cell}>{item.singlePrice}</Text>
+  //               <Text style={styles.cell}>{item.subtotal}</Text>
+  //             </View>
+  //           ))}
+  //         </View>
+  //       </Page>
+  //     </Document>
+  //   );
+
+  //   setPdfData(doc);
+  // };
+  
   const generatePDF = () => {
+    const tableData = [
+      ['Date', 'Inventory Name', 'Quantity', 'Single Price', 'Sub Total'],
+      ...essentialsData.map((item) => [
+        item.date,
+        item.inventoryName,
+        item.quantity,
+        item.singlePrice,
+        item.subtotal,
+      ]),
+      ...vesselsData.map((item) => [
+        item.date,
+        item.inventoryName,
+        item.quantity,
+        item.singlePrice,
+        item.subtotal,
+      ]),
+    ];
+  
     const doc = (
       <Document>
         <Page size="A4">
@@ -78,48 +143,34 @@ function AddInventory() {
             <Text style={styles.headerText}>Inventory Management</Text>
           </View>
           <View style={styles.table}>
-            <View style={styles.row}>
-              <Text style={styles.headerCell}>Date</Text>
-              <Text style={styles.headerCell}>Inventory Name</Text>
-              <Text style={styles.headerCell}>Quantity</Text>
-              <Text style={styles.headerCell}>Used Quantity</Text>
-              <Text style={styles.headerCell}>Remaining Quantity</Text>
-              <Text style={styles.headerCell}>Single Price</Text>
-              <Text style={styles.headerCell}>Sub Total</Text>
-            </View>
-            {essentialsData.map((item, index) => (
-              <View key={index} style={styles.row}>
-                <Text style={styles.cell}>{item.date}</Text>
-                <Text style={styles.cell}>{item.inventoryName}</Text>
-                <Text style={styles.cell}>{item.quantity}</Text>
-                <Text style={styles.cell}>{item.usedQuantity}</Text>
-                <Text style={styles.cell}>{item.remainingQuantity}</Text>
-                <Text style={styles.cell}>{item.singlePrice}</Text>
-                <Text style={styles.cell}>{item.subtotal}</Text>
-              </View>
-            ))}
-            {vesselsData.map((item, index) => (
-              <View key={index} style={styles.row}>
-                <Text style={styles.cell}>{item.date}</Text>
-                <Text style={styles.cell}>{item.inventoryName}</Text>
-                <Text style={styles.cell}>{item.quantity}</Text>
-                <Text style={styles.cell}>{item.usedQuantity}</Text>
-                <Text style={styles.cell}>{item.remainingQuantity}</Text>
-                <Text style={styles.cell}>{item.singlePrice}</Text>
-                <Text style={styles.cell}>{item.subtotal}</Text>
+            {tableData.map((row, rowIndex) => (
+              <View key={rowIndex} style={styles.row}>
+                {row.map((cell, cellIndex) => (
+                  <Text
+                    key={cellIndex}
+                    style={
+                      cellIndex === 0
+                        ? styles.headerCell
+                        : styles.cell
+                    }
+                  >
+                    {cell}
+                  </Text>
+                ))}
               </View>
             ))}
           </View>
         </Page>
       </Document>
     );
-
+  
     setPdfData(doc);
   };
-
+  
   const handleExportPDF = () => {
     generatePDF();
   };
+  
 
   const handleExportWord = () => {
     const convertedHtml = `
@@ -132,8 +183,8 @@ function AddInventory() {
                 <th>Date</th>
                 <th>Inventory Name</th>
                 <th>Quantity</th>
-                <th>Used Quantity</th>
-                <th>Remaining Quantity</th>
+                // <th>Used Quantity</th>
+                // <th>Remaining Quantity</th>
                 <th>Single Price</th>
                 <th>Sub Total</th>
               </tr>
@@ -144,8 +195,8 @@ function AddInventory() {
                   <td>${item.date}</td>
                   <td>${item.inventoryName}</td>
                   <td>${item.quantity}</td>
-                  <td>${item.usedQuantity}</td>
-                  <td>${item.remainingQuantity}</td>
+                  // <td>${item.usedQuantity}</td>
+                  // <td>${item.remainingQuantity}</td>
                   <td>${item.singlePrice}</td>
                   <td>${item.subtotal}</td>
                 </tr>
@@ -155,8 +206,8 @@ function AddInventory() {
                   <td>${item.date}</td>
                   <td>${item.inventoryName}</td>
                   <td>${item.quantity}</td>
-                  <td>${item.usedQuantity}</td>
-                  <td>${item.remainingQuantity}</td>
+                  // <td>${item.usedQuantity}</td>
+                  // <td>${item.remainingQuantity}</td>
                   <td>${item.singlePrice}</td>
                   <td>${item.subtotal}</td>
                 </tr>
@@ -242,8 +293,8 @@ function AddInventory() {
                 <th>Date</th>
                 <th>Inventory Name</th>
                 <th>Quantity</th>
-                <th>Used Quantity</th>
-                <th>Remaining Quantity</th>
+                {/* <th>Used Quantity</th>
+                <th>Remaining Quantity</th> */}
                 <th>Single Price</th>
                 <th>Sub Total</th>
                 <th>Operation</th>
@@ -397,9 +448,9 @@ function AddInventory() {
         <button onClick={handleExportPDF} className="bg-black text-white p-2 rounded-xl ">
           Export to PDF
         </button>
-        <button onClick={handleExportWord} className="bg-black text-white p-2 rounded-xl ml-4">
+        {/* <button onClick={handleExportWord} className="bg-black text-white p-2 rounded-xl ml-4">
           Export to Word
-        </button>
+        </button> */}
       </div>
 
       {pdfData && (
