@@ -1,6 +1,8 @@
 import DoughnutChart from "../components/DoughnutChart";
 import DashCards from "../components/DashCards";
 import GradientLineGraph from "../components/GradientLineGraph";
+import { RiDashboard2Fill } from "react-icons/ri";
+
 
 function Dashboard() {
   const currentDate = new Date();
@@ -16,7 +18,12 @@ function Dashboard() {
 
   return (
     <div className="overflow-auto">
+      <div className="flex items-center space-x-2 mb-4 pl-16">
+        <RiDashboard2Fill className="text-4xl text-[#3eadcc] mt-1" />
+        <h1 className="text-4xl font-bold">Dashboard</h1>
+      </div>
       <div className="grid grid-cols-3 gap-4 w-auto h-auto pl-16 mt-5">
+        
         <DashCards
           title="Total Number of Students"
           count="1257"

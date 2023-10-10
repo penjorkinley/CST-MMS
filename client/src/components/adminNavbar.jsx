@@ -66,7 +66,7 @@ export default function adminNavbar() {
             <hr className="my-2 border border-black w-full " />
             <li>
               <Link
-                to=""
+                to="/"
                 className="transition duration-300 ease-in-out hover:scale-105 text-2xl items-center hover:text-white hover:bg-transparent flex justify-center hover:shadow-lg dark:hover:shadow-black"
               >
                 <TbLogout className="text-4xl" /> Log Out
