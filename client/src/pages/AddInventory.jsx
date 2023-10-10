@@ -32,6 +32,7 @@ function AddInventory() {
         inventoryName,
         quantity,
         // usedQuantity: 0,
+
         // remainingQuantity: quantity,
         singlePrice,
         subtotal: quantity * singlePrice,
@@ -185,8 +186,7 @@ function AddInventory() {
                 <th>Date</th>
                 <th>Inventory Name</th>
                 <th>Quantity</th>
-                // <th>Used Quantity</th>
-                // <th>Remaining Quantity</th>
+
                 <th>Single Price</th>
                 <th>Sub Total</th>
               </tr>
@@ -375,8 +375,7 @@ function AddInventory() {
                 <th>Date</th>
                 <th>Inventory Name</th>
                 <th>Quantity</th>
-                <th>Used Quantity</th>
-                <th>Remaining Quantity</th>
+
                 <th>Single Price</th>
                 <th>Sub Total</th>
                 <th>Operation</th>
