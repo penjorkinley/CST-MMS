@@ -2,9 +2,9 @@ import React from "react";
 
 function FeedbackCard({ dets }) {
   return (
-    <div className="card card-compact w-96 h-20 bg-base-100 shadow-2xl mr-2 p-4 ">
+    <div className="card card-compact max-w-96 max-h-max bg-base-100 shadow-2xl mr-auto ml-auto p-9">
       <p>{dets}</p>
-      <div className="rating ml-auto">
+      <div className="rating ml-auto mt-2">
         <input
           type="radio"
           name="rating-1"
