@@ -26,7 +26,7 @@ export default function AddUser() {
 
   return (
     <div className="w-full max-w-xl max-h-screen mx-auto mt-4">
-      <form onSubmit={handleSubmit} className="bg-cute shadow-2xl rounded-3xl px-8 pt-6 pb-8 mb-4">
+      <form onSubmit={handleSubmit} className="bg-white shadow-2xl  px-8 pt-6 pb-8 mb-4">
         <div className="mb-4">
           <label className="block text-gray-700 text-lg font-bold mb-2" htmlFor="fullName">
             Full Name
