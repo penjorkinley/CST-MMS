@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { MdRestaurantMenu } from "react-icons/md";
 
 function AddMenu() {
-  const [selectedCategory, setSelectedCategory] = useState('Breakfast');
-  const [menuItem, setMenuItem] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState("Breakfast");
+  const [menuItem, setMenuItem] = useState("");
   const [breakfastMenu, setBreakfastMenu] = useState([]);
   const [lunchMenu, setLunchMenu] = useState([]);
   const [dinnerMenu, setDinnerMenu] = useState([]);
@@ -14,29 +15,29 @@ function AddMenu() {
   const handleAddMenuItem = () => {
     const newItem = menuItem.trim();
 
-    if (newItem !== '') {
+    if (newItem !== "") {
       switch (selectedCategory) {
-        case 'Breakfast':
+        case "Breakfast":
           setBreakfastMenu([...breakfastMenu, newItem]);
           break;
-        case 'Lunch':
+        case "Lunch":
           setLunchMenu([...lunchMenu, newItem]);
           break;
-        case 'Dinner':
+        case "Dinner":
           setDinnerMenu([...dinnerMenu, newItem]);
           break;
         default:
           break;
       }
-      setMenuItem('');
+      setMenuItem("");
     }
   };
 
   const handleUpdateMenu = () => {
     // Handle updating menus here
-    console.log('Breakfast Menu:', breakfastMenu);
-    console.log('Lunch Menu:', lunchMenu);
-    console.log('Dinner Menu:', dinnerMenu);
+    console.log("Breakfast Menu:", breakfastMenu);
+    console.log("Lunch Menu:", lunchMenu);
+    console.log("Dinner Menu:", dinnerMenu);
   };
 
   const handleClearMenu = () => {
@@ -48,7 +49,10 @@ function AddMenu() {
 
   return (
     <div className="p-4">
-      <h1 className="text-3xl font-bold">Add Menu Item</h1>
+      <div className="flex items-center space-x-2 mb-4">
+        <MdRestaurantMenu className="text-4xl " />
+        <h1 className="text-4xl font-bold">Add Menu</h1>
+      </div>
 
       <div className="my-4">
         <label htmlFor="category" className="mr-2">
@@ -84,8 +88,14 @@ function AddMenu() {
 
       <div className="flex space-x-4">
         <div className="flex-1">
-          <div className="bg-white p-4 rounded-md shadow-md font-bold " style={{ height: '300px', width: '250px', overflow: 'auto' }}>
-            <h2 className="text-xl font-bold text-center">Breakfast</h2><br/>
+          <div
+            className="bg-white p-4 rounded-md shadow-md font-bold "
+            style={{ height: "300px", width: "250px", overflow: "auto" }}
+          >
+            <h2 className="text-2xl font-bold text-center text-[#3eadcc]">
+              Breakfast
+            </h2>
+            <br />
             <ul>
               {breakfastMenu.map((item, index) => (
                 <li key={index}>&#8226;{item}</li>
@@ -94,8 +104,14 @@ function AddMenu() {
           </div>
         </div>
         <div className="flex-1">
-          <div className="bg-white p-4 rounded-md shadow-md font-bold " style={{ height: '300px', width: '250px', overflow: 'auto' }}>
-            <h2 className="text-xl font-bold text-center">Lunch</h2><br/>
+          <div
+            className="bg-white p-4 rounded-md shadow-md font-bold "
+            style={{ height: "300px", width: "250px", overflow: "auto" }}
+          >
+            <h2 className="text-2xl font-bold text-center text-[#3eadcc]">
+              Lunch
+            </h2>
+            <br />
             <ul>
               {lunchMenu.map((item, index) => (
                 <li key={index}>&#8226;{item}</li>
@@ -104,8 +120,14 @@ function AddMenu() {
           </div>
         </div>
         <div className="flex-1">
-          <div className="bg-white p-4 rounded-md shadow-md font-bold" style={{ height: '300px', width: '250px', overflow: 'auto' }}>
-            <h2 className="text-xl font-bold text-center ">Dinner</h2><br/>
+          <div
+            className="bg-white p-4 rounded-md shadow-md font-bold"
+            style={{ height: "300px", width: "250px", overflow: "auto" }}
+          >
+            <h2 className="text-2xl font-bold text-center text-[#3eadcc]">
+              Dinner
+            </h2>
+            <br />
             <ul>
               {dinnerMenu.map((item, index) => (
                 <li key={index}>&#8226;{item}</li>
@@ -124,7 +146,7 @@ function AddMenu() {
         </button>
         <button
           onClick={handleClearMenu}
-          className="bg-black font-bold text-white p-3 rounded-xl ml-4"
+          className="bg-buttons font-bold text-white p-3 rounded-xl ml-4"
         >
           Clear
         </button>

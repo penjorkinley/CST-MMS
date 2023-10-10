@@ -13,6 +13,7 @@ app.use(cors());
 //Routes
 app.use("/auth", usersRouter);
 app.use("/feedback", feedbackRouter);
+app.use("/admin", feedbackRouter);
 
 moongoose.connect(
   "mongodb+srv://CST-MMS:CST-MMS2023@cst-mss.wlq5y1g.mongodb.net/CST-MMS?retryWrites=true&w=majority"
