@@ -25,14 +25,14 @@ export default function AddUser() {
   };
 
   return (
-    <div className="w-full max-w-xl max-h-screen mx-auto mt-1">
-      <form onSubmit={handleSubmit} className="bg-cute shadow-2xl rounded-3xl px-8 pt-6 pb-4 mb-4">
+    <div className="w-full max-w-xl max-h-screen mx-auto mt-4">
+      <form onSubmit={handleSubmit} className="bg-white shadow-2xl  px-8 pt-6 pb-8 mb-4">
         <div className="mb-4">
           <label className="block text-gray-700 text-lg font-bold mb-2" htmlFor="fullName">
             Full Name
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-cute leading-tight focus:outline-none focus:shadow-outline"
             type="text"
             id="fullName"
             name="fullName"
@@ -47,7 +47,7 @@ export default function AddUser() {
             Email
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-cute leading-tight focus:outline-none focus:shadow-outline"
             type="email"
             id="email"
             name="email"
@@ -62,7 +62,7 @@ export default function AddUser() {
             Contact Number
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-cute leading-tight focus:outline-none focus:shadow-outline"
             type="tel"
             id="contactNumber"
             name="contactNumber"
@@ -77,7 +77,7 @@ export default function AddUser() {
             Role
           </label>
           <select
-            className="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-cute leading-tight focus:outline-none focus:shadow-outline"
             id="role"
             name="role"
             value={formData.role}
@@ -93,7 +93,7 @@ export default function AddUser() {
             Password
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-cute leading-tight focus:outline-none focus:shadow-outline"
             type="password"
             id="password"
             name="password"
@@ -108,7 +108,7 @@ export default function AddUser() {
             Confirm Password
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-cute leading-tight focus:outline-none focus:shadow-outline"
             type="password"
             id="confirmPassword"
             name="confirmPassword"
@@ -120,7 +120,7 @@ export default function AddUser() {
         </div>
         <div className="flex items-center justify-between">
           <button
-            className="bg-black hover:bg-slate-400 text-lg text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
+            className="bg-buttons hover:bg-black border border-cute text-lg text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
             type="submit"
           >
             Submit
