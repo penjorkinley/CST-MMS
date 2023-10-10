@@ -13,6 +13,7 @@ function AddInventory() {
   const [pdfData, setPdfData] = useState(null);
   
 
+  
   const handleAddInventory = () => {
     if (storeType === 'Essentials') {
       const newEssentialItem = {
