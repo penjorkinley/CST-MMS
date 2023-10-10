@@ -1,115 +1,134 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from 'react';
 
 function AddMenu() {
-  const [menuItems, setMenuItems] = useState([]);
-  const [newMenuItem, setNewMenuItem] = useState("");
-  const [selectedMealTime, setSelectedMealTime] = useState("breakfast");
+  const [selectedCategory, setSelectedCategory] = useState('Breakfast');
+  const [menuItem, setMenuItem] = useState('');
+  const [breakfastMenu, setBreakfastMenu] = useState([]);
+  const [lunchMenu, setLunchMenu] = useState([]);
+  const [dinnerMenu, setDinnerMenu] = useState([]);
 
-  useEffect(() => {
-    // Fetch menu items from your database/API and update the state
-    fetchMenuItems();
-  }, []);
+  const handleCategoryChange = (e) => {
+    setSelectedCategory(e.target.value);
+  };
 
-  const fetchMenuItems = async () => {
-    try {
-      const response = await fetch("/api/menu"); // Replace with your API endpoint
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
+  const handleAddMenuItem = () => {
+    const newItem = menuItem.trim();
+
+    if (newItem !== '') {
+      switch (selectedCategory) {
+        case 'Breakfast':
+          setBreakfastMenu([...breakfastMenu, newItem]);
+          break;
+        case 'Lunch':
+          setLunchMenu([...lunchMenu, newItem]);
+          break;
+        case 'Dinner':
+          setDinnerMenu([...dinnerMenu, newItem]);
+          break;
+        default:
+          break;
       }
-      const data = await response.json();
-      setMenuItems(data);
-    } catch (error) {
-      console.error("Error fetching menu items:", error);
+      setMenuItem('');
     }
   };
 
-  const handleAddMenuItem = async () => {
-    try {
-      const response = await fetch("/api/menu", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          mealTime: selectedMealTime,
-          name: newMenuItem,
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-
-      const data = await response.json();
-      setMenuItems([...menuItems, data]);
-      setNewMenuItem("");
-    } catch (error) {
-      console.error("Error adding menu item:", error);
-    }
+  const handleUpdateMenu = () => {
+    // Handle updating menus here
+    console.log('Breakfast Menu:', breakfastMenu);
+    console.log('Lunch Menu:', lunchMenu);
+    console.log('Dinner Menu:', dinnerMenu);
   };
 
-  const handleDeleteMenuItem = async (id) => {
-    try {
-      const response = await fetch(`/api/menu/${id}`, {
-        method: "DELETE",
-      });
-
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-
-      setMenuItems(menuItems.filter((item) => item.id !== id));
-    } catch (error) {
-      console.error("Error deleting menu item:", error);
-    }
+  const handleClearMenu = () => {
+    // Clear all menu items
+    setBreakfastMenu([]);
+    setLunchMenu([]);
+    setDinnerMenu([]);
   };
 
   return (
-    <div className="max-w-lg mx-auto mt-8">
-      <h2 className="text-2xl font-semibold mb-4">Add Menu Item</h2>
-      <div className="flex items-center space-x-2">
+    <div className="p-4">
+      <h1 className="text-3xl font-bold">Add Menu Item</h1>
+
+      <div className="my-4">
+        <label htmlFor="category" className="mr-2">
+          Select Category:
+        </label>
         <select
-          value={selectedMealTime}
-          onChange={(e) => setSelectedMealTime(e.target.value)}
-          className="border p-2 rounded"
+          id="category"
+          value={selectedCategory}
+          onChange={handleCategoryChange}
+          className="border p-2 rounded-md"
         >
-          <option value="breakfast">Breakfast</option>
-          <option value="lunch">Lunch</option>
-          <option value="dinner">Dinner</option>
+          <option value="Breakfast">Breakfast</option>
+          <option value="Lunch">Lunch</option>
+          <option value="Dinner">Dinner</option>
         </select>
+      </div>
+
+      <div className="flex space-x-4 my-4">
         <input
           type="text"
-          value={newMenuItem}
-          onChange={(e) => setNewMenuItem(e.target.value)}
-          placeholder="Enter menu item"
-          className="border p-2 rounded flex-grow"
+          placeholder="Enter Menu Item"
+          value={menuItem}
+          onChange={(e) => setMenuItem(e.target.value)}
+          className="border p-2 rounded-md flex-grow"
         />
         <button
           onClick={handleAddMenuItem}
-          className="bg-black w-[60px] text-white font-semibold p-2 rounded hover:bg-buttons hover:text-black"
+          className="bg-black text-white p-3 rounded-xl font-bold"
         >
           Add
         </button>
       </div>
 
-      <h2 className="text-2xl font-semibold mt-8 mb-4">Menu Items</h2>
-      <ul>
-        {menuItems.map((item) => (
-          <li
-            key={item.id}
-            className="border-b p-2 flex items-center justify-between"
-          >
-            <span>{item.name}</span>
-            <span className="text-gray-500">({item.mealTime})</span>
-            <button
-              onClick={() => handleDeleteMenuItem(item.id)}
-              className="text-red-500 hover:text-red-700"
-            >
-              Delete
-            </button>
-          </li>
-        ))}
-      </ul>
+      <div className="flex space-x-4">
+        <div className="flex-1">
+          <div className="bg-white p-4 rounded-md shadow-md font-bold " style={{ height: '300px', width: '250px', overflow: 'auto' }}>
+            <h2 className="text-xl font-bold text-center">Breakfast</h2><br/>
+            <ul>
+              {breakfastMenu.map((item, index) => (
+                <li key={index}>&#8226;{item}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div className="flex-1">
+          <div className="bg-white p-4 rounded-md shadow-md font-bold " style={{ height: '300px', width: '250px', overflow: 'auto' }}>
+            <h2 className="text-xl font-bold text-center">Lunch</h2><br/>
+            <ul>
+              {lunchMenu.map((item, index) => (
+                <li key={index}>&#8226;{item}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div className="flex-1">
+          <div className="bg-white p-4 rounded-md shadow-md font-bold" style={{ height: '300px', width: '250px', overflow: 'auto' }}>
+            <h2 className="text-xl font-bold text-center ">Dinner</h2><br/>
+            <ul>
+              {dinnerMenu.map((item, index) => (
+                <li key={index}>&#8226;{item}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div className="my-4">
+        <button
+          onClick={handleUpdateMenu}
+          className="bg-black font-bold text-white p-3 rounded-xl"
+        >
+          Update
+        </button>
+        <button
+          onClick={handleClearMenu}
+          className="bg-black font-bold text-white p-3 rounded-xl ml-4"
+        >
+          Clear
+        </button>
+      </div>
     </div>
   );
 }
