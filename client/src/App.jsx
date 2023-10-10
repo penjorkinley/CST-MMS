@@ -15,6 +15,7 @@ import AddUser from "./pages/AddUser";
 import AddMenu from "./components/AddMenu";
 import AddInventory from "./pages/AddInventory";
 import { AuthProvider } from "./contexts/AuthContext";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
               <Route path="/" element={<LandingPage />} />
               <Route path="/feedback" element={<Feedback />} />
               <Route path="/admin" element={<AdminDashboard />}>
+                <Route path="dashboard" element={<Dashboard/>}/>
                 <Route path="viewfeedback" element={<AdminFeedback />} />
                 <Route path="adduser" element={<AddUser />} />
                 <Route path="addmenu" element={<AddMenu />} />
@@ -60,6 +62,8 @@ function Navigation() {
     location.pathname !== "/admin" &&
     location.pathname !== "/admin/viewfeedback" &&
     location.pathname !== "/admin/adduser" &&
+    location.pathname !== "/admin/dashboard" &&
+    location.pathname !== "/admin/inventory" &&
     location.pathname !== "/admin/addmenu";
 
   // Conditional rendering of RegularNav
