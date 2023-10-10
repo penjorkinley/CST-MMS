@@ -11,17 +11,13 @@ function AddInventory() {
   const [vesselsData, setVesselsData] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
   const [pdfData, setPdfData] = useState(null);
-  
 
-  
   const handleAddInventory = () => {
     if (storeType === 'Essentials') {
       const newEssentialItem = {
         date: new Date().toLocaleDateString(),
         inventoryName,
         quantity,
-        // usedQuantity: 0,
-        // remainingQuantity: quantity,
         singlePrice,
         subtotal: quantity * singlePrice,
       };
@@ -31,9 +27,6 @@ function AddInventory() {
         date: new Date().toLocaleDateString(),
         inventoryName,
         quantity,
-        // usedQuantity: 0,
-
-        // remainingQuantity: quantity,
         singlePrice,
         subtotal: quantity * singlePrice,
       };
@@ -73,53 +66,18 @@ function AddInventory() {
     setSinglePrice('');
   };
 
-  // const generatePDF = () => {
-  //   const doc = (
-  //     <Document>
-  //       <Page size="A4">
-  //         <View style={styles.header}>
-  //           <Text style={styles.headerText}>Inventory Management</Text>
-  //         </View>
-  //         <View style={styles.table}>
-  //           <View style={styles.row}>
-  //             <Text style={styles.headerCell}>Date</Text>
-  //             <Text style={styles.headerCell}>Inventory Name</Text>
-  //             <Text style={styles.headerCell}>Quantity</Text>
-  //             {/* <Text style={styles.headerCell}>Used Quantity</Text>
-  //             <Text style={styles.headerCell}>Remaining Quantity</Text> */}
-  //             <Text style={styles.headerCell}>Single Price</Text>
-  //             <Text style={styles.headerCell}>Sub Total</Text>
-  //           </View>
-  //           {essentialsData.map((item, index) => (
-  //             <View key={index} style={styles.row}>
-  //               <Text style={styles.cell}>{item.date}</Text>
-  //               <Text style={styles.cell}>{item.inventoryName}</Text>
-  //               <Text style={styles.cell}>{item.quantity}</Text>
-  //               {/* <Text style={styles.cell}>{item.usedQuantity}</Text>
-  //               <Text style={styles.cell}>{item.remainingQuantity}</Text> */}
-  //               <Text style={styles.cell}>{item.singlePrice}</Text>
-  //               <Text style={styles.cell}>{item.subtotal}</Text>
-  //             </View>
-  //           ))}
-  //           {vesselsData.map((item, index) => (
-  //             <View key={index} style={styles.row}>
-  //               <Text style={styles.cell}>{item.date}</Text>
-  //               <Text style={styles.cell}>{item.inventoryName}</Text>
-  //               <Text style={styles.cell}>{item.quantity}</Text>
-  //               {/* <Text style={styles.cell}>{item.usedQuantity}</Text>
-  //               <Text style={styles.cell}>{item.remainingQuantity}</Text> */}
-  //               <Text style={styles.cell}>{item.singlePrice}</Text>
-  //               <Text style={styles.cell}>{item.subtotal}</Text>
-  //             </View>
-  //           ))}
-  //         </View>
-  //       </Page>
-  //     </Document>
-  //   );
+  const handleDelete = (index) => {
+    if (storeType === 'Essentials') {
+      const updatedData = [...essentialsData];
+      updatedData.splice(index, 1);
+      setEssentialsData(updatedData);
+    } else if (storeType === 'Vessels') {
+      const updatedData = [...vesselsData];
+      updatedData.splice(index, 1);
+      setVesselsData(updatedData);
+    }
+  };
 
-  //   setPdfData(doc);
-  // };
-  
   const generatePDF = () => {
     const tableData = [
       ['Date', 'Inventory Name', 'Quantity', 'Single Price', 'Sub Total'],
@@ -138,7 +96,7 @@ function AddInventory() {
         item.subtotal,
       ]),
     ];
-  
+
     const doc = (
       <Document>
         <Page size="A4">
@@ -166,14 +124,13 @@ function AddInventory() {
         </Page>
       </Document>
     );
-  
+
     setPdfData(doc);
   };
-  
+
   const handleExportPDF = () => {
     generatePDF();
   };
-  
 
   const handleExportWord = () => {
     const convertedHtml = `
@@ -186,7 +143,7 @@ function AddInventory() {
                 <th>Date</th>
                 <th>Inventory Name</th>
                 <th>Quantity</th>
-
+  
                 <th>Single Price</th>
                 <th>Sub Total</th>
               </tr>
@@ -219,7 +176,7 @@ function AddInventory() {
         </body>
       </html>
     `;
-
+  
     mammoth.convertToHtml({ arrayBuffer: new TextEncoder().encode(convertedHtml) })
       .then((result) => {
         const blob = new Blob([result.value], { type: 'application/msword' });
@@ -232,9 +189,10 @@ function AddInventory() {
         console.error(error);
       });
   };
+  
 
   return (
-    <div className="p-4">
+    <div className="p-4 shadow-2xl bg-cute">
       <h1 className="text-2xl font-bold">Inventory Management</h1>
 
       <div className="mt-4 ">
@@ -287,26 +245,24 @@ function AddInventory() {
       </div>
 
       {storeType === 'Essentials' && (
-        <div className="mt-8 ">
+        <div className="mt-8">
           <h2 className="text-xl font-semibold pl-96">Essentials Inventory</h2>
-          <table className="w-full mt-4 ">
+          <table className="w-full mt-4 border-collapse border border-gray-400 bg-white shadow-xl">
             <thead>
               <tr>
-                <th>Date</th>
-                <th>Inventory Name</th>
-                <th>Quantity</th>
-                {/* <th>Used Quantity</th>
-                <th>Remaining Quantity</th> */}
-                <th>Single Price</th>
-                <th>Sub Total</th>
-                <th>Operation</th>
+                <th className="border border-gray-400">Date</th>
+                <th className="border border-gray-400">Inventory Name</th>
+                <th className="border border-gray-400">Quantity</th>
+                <th className="border border-gray-400">Single Price</th>
+                <th className="border border-gray-400">Sub Total</th>
+                <th className="border border-gray-400">Operation</th>
               </tr>
             </thead>
             <tbody>
               {essentialsData.map((item, index) => (
-                <tr key={index}>
-                  <td>{item.date}</td>
-                  <td>
+                <tr key={index} className="border border-gray-400">
+                  <td className="border border-gray-400 text-center">{item.date}</td>
+                  <td className="border border-gray-400 text-center">
                     {editIndex === index ? (
                       <input
                         type="text"
@@ -317,7 +273,7 @@ function AddInventory() {
                       item.inventoryName
                     )}
                   </td>
-                  <td>
+                  <td className="border border-gray-400 text-center">
                     {editIndex === index ? (
                       <input
                         type="number"
@@ -328,35 +284,31 @@ function AddInventory() {
                       item.quantity
                     )}
                   </td>
-                  <td>{item.usedQuantity}</td>
-                  <td>{item.remainingQuantity}</td>
-                  <td>
-                    {editIndex === index ? (
-                      <input
-                        type="number"
-                        value={singlePrice}
-                        onChange={(e) => setSinglePrice(e.target.value)}
-                      />
-                    ) : (
-                      item.singlePrice
-                    )}
-                  </td>
-                  <td>{item.subtotal}</td>
-                  <td>
+                  <td className="border border-gray-400 text-center">{item.singlePrice}</td>
+                  <td className="border border-gray-400 text-center">{item.subtotal}</td>
+                  <td className="border border-gray-400 text-center">
                     {editIndex === index ? (
                       <button
                         onClick={() => handleSave(index)}
-                        className="bg-green-500 text-white p-2 rounded-md"
+                        className="bg-black text-white p-2 rounded-md"
                       >
                         Save
                       </button>
                     ) : (
-                      <button
-                        onClick={() => handleEdit(index)}
-                        className="bg-yellow-500 text-white p-2 rounded-md"
-                      >
-                        Edit
-                      </button>
+                      <>
+                        <button
+                          onClick={() => handleEdit(index)}
+                          className="bg-black text-white p-2 rounded-md w-16"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          onClick={() => handleDelete(index)} // Add this line
+                          className="bg-black text-white p-2 rounded-md ml-2" // Add this line
+                        >
+                          Delete
+                        </button>
+                      </>
                     )}
                   </td>
                 </tr>
@@ -366,94 +318,92 @@ function AddInventory() {
         </div>
       )}
 
-      {storeType === 'Vessels' && (
-        <div className="mt-8">
-          <h2 className="text-xl font-semibold">Vessels Inventory</h2>
-          <table className="w-full mt-4">
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Inventory Name</th>
-                <th>Quantity</th>
+      {/* ... (similar code for 'Vessels Inventory' table) */}
+    
 
-                <th>Single Price</th>
-                <th>Sub Total</th>
-                <th>Operation</th>
-              </tr>
-            </thead>
-            <tbody>
-              {vesselsData.map((item, index) => (
-                <tr key={index}>
-                  <td>{item.date}</td>
-                  <td>
-                    {editIndex === index ? (
-                      <input
-                        type="text"
-                        value={inventoryName}
-                        onChange={(e) => setInventoryName(e.target.value)}
-                      />
-                    ) : (
-                      item.inventoryName
-                    )}
-                  </td>
-                  <td>
-                    {editIndex === index ? (
-                      <input
-                        type="number"
-                        value={quantity}
-                        onChange={(e) => setQuantity(e.target.value)}
-                      />
-                    ) : (
-                      item.quantity
-                    )}
-                  </td>
-                  <td>{item.usedQuantity}</td>
-                  <td>{item.remainingQuantity}</td>
-                  <td>
-                    {editIndex === index ? (
-                      <input
-                        type="number"
-                        value={singlePrice}
-                        onChange={(e) => setSinglePrice(e.target.value)}
-                      />
-                    ) : (
-                      item.singlePrice
-                    )}
-                  </td>
-                  <td>{item.subtotal}</td>
-                  <td>
-                    {editIndex === index ? (
-                      <button
-                        onClick={() => handleSave(index)}
-                        className="bg-green-500 text-white p-2 rounded-md"
-                      >
-                        Save
-                      </button>
-                    ) : (
-                      <button
-                        onClick={() => handleEdit(index)}
-                        className="bg-yellow-500 text-white p-2 rounded-md"
-                      >
-                        Edit
-                      </button>
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+{storeType === 'Vessels' && (
+  <div className="mt-8">
+    <h2 className="text-xl font-semibold pl-96">Vessels Inventory</h2>
+    <table className="w-full mt-4 border-collapse border border-gray-400">
+      <thead>
+        <tr>
+          <th className="border border-gray-400">Date</th>
+          <th className="border border-gray-400">Inventory Name</th>
+          <th className="border border-gray-400">Quantity</th>
+          <th className="border border-gray-400">Single Price</th>
+          <th className="border border-gray-400">Sub Total</th>
+          <th className="border border-gray-400">Operation</th>
+        </tr>
+      </thead>
+      <tbody>
+        {vesselsData.map((item, index) => (
+          <tr key={index} className="border border-gray-400">
+            <td className="border border-gray-400 text-center">{item.date}</td>
+            <td className="border border-gray-400 text-center">
+              {editIndex === index ? (
+                <input
+                  type="text"
+                  value={inventoryName}
+                  onChange={(e) => setInventoryName(e.target.value)}
+                />
+              ) : (
+                item.inventoryName
+              )}
+            </td>
+            <td className="border border-gray-400 text-center">
+              {editIndex === index ? (
+                <input
+                  type="number"
+                  value={quantity}
+                  onChange={(e) => setQuantity(e.target.value)}
+                />
+              ) : (
+                item.quantity
+              )}
+            </td>
+            <td className="border border-gray-400 text-center">{item.singlePrice}</td>
+            <td className="border border-gray-400 text-center">{item.subtotal}</td>
+            <td className="border border-gray-400 text-center">
+              {editIndex === index ? (
+                <button
+                  onClick={() => handleSave(index)}
+                  className="bg-green-500 text-white p-2 rounded-md"
+                >
+                  Save
+                </button>
+              ) : (
+                <button
+                  onClick={() => handleEdit(index)}
+                  className="bg-black text-white p-2 rounded-md w-16 "
+                >
+                  Edit
+                </button>
+              )}
+              <button
+                onClick={() => handleDelete(index, storeType)}
+                className="bg-black text-white p-2 rounded-md ml-2"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+)}
 
-      <div className="mt-4  pb-48">
-        <button onClick={handleExportPDF} className="bg-black text-white p-2 rounded-xl ">
+
+      
+      <div className="mt-4 pb-48">
+        <button onClick={handleExportPDF} className="bg-black text-white p-2 rounded-xl">
           Export to PDF
         </button>
         {/* <button onClick={handleExportWord} className="bg-black text-white p-2 rounded-xl ml-4">
           Export to Word
         </button> */}
       </div>
-
+        
       {pdfData && (
         <div className="mt-4">
           <PDFViewer width={500} height={400}>
@@ -487,10 +437,12 @@ const styles = StyleSheet.create({
     padding: 5,
     textAlign: 'center',
     fontWeight: 'bold',
+    border: '1px solid #ddd',
   },
   cell: {
     padding: 5,
     textAlign: 'center',
+    border: '1px solid #ddd',
   },
 });
 

@@ -26,4 +26,14 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.get("/viewfeedback", async (req, res) => {
+  try {
+    const feedback = await FeedbackModel.find();
+    res.json(feedback);
+  } catch (error) {
+    console.error("Error fetching feedback:", error);
+    res.status(500).send({ error: "Internal server error" });
+  }
+});
+
 export { router as feedbackRouter };
