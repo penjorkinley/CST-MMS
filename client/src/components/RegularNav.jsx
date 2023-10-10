@@ -24,6 +24,14 @@ export default function RegularNav() {
       navigate("/order");
     }
   };
+  const handleFeedbackClick = () => {
+    if (!isLoggedIn) {
+      alert("Please login or sign up first.");
+      navigate("login");
+    } else {
+      navigate("/feedback");
+    }
+  };
 
   useEffect(() => {
     const handleLoginChange = () => {
@@ -65,9 +73,12 @@ export default function RegularNav() {
             </button>
           </li>
           <li>
-            <Link to="/feedback" className="text-black hover:text-buttons">
+            <button
+              onClick={handleFeedbackClick}
+              className="text-black hover:text-buttons font-semibold text-2xl"
+            >
               Feedback
-            </Link>
+            </button>
           </li>
           <li>
             <Link to="/aboutus" className="text-black hover:text-buttons">
