@@ -10,14 +10,14 @@ export default function adminNavbar() {
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-side">
+      <div className="drawer-side shadow-xl ">
         <ul className="menu min-h-full w-72 text-blackText bg-adminDash border-r-4">
           <li className=" py-2">
             <p className="text-3xl items-center hover:bg-transparent">
               Hello, Admin
             </p>
           </li>
-          <hr className="my-4 border-t-2 border-black w-full " />
+          <hr className="my-2 border border-black w-full " />
           <li className="max-w-xs ">
             <Link
               to="/admin/dashboard"
@@ -63,10 +63,11 @@ export default function adminNavbar() {
           <div className="mt-auto">
             {" "}
             {/* This ensures the item sticks to the bottom */}
+            <hr className="my-2 border border-black w-full " />
             <li>
               <Link
                 to=""
-                className="transition duration-300 ease-in-out hover:scale-105 text-2xl items-center hover:text-white hover:bg-transparent"
+                className="transition duration-300 ease-in-out hover:scale-105 text-2xl items-center hover:text-white hover:bg-transparent flex justify-center hover:shadow-lg dark:hover:shadow-black"
               >
                 <TbLogout className="text-4xl" /> Log Out
               </Link>
