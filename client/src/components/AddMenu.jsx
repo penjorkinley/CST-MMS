@@ -48,7 +48,7 @@ function AddMenu() {
 
   return (
     <div className="p-4">
-      <h1 className="text-3xl font-bold">Add Menu Item</h1>
+      <h1 className="text-4xl font-bold">Add Menu</h1>
 
       <div className="my-4">
         <label htmlFor="category" className="mr-2">

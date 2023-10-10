@@ -26,6 +26,9 @@ export default function AddUser() {
 
   return (
     <div className="w-full max-w-xl max-h-screen mx-auto mt-4">
+      <div className="p-4">
+      <h1 className="text-4xl font-bold">Add User</h1>
+      </div>
       <form
         onSubmit={handleSubmit}
         className="bg-white shadow-2xl  px-8 pt-6 pb-8 mb-4"
