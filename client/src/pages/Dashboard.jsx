@@ -5,18 +5,16 @@ import { RiDashboard2Fill } from "react-icons/ri";
 
 
 function Dashboard() {
+  const currentDate = new Date();
 
-const currentDate = new Date();
+  const weekNumber = getWeekNumber(currentDate);
 
-const weekNumber = getWeekNumber(currentDate);
-
-function getWeekNumber(date) {
-  const startOfYear = new Date(date.getFullYear(), 0, 1);
-  const days = Math.floor((date - startOfYear) / (24*60*60*1000)) + 1;
-  const weekNumber = Math.ceil(days / 7);
-  return weekNumber;
-}
-
+  function getWeekNumber(date) {
+    const startOfYear = new Date(date.getFullYear(), 0, 1);
+    const days = Math.floor((date - startOfYear) / (24 * 60 * 60 * 1000)) + 1;
+    const weekNumber = Math.ceil(days / 7);
+    return weekNumber;
+  }
 
   return (
     <div className="overflow-auto">
@@ -39,8 +37,10 @@ function getWeekNumber(date) {
         <DoughnutChart />
       </div>
       <div className="ml-16 mt-8  w-[893px] h-[360px] bg-white text-black  shadow-md p-2 rounded-xl flex items-center justify-center flex-col">
-        <h1 className="text-xl font-bold">Number of Meals Served in week {weekNumber}</h1>
-        <GradientLineGraph/>
+        <h1 className="text-xl font-bold">
+          Number of Meals Served in week {weekNumber}
+        </h1>
+        <GradientLineGraph />
       </div>
     </div>
   );

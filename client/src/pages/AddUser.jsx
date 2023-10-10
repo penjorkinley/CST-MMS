@@ -25,13 +25,11 @@ export default function AddUser() {
   };
 
   return (
-    <div className="w-full max-w-xl max-h-screen mx-auto mt-4">
-      <div className="p-4">
-      <h1 className="text-4xl font-bold">Add User</h1>
-      </div>
+    <div className="w-full max-w-xl min-h-fit mx-auto mt-4">
+      
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-2xl  px-8 pt-6 pb-8 mb-4"
+        className="bg-white shadow-2xl  px-8 pt-6 pb-8 mb-2"
       >
         <div className="mb-4">
           <label
@@ -41,7 +39,7 @@ export default function AddUser() {
             Full Name
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-cute leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-cute leading-tight focus:outline-none focus:shadow-outline"
             type="text"
             id="fullName"
             name="fullName"
@@ -59,7 +57,7 @@ export default function AddUser() {
             Email
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-cute leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-cute leading-tight focus:outline-none focus:shadow-outline"
             type="email"
             id="email"
             name="email"
@@ -77,7 +75,7 @@ export default function AddUser() {
             Contact Number
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-cute leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-cute leading-tight focus:outline-none focus:shadow-outline"
             type="tel"
             id="contactNumber"
             name="contactNumber"
@@ -95,7 +93,7 @@ export default function AddUser() {
             Role
           </label>
           <select
-            className="shadow border rounded w-full py-3 px-3  bg-cute leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow border rounded w-full py-2 px-3  bg-cute leading-tight focus:outline-none focus:shadow-outline"
             id="role"
             name="role"
             value={formData.role}
@@ -114,7 +112,7 @@ export default function AddUser() {
             Password
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-cute leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-cute leading-tight focus:outline-none focus:shadow-outline"
             type="password"
             id="password"
             name="password"
@@ -132,7 +130,7 @@ export default function AddUser() {
             Confirm Password
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-cute leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-cute leading-tight focus:outline-none focus:shadow-outline"
             type="password"
             id="confirmPassword"
             name="confirmPassword"
