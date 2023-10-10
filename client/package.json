@@ -12,6 +12,7 @@
   "dependencies": {
     "@heroicons/react": "^1.0.6",
     "@react-pdf/renderer": "^3.1.12",
+    "apexcharts": "^3.43.0",
     "chart.js": "^4.4.0",
     "html-pdf": "^3.0.1",
     "html2canvas": "^1.4.1",
