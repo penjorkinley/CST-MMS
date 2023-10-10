@@ -24,7 +24,7 @@ export default function Feedback() {
   }, []);
 
   return (
-    <div className="flex justify-between items-center h-full p-4 ">
+    <div className="flex justify-between items-center h-screen p-4 ml-[170px]">
       <div className="card card-compact w-auto h-auto bg-base-100 shadow-2xl ml-auto mr-20 p-6">
         <h1 className="text-black font-bold text-lg mb-4 text-center">
           Feedbacks
