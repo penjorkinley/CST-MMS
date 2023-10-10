@@ -26,9 +26,15 @@ export default function AddUser() {
 
   return (
     <div className="w-full max-w-xl max-h-screen mx-auto mt-4">
-      <form onSubmit={handleSubmit} className="bg-white shadow-2xl  px-8 pt-6 pb-8 mb-4">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white shadow-2xl  px-8 pt-6 pb-8 mb-4"
+      >
         <div className="mb-4">
-          <label className="block text-gray-700 text-lg font-bold mb-2" htmlFor="fullName">
+          <label
+            className="block text-gray-700 text-lg font-bold mb-2"
+            htmlFor="fullName"
+          >
             Full Name
           </label>
           <input
@@ -43,7 +49,10 @@ export default function AddUser() {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-lg font-bold mb-2" htmlFor="email">
+          <label
+            className="block text-gray-700 text-lg font-bold mb-2"
+            htmlFor="email"
+          >
             Email
           </label>
           <input
@@ -58,7 +67,10 @@ export default function AddUser() {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-lg font-bold mb-2" htmlFor="contactNumber">
+          <label
+            className="block text-gray-700 text-lg font-bold mb-2"
+            htmlFor="contactNumber"
+          >
             Contact Number
           </label>
           <input
@@ -73,11 +85,14 @@ export default function AddUser() {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-lg font-bold mb-2" htmlFor="role">
+          <label
+            className="block text-gray-700 text-lg font-bold mb-2"
+            htmlFor="role"
+          >
             Role
           </label>
           <select
-            className="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-cute leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow border rounded w-full py-3 px-3  bg-cute leading-tight focus:outline-none focus:shadow-outline"
             id="role"
             name="role"
             value={formData.role}
@@ -89,7 +104,10 @@ export default function AddUser() {
           </select>
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-lg font-bold mb-2" htmlFor="password">
+          <label
+            className="block text-gray-700 text-lg font-bold mb-2"
+            htmlFor="password"
+          >
             Password
           </label>
           <input
@@ -104,7 +122,10 @@ export default function AddUser() {
           />
         </div>
         <div className="mb-6">
-          <label className="block text-gray-700 text-lg font-bold mb-2" htmlFor="confirmPassword">
+          <label
+            className="block text-gray-700 text-lg font-bold mb-2"
+            htmlFor="confirmPassword"
+          >
             Confirm Password
           </label>
           <input
@@ -120,7 +141,7 @@ export default function AddUser() {
         </div>
         <div className="flex items-center justify-between">
           <button
-            className="bg-buttons hover:bg-black border border-cute text-lg text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
+            className="bg-black hover:bg-buttons border border-cute text-lg text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
             type="submit"
           >
             Submit
