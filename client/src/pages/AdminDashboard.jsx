@@ -1,5 +1,6 @@
 import AdminNavbar from "../components/adminNavbar";
 import { Outlet } from "react-router-dom";
+// import DoughnutChart from "../components/DoughnutChart";
 
 export default function AdminDashboard() {
   return (
@@ -13,6 +14,7 @@ export default function AdminDashboard() {
         {" "}
         {/* Adjust the width as per your design */}
         {/* <AdminTopNavbar /> */}
+        
         <Outlet />
       </div>
     </div>

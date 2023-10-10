@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { TbDeviceDesktopAnalytics } from "react-icons/tb";
 import { BiSolidAddToQueue } from "react-icons/bi";
 import { VscFeedback } from "react-icons/vsc";
-import { TiTickOutline } from "react-icons/ti";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { TbLogout } from "react-icons/tb";
 import { MdOutlineInventory2 } from "react-icons/md";
@@ -21,7 +20,7 @@ export default function adminNavbar() {
           <hr className="my-4 border-t-2 border-black w-full " />
           <li className="max-w-xs ">
             <Link
-              to="/admin"
+              to="/admin/dashboard"
               className="text-2xl items-center py-4 transition duration-300 ease-in-out hover:scale-105 hover:shadow-lg dark:hover:shadow-black"
             >
               <TbDeviceDesktopAnalytics className="text-4xl " /> Dashboard
