@@ -10,7 +10,7 @@ export default function adminNavbar() {
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-side">
+      <div className="drawer-side shadow-xl ">
         <ul className="menu min-h-full w-72 text-blackText bg-adminDash border-r-4">
           <li className=" py-2">
             <p className="text-3xl items-center hover:bg-transparent">
