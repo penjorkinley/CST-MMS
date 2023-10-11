@@ -28,9 +28,12 @@ function LandingPage() {
 
   const carouselItems = [
     { image: mess3, text: "Welcome To CST Mess System" },
-    { image: mess1, text: "Menu Background" },
-    { image: mess2, text: "Feedback Background" },
-    { image: mess4, text: "Enjoy your meal" },
+    { image: mess1, text: "Check Out Our Daily Menu" },
+    {
+      image: mess2,
+      text: "Please Provide Your Valuable Feedback For Improvement",
+    },
+    { image: mess4, text: "Enjoy Your Meal" },
   ];
 
   const handleOrderClick = () => {
