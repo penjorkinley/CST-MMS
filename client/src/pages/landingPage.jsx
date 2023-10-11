@@ -31,7 +31,7 @@ function LandingPage() {
     { image: mess1, text: "Check Out Our Daily Menu" },
     {
       image: mess2,
-      text: "Please Provide Your Valuable Feedback For Improvement",
+      text: "Provide Your Valuable Feedback",
     },
     { image: mess4, text: "Enjoy Your Meal" },
   ];
