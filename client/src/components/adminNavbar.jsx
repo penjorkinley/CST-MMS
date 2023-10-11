@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react"; // Importing useContext
+import { AuthContext } from "../contexts/AuthContext.jsx"; // Importing AuthContext
 import { TbDeviceDesktopAnalytics } from "react-icons/tb";
 import { BiSolidAddToQueue } from "react-icons/bi";
 import { VscFeedback } from "react-icons/vsc";
@@ -7,6 +9,20 @@ import { TbLogout } from "react-icons/tb";
 import { MdOutlineInventory2 } from "react-icons/md";
 
 export default function adminNavbar() {
+  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext); // Using the context
+  const navigate = useNavigate();
+
+  const handleAdminLogout = () => {
+    if (window.confirm("Are you sure you want to log out?")) {
+      // Clearing session data and updating context/state
+      localStorage.removeItem("token");
+      setIsLoggedIn(false);
+
+      // Redirecting the user after logout
+      navigate("/");
+    }
+  };
+
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -34,7 +50,6 @@ export default function adminNavbar() {
               <BiSolidAddToQueue className="text-4xl" /> Add Menu
             </Link>
           </li>
-
           <li>
             <Link
               to="/admin/inventory"
@@ -59,18 +74,15 @@ export default function adminNavbar() {
               <VscFeedback className="text-4xl" /> View Feedback
             </Link>
           </li>
-
           <div className="mt-auto">
-            {" "}
-            {/* This ensures the item sticks to the bottom */}
             <hr className="my-2 border border-black w-full " />
             <li>
-              <Link
-                to="/"
+              <button
+                onClick={handleAdminLogout}
                 className="transition duration-300 ease-in-out hover:scale-105 text-2xl items-center hover:text-white hover:bg-transparent flex justify-center hover:shadow-lg dark:hover:shadow-black"
               >
                 <TbLogout className="text-4xl" /> Log Out
-              </Link>
+              </button>
             </li>
           </div>
         </ul>
