@@ -92,7 +92,7 @@ export default function Feedback() {
             <div className="card-actions justify-end pb-10">
               <button
                 type="submit"
-                className="btn bg-black pl-9 w-full max-w-s font-semibold text-white text-xl"
+                className="btn bg-buttons pl-9 w-full max-w-s font-semibold text-white text-xl hover:bg-black"
               >
                 Submit
               </button>
