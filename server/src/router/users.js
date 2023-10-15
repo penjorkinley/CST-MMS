@@ -15,6 +15,12 @@ router.post("/register", async (req, res) => {
   try {
     const { username, studentId, phoneNumber, email, password } = req.body;
 
+    const existingStudentId = await UserModel.findOne({ studentId: studentId });
+    if (existingStudentId) {
+      res.status(400).json({ error: "Student ID already exists." });
+      return;
+    }
+
     const existingEmail = await UserModel.findOne({ email: email });
     if (existingEmail) {
       res.status(400).json({ error: "Email already exists." });

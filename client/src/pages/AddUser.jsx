@@ -1,54 +1,117 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 export default function AddUser() {
   const [formData, setFormData] = useState({
-    fullName: "",
+    username: "",
+    studentId: "",
     email: "",
-    contactNumber: "",
-    role: "user", // Default
+    phoneNumber: "",
+    role: "user",
     password: "",
-    confirmPassword: "",
   });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    setFormData((prevData) => ({
+      ...prevData,
       [name]: value,
-    });
+    }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // You can add validation logic here before showing the alert
-    alert("You are registered");
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:3001/admin/addu  ser", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const responseData = await response.json();
+
+      if (response.status === 201) {
+        // Assuming 201 is a success status
+        console.log("User added successfully:", responseData);
+        alert("User added successfully!");
+
+        // Reset form
+        setFormData({
+          username: "",
+          email: "",
+          phoneNumber: "",
+          role: "user",
+          password: "",
+        });
+      } else {
+        if (responseData.error.includes("username")) {
+          alert("Username already exists.");
+        } else if (responseData.error.includes("studentId")) {
+          alert("Student ID already exists.");
+        } else if (responseData.error.includes("email")) {
+          alert("Email already exists.");
+        } else if (responseData.error.includes("phoneNumber")) {
+          alert("Phone number already exists.");
+        } else {
+          alert(
+            responseData.error || "Failed to add user for an unknown reason."
+          );
+        }
+      }
+    } catch (error) {
+      console.error("Error adding user:", error);
+      alert("Failed to add user. Please check your connection and try again.");
+    }
   };
 
   return (
     <div className="w-full max-w-xl min-h-fit mx-auto mt-4">
-      
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-2xl  px-8 pt-6 pb-8 mb-2"
+        className="bg-white shadow-2xl px-8 pt-6 pb-8 mb-2"
       >
+        {/* Name Input */}
         <div className="mb-4">
           <label
             className="block text-gray-700 text-lg font-bold mb-2"
-            htmlFor="fullName"
+            htmlFor="username"
           >
-            Full Name
+            User Name
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-cute leading-tight focus:outline-none focus:shadow-outline"
             type="text"
-            id="fullName"
-            name="fullName"
-            value={formData.fullName}
+            id="username"
+            name="username"
+            value={formData.username}
             onChange={handleInputChange}
-            placeholder="Full Name"
+            placeholder="User Name"
             required
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
+        {/* Student ID Input */}
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-lg font-bold mb-2"
+            htmlFor="studentId"
+          >
+            Student ID
+          </label>
+          <input
+            type="text"
+            id="studentId"
+            name="studentId"
+            value={formData.studentId}
+            onChange={handleInputChange}
+            placeholder="Student ID"
+            required
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </div>
+
+        {/* Email Input */}
         <div className="mb-4">
           <label
             className="block text-gray-700 text-lg font-bold mb-2"
@@ -57,7 +120,6 @@ export default function AddUser() {
             Email
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-cute leading-tight focus:outline-none focus:shadow-outline"
             type="email"
             id="email"
             name="email"
@@ -65,26 +127,29 @@ export default function AddUser() {
             onChange={handleInputChange}
             placeholder="Email"
             required
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
+        {/* Contact Input */}
         <div className="mb-4">
           <label
             className="block text-gray-700 text-lg font-bold mb-2"
-            htmlFor="contactNumber"
+            htmlFor="phoneNumber"
           >
             Contact Number
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-cute leading-tight focus:outline-none focus:shadow-outline"
             type="tel"
-            id="contactNumber"
-            name="contactNumber"
-            value={formData.contactNumber}
+            id="phoneNumber"
+            name="phoneNumber"
+            value={formData.phoneNumber}
             onChange={handleInputChange}
             placeholder="Contact Number"
             required
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
+        {/* Role Selection */}
         <div className="mb-4">
           <label
             className="block text-gray-700 text-lg font-bold mb-2"
@@ -93,17 +158,18 @@ export default function AddUser() {
             Role
           </label>
           <select
-            className="shadow border rounded w-full py-2 px-3  bg-cute leading-tight focus:outline-none focus:shadow-outline"
             id="role"
             name="role"
             value={formData.role}
             onChange={handleInputChange}
             required
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           >
-            <option value="user">User</option>
-            <option value="admin">Admin</option>
+            <option value="user">user</option>
+            <option value="admin">admin</option>
           </select>
         </div>
+        {/* Password Input */}
         <div className="mb-4">
           <label
             className="block text-gray-700 text-lg font-bold mb-2"
@@ -112,7 +178,6 @@ export default function AddUser() {
             Password
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-cute leading-tight focus:outline-none focus:shadow-outline"
             type="password"
             id="password"
             name="password"
@@ -120,30 +185,14 @@ export default function AddUser() {
             onChange={handleInputChange}
             placeholder="Password"
             required
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
-        <div className="mb-6">
-          <label
-            className="block text-gray-700 text-lg font-bold mb-2"
-            htmlFor="confirmPassword"
-          >
-            Confirm Password
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-cute leading-tight focus:outline-none focus:shadow-outline"
-            type="password"
-            id="confirmPassword"
-            name="confirmPassword"
-            value={formData.confirmPassword}
-            onChange={handleInputChange}
-            placeholder="Confirm Password"
-            required
-          />
-        </div>
+        {/* Submit Button */}
         <div className="flex items-center justify-between">
           <button
-            className="bg-black hover:bg-buttons border border-cute text-lg text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
             type="submit"
+            className="bg-black hover:bg-buttons border border-cute text-lg text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
           >
             Submit
           </button>

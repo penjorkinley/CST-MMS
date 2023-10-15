@@ -8,7 +8,7 @@ export default function Feedback() {
     const fetchFeedback = async () => {
       try {
         const response = await fetch(
-          "http://localhost:3001/admin/viewfeedback"
+          "http://localhost:3001/feedback/viewfeedback"
         );
         if (!response.ok) {
           console.error("Failed to fetch feedback:", await response.text());
