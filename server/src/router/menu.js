@@ -12,16 +12,22 @@ router.get("/", async (req, res) => {
     const tomorrow = new Date(today);
     tomorrow.setDate(tomorrow.getDate() + 1);
 
-    // Find today's menu using the date
-    const menu = await MenuModel.findOne({
+    // Attempt to find today's menu using the date
+    let menu = await MenuModel.findOne({
       date: {
         $gte: today,
         $lt: tomorrow,
       },
     });
 
+    // If today's menu is not found, get the latest available menu
     if (!menu) {
-      return res.status(404).json({ message: "Menu not found for today." });
+      menu = await MenuModel.findOne().sort({ date: -1 }); // assuming 'date' is a field in your MenuModel
+    }
+
+    // If no menus are available, return an empty object or appropriate message
+    if (!menu) {
+      return res.json({});
     }
 
     res.json(menu);
