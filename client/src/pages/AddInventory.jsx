@@ -37,6 +37,8 @@ function AddInventory() {
     setInventoryName('');
     setQuantity('');
     setSinglePrice('');
+    setsubtotal('');
+
   };
 
   const handleEdit = (index) => {
@@ -64,7 +66,10 @@ function AddInventory() {
     setInventoryName('');
     setQuantity('');
     setSinglePrice('');
+    setsubtotal('');
   };
+
+  
 
   const handleDelete = (index) => {
     if (storeType === 'Essentials') {
@@ -244,6 +249,80 @@ function AddInventory() {
         </div>
       </div>
 
+      {/* {storeType === 'Essentials' && (
+        <div className="mt-8">
+          <h2 className="text-xl font-semibold pl-96">Essentials Inventory</h2>
+          <table className="w-full mt-4 border-collapse border border-gray-400 bg-white shadow-xl">
+            <thead>
+              <tr>
+                <th className="border border-gray-400">Date</th>
+                <th className="border border-gray-400">Inventory Name</th>
+                <th className="border border-gray-400">Quantity</th>
+                <th className="border border-gray-400">Single Price</th>
+                <th className="border border-gray-400">Sub Total</th>
+                <th className="border border-gray-400">Operation</th>
+              </tr>
+            </thead>
+            <tbody>
+              {essentialsData.map((item, index) => (
+                <tr key={index} className="border border-gray-400">
+                  <td className="border border-gray-400 text-center">{item.date}</td>
+                  <td className="border border-gray-400 text-center">
+                    {editIndex === index ? (
+                      <input
+                        type="text"
+                        value={inventoryName}
+                        onChange={(e) => setInventoryName(e.target.value)}
+                      />
+                    ) : (
+                      item.inventoryName
+                    )}
+                  </td>
+                  <td className="border border-gray-400 text-center">
+                    {editIndex === index ? (
+                      <input
+                        type="number"
+                        value={quantity}
+                        onChange={(e) => setQuantity(e.target.value)}
+                      />
+                    ) : (
+                      item.quantity
+                    )}
+                  </td>
+                  <td className="border border-gray-400 text-center">{item.singlePrice}</td>
+                  <td className="border border-gray-400 text-center">{item.subtotal}</td>
+                  <td className="border border-gray-400 text-center">
+                    {editIndex === index ? (
+                      <button
+                        onClick={() => handleSave(index)}
+                        className="bg-black text-white p-2 rounded-md"
+                      >
+                        Save
+                      </button>
+                    ) : (
+                      <>
+                        <button
+                          onClick={() => handleEdit(index)}
+                          className="bg-black text-white p-2 rounded-md w-16"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          onClick={() => handleDelete(index)} // Add this line
+                          className="bg-black text-white p-2 rounded-md ml-2" // Add this line
+                        >
+                          Delete
+                        </button>
+                      </>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )} */}
+
       {storeType === 'Essentials' && (
         <div className="mt-8">
           <h2 className="text-xl font-semibold pl-96">Essentials Inventory</h2>
@@ -357,6 +436,8 @@ function AddInventory() {
                   value={quantity}
                   onChange={(e) => setQuantity(e.target.value)}
                 />
+
+      
               ) : (
                 item.quantity
               )}
@@ -416,34 +497,39 @@ function AddInventory() {
 }
 
 const styles = StyleSheet.create({
-  header: {
-    textAlign: 'center',
-    marginBottom: 10,
+  page: {
+    flexDirection: 'row',
+    backgroundColor: 'white',
+    fontFamily: 'Lato',
   },
-  headerText: {
-    fontSize: 20,
-    fontWeight: 'bold',
+  section: {
+    margin: 10,
+    padding: 10,
+    flexGrow: 1,
   },
   table: {
     display: 'table',
-    width: '100%',
-    borderCollapse: 'collapse',
+    width: 'auto',
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: 'black',
   },
-  row: {
-    display: 'table-row',
+  tableRow: {
+    margin: 'auto',
+    flexDirection: 'row',
+  },
+  tableCell: {
+    margin: 'auto',
+    width: '25%',
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: 'black',
+    textAlign: 'center',
   },
   headerCell: {
-    backgroundColor: '#f0f0f0',
-    padding: 5,
-    textAlign: 'center',
-    fontWeight: 'bold',
-    border: '1px solid #ddd',
-  },
-  cell: {
-    padding: 5,
-    textAlign: 'center',
-    border: '1px solid #ddd',
+    backgroundColor: 'lightgray',
   },
 });
+
 
 export default AddInventory;
