@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import LoginImg from "../assets/Login.png";
 import { FcGoogle } from "react-icons/fc";
 import { MailIcon, LockClosedIcon } from "@heroicons/react/solid";
+import CustomModal from "../components/Modal";
 
 function Login() {
   const navigate = useNavigate();
@@ -12,6 +13,8 @@ function Login() {
   });
 
   const [errors, setErrors] = useState({});
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
 
   const validate = () => {
     let tempErrors = {};
@@ -43,16 +46,22 @@ function Login() {
           localStorage.setItem("token", data.token);
           // Dispatch the loginChange event here
           window.dispatchEvent(new Event("loginChange"));
-          alert("Successfully logged in!");
-          console.log(data);
-          navigate(data.redirectURL); // use redirectURL to navigate
+
+          setModalMessage("Successfully logged in!");
+          setIsModalOpen(true);
+          setTimeout(() => {
+            setIsModalOpen(false);
+            navigate(data.redirectURL);
+          }, 1000);
         } else {
           console.error(data.error);
-          alert("Failed to login: " + data.error);
+          setModalMessage("Failed to login: " + data.error);
+          setIsModalOpen(true);
         }
       } catch (error) {
         console.error("Failed to login:", error);
-        alert("Failed to login: " + error.message);
+        setModalMessage("Failed to login: " + error.message);
+        setIsModalOpen(true);
       }
     }
   };
@@ -127,6 +136,11 @@ function Login() {
             >
               Sign Up
             </Link>
+            <CustomModal
+              isOpen={isModalOpen}
+              onRequestClose={() => setIsModalOpen(false)}
+              message={modalMessage}
+            />
           </div>
         </div>
       </div>

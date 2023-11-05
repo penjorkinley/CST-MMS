@@ -2,6 +2,7 @@ import express from "express";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import { UserModel } from "../model/UsersModel.js";
+import { OrderCount } from "../model/orderCountModel.js";
 import cors from "cors";
 import dotenv from "dotenv";
 
@@ -83,5 +84,45 @@ router.post("/login", async (req, res) => {
 
   res.json({ message: successMessage, token, redirectURL });
 });
+
+router.post('/placeOrder', async (req, res) => {
+  try {
+    // Find the current order count
+    const currentOrderCount = await OrderCount.findOne();
+    if (!currentOrderCount) {
+      // If the count does not exist, create and initialize it to 1
+      const newOrderCount = new OrderCount({ count: 1 });
+      await newOrderCount.save();
+    } else {
+      // Increment the order count by 1
+      currentOrderCount.count += 1;
+      await currentOrderCount.save();
+    }
+    res.json({ success: true });
+  } catch (error) {
+    console.error('Error placing the order:', error);
+    res.status(500).json({ success: false, error: 'Error placing the order' });
+  }
+});
+
+router.get('/placeOrder', async (req, res) => {
+  try {
+    // Find the current order count
+    const currentOrderCount = await OrderCount.findOne();
+    
+    if (!currentOrderCount) {
+      // If the count does not exist, return 0 or another default value
+      return res.json({ count: 0 });
+    }
+    
+    // Send the order count as a JSON response
+    res.json({ count: currentOrderCount.count });
+  } catch (error) {
+    console.error('Error getting the order count:', error);
+    res.status(500).json({ error: 'Error getting the order count' });
+  }
+})
+
+
 
 export { router as usersRouter };

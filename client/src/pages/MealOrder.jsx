@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import Modal from "react-modal";
 import MealCard from "../components/MenuCard";
 import html2canvas from "html2canvas"; // Import html2canvas library
@@ -30,10 +30,18 @@ function MealOrder() {
   const modalRef = useRef(null); // Create a ref for the Modal content
 
   const handleOrder = () => {
-    setTimeout(() => {
-      setOrderSuccess(true);
-      setIsModalOpen(true);
-    }, 1000);
+    // Send a request to the backend to increment the order count
+    fetch("http://localhost:3001/auth/placeOrder", {
+      method: "POST",
+    })
+      .then(() => {
+        setOrderSuccess(true);
+        setIsModalOpen(true);
+      })
+      .catch((error) => {
+        console.error("Error placing the order: ", error);
+        // Handle error as needed
+      });
   };
 
   const closeModal = () => {

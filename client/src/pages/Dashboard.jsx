@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import DoughnutChart from "../components/DoughnutChart";
 import DashCards from "../components/DashCards";
 import GradientLineGraph from "../components/GradientLineGraph";
@@ -16,6 +17,20 @@ function Dashboard() {
     return weekNumber;
   }
 
+
+  const [orderCount, setOrderCount] = useState(undefined);
+
+  useEffect(() => {
+    fetch("http://localhost:3001/auth/placeOrder")
+      .then((response) => response.json())
+      .then((data) => {
+        setOrderCount(data.count);
+      })
+      .catch((error) => {
+        console.error("Error fetching order count: ", error);
+      });
+  }, []);
+
   return (
     <div className="overflow-auto">
       {/* <div className="flex items-center space-x-2 mb-4 pl-16">
@@ -31,7 +46,7 @@ function Dashboard() {
         />
         <DashCards
           title="Todays Orders"
-          count="114"
+          count={orderCount}
           desc="students are coming for the meal"
         />
         <DoughnutChart />
