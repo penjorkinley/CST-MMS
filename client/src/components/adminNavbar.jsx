@@ -7,6 +7,7 @@ import { VscFeedback } from "react-icons/vsc";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { TbLogout } from "react-icons/tb";
 import { MdOutlineInventory2 } from "react-icons/md";
+import { MdReceipt } from "react-icons/md";
 
 export default function adminNavbar() {
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext); // Using the context
@@ -58,6 +59,15 @@ export default function adminNavbar() {
               <MdOutlineInventory2 className="text-4xl" /> Inventory
             </Link>
           </li>
+          <li>
+            <Link
+              to="/admin/bill"
+              className="transition duration-300 ease-in-out hover:scale-105 text-2xl items-center py-4 hover:shadow-lg dark:hover:shadow-black"
+            >
+              <MdReceipt className="text-4xl" /> Generate Bill
+            </Link>
+          </li>
+
           <li>
             <Link
               to="/admin/adduser"
