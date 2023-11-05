@@ -90,7 +90,7 @@ const Bill = () => {
   };
 
   return (
-    <div className="p-4 shadow-2xl bg-cute ">
+    <div className="p-4 shadow-2xl bg-cute w-1/2 ">
       <h1 className="text-2xl font-bold">Bill Generation</h1>
 
       <div className="mt-4" >
