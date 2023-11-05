@@ -16,6 +16,8 @@ import AddMenu from "./components/AddMenu";
 import AddInventory from "./pages/AddInventory";
 import { AuthProvider } from "./contexts/AuthContext";
 import Dashboard from "./pages/Dashboard";
+import Bill from "./pages/Bill";
+
 
 function App() {
   return (
@@ -39,6 +41,7 @@ function App() {
                 <Route path="adduser" element={<AddUser />} />
                 <Route path="addmenu" element={<AddMenu />} />
                 <Route path="inventory" element={<AddInventory />} />
+                <Route path='bill' element={<Bill />}/>
               </Route>
               <Route path="/aboutus" element={<About />} />
               <Route path="/signin" element={<SignIn />} />
