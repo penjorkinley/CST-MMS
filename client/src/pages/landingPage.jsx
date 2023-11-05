@@ -15,6 +15,9 @@ function LandingPage() {
   const { isLoggedIn } = useContext(AuthContext); // Destructure isLoggedIn from context
 
   const [activeCarouselItem, setActiveCarouselItem] = useState(1);
+  const [menu, setMenu] = useState({ breakfast: [], lunch: [], dinner: [] });
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -44,6 +47,41 @@ function LandingPage() {
       navigate("/order");
     }
   };
+
+  // Fetch menu from the backend when the component mounts
+  useEffect(() => {
+    const fetchMenu = async () => {
+      setIsLoading(true);
+      try {
+        const response = await fetch("http://localhost:3001/menu");
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        // Set menu state if data is present
+        if (data && data.breakfast && data.lunch && data.dinner) {
+          setMenu(data);
+        } else {
+          // Handle case where no menu data is returned
+          setError("Menu data is empty or not in expected format.");
+        }
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchMenu();
+  }, []);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div className="relative h-[screen] bg-cute">
@@ -131,23 +169,29 @@ function LandingPage() {
               <MealCard
                 meal={"Breakfast"}
                 time={"7:00AM - 8:00AM"}
-                one={"Fried Rice"}
-                two={"Ezzay"}
-                three={"Tea"}
+                one={menu.breakfast?.[0]} // Use optional chaining to avoid errors if the array is empty
+                two={menu.breakfast?.[1]}
+                three={menu.breakfast?.[2]}
+                four={menu.breakfast?.[3]}
+                five={menu.breakfast?.[4]}
               />
               <MealCard
                 meal={"Lunch"}
                 time={"11:30AM - 1:00PM"}
-                one={"Rice"}
-                two={"Kewa Datsi"}
-                three={"Lentils Soup"}
+                one={menu.lunch?.[0]}
+                two={menu.lunch?.[1]}
+                three={menu.lunch?.[2]}
+                four={menu.lunch?.[3]}
+                five={menu.lunch?.[4]}
               />
               <MealCard
                 meal={"Dinner"}
                 time={"7:00PM - 8:00PM"}
-                one={"Rice"}
-                two={"Chicken Chilli"}
-                three={"Lentils Soup"}
+                one={menu.dinner?.[0]}
+                two={menu.dinner?.[1]}
+                three={menu.dinner?.[2]}
+                four={menu.dinner?.[3]}
+                five={menu.dinner?.[4]}
               />
             </div>
 

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Modal from "react-modal";
 import MealCard from "../components/MenuCard";
 import html2canvas from "html2canvas"; // Import html2canvas library
@@ -27,7 +27,34 @@ Modal.setAppElement("#root");
 function MealOrder() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [orderSuccess, setOrderSuccess] = useState(false);
+  const [menu, setMenu] = useState({ breakfast: [], lunch: [], dinner: [] });
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
   const modalRef = useRef(null); // Create a ref for the Modal content
+
+  useEffect(() => {
+    const fetchMenu = async () => {
+      setIsLoading(true);
+      try {
+        const response = await fetch("http://localhost:3001/menu");
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        if (data && data.breakfast && data.lunch && data.dinner) {
+          setMenu(data);
+        } else {
+          setError("Menu data is empty or not in expected format.");
+        }
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchMenu();
+  }, []);
 
   const handleOrder = () => {
     setTimeout(() => {
@@ -53,6 +80,13 @@ function MealOrder() {
       closeModal();
     });
   };
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div className="flex items-center justify-center h-[83vh] relative overflow-hidden">
@@ -76,23 +110,29 @@ function MealOrder() {
           <MealCard
             meal={"Breakfast"}
             time={"7:00AM - 8:00AM"}
-            one={"Fried Rice"}
-            two={"Ezzay"}
-            three={"Tea"}
+            one={menu.breakfast?.[0]} // Use optional chaining to avoid errors if the array is empty
+            two={menu.breakfast?.[1]}
+            three={menu.breakfast?.[2]}
+            four={menu.breakfast?.[3]}
+            five={menu.breakfast?.[4]}
           />
           <MealCard
             meal={"Lunch"}
             time={"11:30AM - 1:00PM"}
-            one={"Rice"}
-            two={"Kewa Datsi"}
-            three={"Lentils Soup"}
+            one={menu.lunch?.[0]}
+            two={menu.lunch?.[1]}
+            three={menu.lunch?.[2]}
+            four={menu.lunch?.[3]}
+            five={menu.lunch?.[4]}
           />
           <MealCard
             meal={"Dinner"}
             time={"7:00PM - 8:00PM"}
-            one={"Rice"}
-            two={"Chicken Chilli"}
-            three={"Lentils Soup"}
+            one={menu.dinner?.[0]}
+            two={menu.dinner?.[1]}
+            three={menu.dinner?.[2]}
+            four={menu.dinner?.[3]}
+            five={menu.dinner?.[4]}
           />
         </div>
         <button
