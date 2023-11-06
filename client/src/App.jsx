@@ -18,6 +18,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import Dashboard from "./pages/Dashboard";
 import Bill from "./pages/Bill";
 import NotFound from "./pages/notFound";
+import { useMemo } from "react";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
       >
         <Router>
           <Navigation />
+          
           <div style={{ flex: 1 }}>
             {" "}
             {/* This div will grow to take up all available space */}
@@ -57,21 +59,21 @@ function App() {
 }
 
 function Navigation() {
-  // Import useLocation here
   const location = useLocation();
 
-  // Check if the current route is not the landing page
-  const shouldShowNav =
-    location.pathname !== "/" &&
-    location.pathname !== "/admin" &&
-    location.pathname !== "/admin/viewfeedback" &&
-    location.pathname !== "/admin/adduser" &&
-    location.pathname !== "/admin/dashboard" &&
-    location.pathname !== "/admin/inventory" &&
-    location.pathname !== "/admin/addmenu" &&
-    location.pathname == "*";
+  const shouldShowNav = useMemo(() => {
+    return !(
+      location.pathname === "/" ||
+      location.pathname === "/admin" ||
+      location.pathname === "/admin/viewfeedback" ||
+      location.pathname === "/admin/adduser" ||
+      location.pathname === "/admin/addmenu" ||
+      location.pathname === "/admin/inventory" ||
+      location.pathname === "/admin/bill" ||
+      location.pathname === "*"
+    );
+  }, [location]);
 
-  // Conditional rendering of RegularNav
   return shouldShowNav ? <RegularNav /> : null;
 }
 

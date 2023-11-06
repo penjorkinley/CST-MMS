@@ -145,7 +145,7 @@ function MealOrder() {
         </div>
         <button
           onClick={handleOrder}
-          className="bg-emerald-500 w-[120px] h-11 px-4 py-2 rounded-md text-white font-semibold ml-4 hover:bg-black"
+          className="bg-buttons w-[120px] h-11 px-4 py-2 rounded-md text-white font-semibold ml-4 hover:bg-black"
         >
           Place Order
         </button>
