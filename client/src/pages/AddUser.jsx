@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { BiSolidUserPlus } from "react-icons/bi";
+
+
 
 export default function AddUser() {
   const [formData, setFormData] = useState({
@@ -67,7 +70,13 @@ export default function AddUser() {
   };
 
   return (
-    <div className="w-full max-w-xl min-h-fit mx-auto mt-4">
+    <div className="flex-row w-1/2 items-center max-w-xl">
+      <div className="flex items-center space-x-2 mb-5">
+        <BiSolidUserPlus className="text-5xl" />
+        <h1 className="text-4xl font-bold">Add New User</h1>
+      </div>
+
+    <div className="  min-h-fit  mt-4">
       <form
         onSubmit={handleSubmit}
         className="bg-white shadow-2xl px-8 pt-6 pb-8 mb-2"
@@ -199,5 +208,6 @@ export default function AddUser() {
         </div>
       </form>
     </div>
+  </div>
   );
 }

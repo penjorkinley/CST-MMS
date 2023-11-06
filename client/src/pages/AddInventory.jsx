@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { MdOutlineInventory } from "react-icons/md";
+
 import {
   Document,
   Page,
@@ -225,8 +227,12 @@ function AddInventory() {
   };
 
   return (
+    <div className="flex-row  items-center ">
+      <div className="flex items-center space-x-2 mb-5">
+        <MdOutlineInventory className="text-5xl" />
+        <h1 className="text-4xl font-bold">Inventory Management</h1>
+      </div>
     <div className="p-4 shadow-2xl bg-cute">
-      <h1 className="text-2xl font-bold">Inventory Management</h1>
 
       <div className="mt-4 ">
         <div className="flex space-x-4">
@@ -438,12 +444,14 @@ function AddInventory() {
       )}
 
       <div className="mt-4 pb-48 ">
-        <PDFDownloadLink document={generatePDF()} fileName="inventory.pdf">
+    
+        <PDFDownloadLink document={generatePDF()} fileName="inventory.pdf" className="bg-black text-white p-2 rounded-xl">
           {({ blob, url, loading, error }) =>
             loading ? "Loading document..." : "Download PDF"
           }
         </PDFDownloadLink>
       </div>
+    </div>
     </div>
   );
 }
