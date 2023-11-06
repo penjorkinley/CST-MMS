@@ -10,6 +10,7 @@ const Bill = () => {
   const [bills, setBills] = useState([]);
   const [selectedBillIndex, setSelectedBillIndex] = useState(null);
 
+
   useEffect(() => {
     fetch("http://localhost:3001/auth/placeOrder")
       .then((response) => response.json())
@@ -77,7 +78,9 @@ const Bill = () => {
             console.error("Failed to save the bill.");
           }
           setBills([...bills, data.bill]);
-          alert("Bill Generated and saved successfully");
+
+          alert("Bill Generated and saved successfully")
+          
 
           // Reset form fields
           setMonth("January");

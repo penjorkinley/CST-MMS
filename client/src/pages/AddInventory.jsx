@@ -66,7 +66,8 @@ function AddInventory() {
           setVesselsData([...vesselsData, data]);
         }
         // Alert success message
-        alert("Inventory added successfully!");
+        alert("Inventory added successfully!")
+
       })
       .catch((error) => {
         // Handle any errors here
@@ -222,6 +223,7 @@ function AddInventory() {
         <MdOutlineInventory className="text-5xl" />
         <h1 className="text-4xl font-bold">Inventory Management</h1>
       </div>
+
       <div className="p-4 shadow-2xl bg-cute">
         <div className="mt-4 ">
           <div className="flex space-x-4">
@@ -403,7 +405,7 @@ function AddInventory() {
                       {item.subtotal}
                     </td>
                     <td className="border border-gray-400 text-center">
-                    {editIndex === index ? (
+                      {editIndex === index ? (
                         <button
                           onClick={() => handleSave(index)}
                           className="bg-blackText text-white p-2 rounded-md "
