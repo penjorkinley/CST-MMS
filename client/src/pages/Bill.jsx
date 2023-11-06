@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { jsPDF } from "jspdf";
+import 'jspdf-autotable';
 import { MdReceipt } from "react-icons/md";
 
 const Bill = () => {
   const [month, setMonth] = useState("January");
-  const [totalAmount, setTotalAmount] = useState("");
+  const [totalFund, setTotalFund] = useState("");
   const [expenditures, setExpenditures] = useState("");
   const [totalStudents, setTotalStudents] = useState("");
   const [bills, setBills] = useState([]);
@@ -26,13 +27,13 @@ const Bill = () => {
   ];
 
   const addBill = () => {
-    if (month && totalAmount && expenditures && totalStudents) {
+    if (month && totalFund && expenditures && totalStudents) {
       if (selectedBillIndex !== null) {
         // If editing an existing bill
         const updatedBills = [...bills];
         updatedBills[selectedBillIndex] = {
           month,
-          totalAmount,
+          totalFund,
           expenditures,
           totalStudents,
         };
@@ -42,7 +43,7 @@ const Bill = () => {
         // If creating a new bill
         const newBill = {
           month,
-          totalAmount,
+          totalFund,
           expenditures,
           totalStudents,
         };
@@ -50,7 +51,7 @@ const Bill = () => {
       }
       // Reset form fields
       setMonth("January");
-      setTotalAmount("");
+      setTotalFund("");
       setExpenditures("");
       setTotalStudents("");
     }
@@ -59,7 +60,7 @@ const Bill = () => {
   const editBill = (index) => {
     const billToEdit = bills[index];
     setMonth(billToEdit.month);
-    setTotalAmount(billToEdit.totalAmount);
+    setTotalFund(billToEdit.totalFund);
     setExpenditures(billToEdit.expenditures);
     setTotalStudents(billToEdit.totalStudents);
     setSelectedBillIndex(index);
@@ -73,7 +74,7 @@ const Bill = () => {
 
   const resetForm = () => {
     setMonth("January");
-    setTotalAmount("");
+    setTotalFund("");
     setExpenditures("");
     setTotalStudents("");
     setSelectedBillIndex(null);
@@ -81,24 +82,25 @@ const Bill = () => {
 
   const generatePDF = () => {
     const doc = new jsPDF();
+  
+    doc.text("Monthly Bills 2023", 85, 10);
+    doc.text("Note: ", 15, 20);
+    doc.text("Each meal price as Nu.25", 15, 30);
 
-    doc.text("Monthly Bills", 75, 10);
-
-    let y = 20;
-    bills.forEach((bill, index) => {
-      y += 10;
-      doc.text(`Month: ${bill.month}`, 10, y);
-      doc.text(`Total Amount: ${bill.totalAmount}`, 50, y);
-      doc.text(`Expenditures: ${bill.expenditures}`, 100, y);
-      doc.text(`Total Students: ${bill.totalStudents}`, 150, y);
-
-      if (index < bills.length - 1) {
-        doc.line(10, y + 5, 200, y + 5);
-      }
+  
+    const tableHeaders = ['Month', 'Total Amount', 'Expenditures', 'Total Students'];
+    const tableData = bills.map(bill => [bill.month, bill.totalFund, bill.expenditures, bill.totalStudents]);
+  
+    doc.autoTable({
+      head: [tableHeaders],
+      body: tableData,
+      startY: 40,
+      theme: 'striped', // Optional: you can apply different themes to the table
     });
-
+  
     doc.save("bills.pdf");
   };
+  
 
   return (
     <div className="flex-row w-1/2 items-center">
@@ -127,15 +129,28 @@ const Bill = () => {
         </div>
 
         <div className="mt-4">
-          <label htmlFor="totalAmount" className="block font-semibold">
-            Total Amount:
+          <label htmlFor="totalFund" className="block font-semibold">
+            Total Fund:
           </label>
           <input
             type="number"
-            id="totalAmount"
+            id="totalFund"
             className="border p-2 rounded-md w-2/4"
-            value={totalAmount}
-            onChange={(e) => setTotalAmount(e.target.value)}
+            value={totalFund}
+            onChange={(e) => setTotalFund(e.target.value)}
+          />
+        </div>
+
+        <div className="mt-4">
+          <label htmlFor="totalStudents" className="block font-semibold">
+            Number of Students Dined:
+          </label>
+          <input
+            type="number"
+            id="totalStudents"
+            className="border p-2 rounded-md w-2/4"
+            value={totalStudents}
+            onChange={(e) => setTotalStudents(e.target.value)}
           />
         </div>
 
@@ -152,18 +167,7 @@ const Bill = () => {
           />
         </div>
 
-        <div className="mt-4">
-          <label htmlFor="totalStudents" className="block font-semibold">
-            Total Number of Students:
-          </label>
-          <input
-            type="number"
-            id="totalStudents"
-            className="border p-2 rounded-md w-2/4"
-            value={totalStudents}
-            onChange={(e) => setTotalStudents(e.target.value)}
-          />
-        </div>
+        
 
         <div className="mt-4">
           <button
@@ -197,7 +201,7 @@ const Bill = () => {
                   <tr key={index} className="border border-gray-400">
                     <td className="border border-gray-400">{bill.month}</td>
                     <td className="border border-gray-400">
-                      {bill.totalAmount}
+                      {bill.totalFund}
                     </td>
                     <td className="border border-gray-400">
                       {bill.expenditures}
