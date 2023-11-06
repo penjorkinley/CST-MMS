@@ -79,7 +79,7 @@ export default function AddUser() {
     <div className="  min-h-fit  mt-4">
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-2xl px-8 pt-6 pb-8 mb-2"
+        className="bg-cute shadow-2xl px-8 pt-6 pb-8 mb-2"
       >
         {/* Name Input */}
         <div className="mb-4">
