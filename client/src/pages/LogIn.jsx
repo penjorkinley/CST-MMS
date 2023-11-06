@@ -52,7 +52,7 @@ function Login() {
           setTimeout(() => {
             setIsModalOpen(false);
             navigate(data.redirectURL);
-          }, 1000);
+          }, 1500);
         } else {
           console.error(data.error);
           setModalMessage("Failed to login: " + data.error);
@@ -137,9 +137,11 @@ function Login() {
               Sign Up
             </Link>
             <CustomModal
+            
               isOpen={isModalOpen}
               onRequestClose={() => setIsModalOpen(false)}
               message={modalMessage}
+              
             />
           </div>
         </div>

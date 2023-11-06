@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useContext } from "react"; // Importing useContext
+import { useContext, useState } from "react"; // Importing useContext
 import { AuthContext } from "../contexts/AuthContext.jsx"; // Importing AuthContext
 import { TbDeviceDesktopAnalytics } from "react-icons/tb";
 import { BiSolidAddToQueue } from "react-icons/bi";
@@ -8,20 +8,17 @@ import { AiOutlineUserAdd } from "react-icons/ai";
 import { TbLogout } from "react-icons/tb";
 import { MdOutlineInventory2 } from "react-icons/md";
 import { MdReceipt } from "react-icons/md";
+import LogoutModal from "./LogoutModal.jsx";
 
 export default function adminNavbar() {
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext); // Using the context
   const navigate = useNavigate();
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
+  const [isBlurry, setIsBlurry] = useState(false);
 
   const handleAdminLogout = () => {
-    if (window.confirm("Are you sure you want to log out?")) {
-      // Clearing session data and updating context/state
-      localStorage.removeItem("token");
-      setIsLoggedIn(false);
-
-      // Redirecting the user after logout
-      navigate("/");
-    }
+    setIsBlurry(true);
+    setIsLogoutModalOpen(true);
   };
 
   return (
@@ -97,6 +94,20 @@ export default function adminNavbar() {
           </div>
         </ul>
       </div>
+      <LogoutModal
+        isOpen={isLogoutModalOpen}
+        onCancel={() => {
+          setIsLogoutModalOpen(false);
+          setIsBlurry(false);
+        }}
+        onConfirm={() => {
+          localStorage.removeItem("token");
+          setIsLoggedIn(false);
+          navigate("/");
+          window.dispatchEvent(new Event("loginChange"));
+          setIsLogoutModalOpen(false);
+        }}
+      />
     </div>
   );
 }

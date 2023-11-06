@@ -59,21 +59,21 @@ function App() {
 }
 
 function Navigation() {
+  // Import useLocation here
   const location = useLocation();
 
-  const shouldShowNav = useMemo(() => {
-    return !(
-      location.pathname === "/" ||
-      location.pathname === "/admin" ||
-      location.pathname === "/admin/viewfeedback" ||
-      location.pathname === "/admin/adduser" ||
-      location.pathname === "/admin/addmenu" ||
-      location.pathname === "/admin/inventory" ||
-      location.pathname === "/admin/bill" ||
-      location.pathname === "*"
-    );
-  }, [location]);
+  // Check if the current route is not the landing page
+  const shouldShowNav =
+    location.pathname !== "/" &&
+    location.pathname !== "/admin" &&
+    location.pathname !== "/admin/viewfeedback" &&
+    location.pathname !== "/admin/adduser" &&
+    location.pathname !== "/admin/dashboard" &&
+    location.pathname !== "/admin/inventory" &&
+    location.pathname !== "/admin/addmenu";
+  
 
+  // Conditional rendering of RegularNav
   return shouldShowNav ? <RegularNav /> : null;
 }
 
