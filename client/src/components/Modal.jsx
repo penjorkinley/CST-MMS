@@ -9,6 +9,7 @@ const customStyles = {
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
     borderRadius: "8px",
+    background: "rgb(187 247 208)",
     boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
   },
 };

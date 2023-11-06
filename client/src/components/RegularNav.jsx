@@ -1,20 +1,20 @@
-import React, { useEffect, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext.jsx";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/Logo.PNG";
 import { HiOutlineLogout } from "react-icons/hi";
+import LogoutModal from "./LogoutModal.jsx";
 
 export default function RegularNav() {
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
+  const [isBlurry, setIsBlurry] = useState(false);
+
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    if (window.confirm("Are you sure you want to log out?")) {
-      localStorage.removeItem("token");
-      setIsLoggedIn(false);
-      navigate("/");
-      window.dispatchEvent(new Event("loginChange"));
-    }
+    setIsBlurry(true);
+    setIsLogoutModalOpen(true);
   };
   const handleOrderClick = () => {
     if (!isLoggedIn) {
@@ -49,7 +49,7 @@ export default function RegularNav() {
   }, []);
 
   return (
-    <div className="bg-cute pl-3 py-4 border-b-4 h-[120px] sticky top-0 z-50">
+    <div className={`bg-cute pl-3 py-4 border-b-4 h-[120px] sticky top-0 z-50`}>
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
           <img src={logo} alt="Logo" className="h-[100px] border-none " />
@@ -121,6 +121,20 @@ export default function RegularNav() {
           )}
         </ul>
       </div>
+      <LogoutModal
+        isOpen={isLogoutModalOpen}
+        onCancel={() => {
+          setIsBlurry(false);
+          setIsLogoutModalOpen(false);
+        }}
+        onConfirm={() => {
+          localStorage.removeItem("token");
+          setIsLoggedIn(false);
+          navigate("/");
+          window.dispatchEvent(new Event("loginChange"));
+          setIsLogoutModalOpen(false);
+        }}
+      />
     </div>
   );
 }

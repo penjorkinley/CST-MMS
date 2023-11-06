@@ -8,6 +8,7 @@ import mess1 from "../assets/mess1.JPG";
 import mess2 from "../assets/mess2.JPG";
 import mess3 from "../assets/mess3.jpg";
 import mess4 from "../assets/mess4.JPG";
+import CustomModal from "../components/Modal";
 
 function LandingPage() {
   const navigate = useNavigate();
@@ -18,6 +19,8 @@ function LandingPage() {
   const [menu, setMenu] = useState({ breakfast: [], lunch: [], dinner: [] });
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -41,8 +44,12 @@ function LandingPage() {
 
   const handleOrderClick = () => {
     if (!isLoggedIn) {
-      alert("Please login or sign up first.");
-      navigate("login");
+      setModalMessage("Please login or sign up first.");
+      setIsModalOpen(true);
+      setTimeout(() => {
+        setIsModalOpen(false);
+        navigate("login");
+      }, 2000);
     } else {
       navigate("/order");
     }
@@ -206,6 +213,11 @@ function LandingPage() {
           </div>
         </div>
       </div>
+      <CustomModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        message={modalMessage}
+      />
     </div>
   );
 }
