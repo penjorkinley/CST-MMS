@@ -9,22 +9,6 @@ const JWT_SECRET = process.env.JWT_SECRET || "defaultSecret";
 
 const addUserRouter = express.Router();
 
-// // Middleware for Admin Authentication
-// const adminAuthMiddleware = (req, res, next) => {
-//   const token = req.headers["authorization"];
-//   try {
-//     const decoded = jwt.verify(token, JWT_SECRET);
-//     if (decoded.isAdmin) {
-//       next();
-//     } else {
-//       res
-//         .status(403)
-//         .json({ error: "You're not authorized to access this resource." });
-//     }
-//   } catch (err) {
-//     res.status(401).json({ error: "Authentication failed." });
-//   }
-// };
 
 // Admin Route to Add User
 addUserRouter.post("/adduser",  async (req, res) => {
