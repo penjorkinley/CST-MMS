@@ -108,7 +108,7 @@ function AddMenu() {
         />
         <button
           onClick={handleAddMenuItem}
-          className="bg-blackText text-white p-3 rounded-xl font-bold"
+          className="bg-blackText text-white p-3 rounded-xl font-bold transition duration-300 ease-in-out hover:scale-105 hover:shadow-lg dark:hover:shadow-black"
         >
           Add
         </button>
@@ -168,13 +168,13 @@ function AddMenu() {
       <div className="my-4">
         <button
           onClick={handleUpdateMenu}
-          className="bg-blackText font-bold text-white p-3 rounded-xl"
+          className="bg-blackText font-bold text-white p-3 rounded-xl transition duration-300 ease-in-out hover:scale-105 hover:shadow-lg dark:hover:shadow-black"
         >
           Update
         </button>
         <button
           onClick={handleClearMenu}
-          className="bg-buttons font-bold text-white p-3 rounded-xl ml-4"
+          className="bg-buttons font-bold text-white p-3 rounded-xl ml-4 transition duration-300 ease-in-out hover:scale-105 hover:shadow-lg dark:hover:shadow-black"
         >
           Clear
         </button>
