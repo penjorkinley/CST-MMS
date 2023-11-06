@@ -85,7 +85,7 @@ router.post("/login", async (req, res) => {
   res.json({ message: successMessage, token, redirectURL });
 });
 
-router.post('/placeOrder', async (req, res) => {
+router.post("/placeOrder", async (req, res) => {
   try {
     // Find the current order count
     const currentOrderCount = await OrderCount.findOne();
@@ -100,29 +100,37 @@ router.post('/placeOrder', async (req, res) => {
     }
     res.json({ success: true });
   } catch (error) {
-    console.error('Error placing the order:', error);
-    res.status(500).json({ success: false, error: 'Error placing the order' });
+    console.error("Error placing the order:", error);
+    res.status(500).json({ success: false, error: "Error placing the order" });
   }
 });
 
-router.get('/placeOrder', async (req, res) => {
+router.get("/placeOrder", async (req, res) => {
   try {
     // Find the current order count
     const currentOrderCount = await OrderCount.findOne();
-    
+
     if (!currentOrderCount) {
       // If the count does not exist, return 0 or another default value
       return res.json({ count: 0 });
     }
-    
+
     // Send the order count as a JSON response
     res.json({ count: currentOrderCount.count });
   } catch (error) {
-    console.error('Error getting the order count:', error);
-    res.status(500).json({ error: 'Error getting the order count' });
+    console.error("Error getting the order count:", error);
+    res.status(500).json({ error: "Error getting the order count" });
   }
-})
-
-
+});
+//to get user count from database 
+router.get("/usercount", async (req, res) => {
+  try {
+    const userCount = await UserModel.countDocuments({ role: "user" });
+    res.status(200).json({ count: userCount });
+  } catch (error) {
+    console.error("Error fetching user count:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
 
 export { router as usersRouter };

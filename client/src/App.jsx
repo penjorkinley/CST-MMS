@@ -17,7 +17,7 @@ import AddInventory from "./pages/AddInventory";
 import { AuthProvider } from "./contexts/AuthContext";
 import Dashboard from "./pages/Dashboard";
 import Bill from "./pages/Bill";
-
+import NotFound from "./pages/notFound";
 
 function App() {
   return (
@@ -36,16 +36,17 @@ function App() {
               <Route path="/" element={<LandingPage />} />
               <Route path="/feedback" element={<Feedback />} />
               <Route path="/admin" element={<AdminDashboard />}>
-                <Route path="dashboard" element={<Dashboard/>}/>
+                <Route path="dashboard" element={<Dashboard />} />
                 <Route path="viewfeedback" element={<AdminFeedback />} />
                 <Route path="adduser" element={<AddUser />} />
                 <Route path="addmenu" element={<AddMenu />} />
                 <Route path="inventory" element={<AddInventory />} />
-                <Route path='bill' element={<Bill />}/>
+                <Route path="bill" element={<Bill />} />
               </Route>
               <Route path="/aboutus" element={<About />} />
               <Route path="/signin" element={<SignIn />} />
               <Route path="/login" element={<Login />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
           <Footer />
@@ -67,7 +68,8 @@ function Navigation() {
     location.pathname !== "/admin/adduser" &&
     location.pathname !== "/admin/dashboard" &&
     location.pathname !== "/admin/inventory" &&
-    location.pathname !== "/admin/addmenu";
+    location.pathname !== "/admin/addmenu" &&
+    location.pathname == "*";
 
   // Conditional rendering of RegularNav
   return shouldShowNav ? <RegularNav /> : null;

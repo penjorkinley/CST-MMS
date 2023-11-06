@@ -3,8 +3,6 @@ import DoughnutChart from "../components/DoughnutChart";
 import DashCards from "../components/DashCards";
 import GradientLineGraph from "../components/GradientLineGraph";
 
-
-
 function Dashboard() {
   const currentDate = new Date();
 
@@ -17,8 +15,8 @@ function Dashboard() {
     return weekNumber;
   }
 
-
   const [orderCount, setOrderCount] = useState(undefined);
+  const [studentCount, setStudentCount] = useState(undefined);
 
   useEffect(() => {
     fetch("http://localhost:3001/auth/placeOrder")
@@ -31,22 +29,29 @@ function Dashboard() {
       });
   }, []);
 
+  // Fetch student count
+  useEffect(() => {
+    fetch("http://localhost:3001/auth/usercount")
+      .then((response) => response.json())
+      .then((data) => {
+        setStudentCount(data.count);
+      })
+      .catch((error) => {
+        console.error("Error fetching student count: ", error);
+      });
+  }, []);
+
   return (
     <div className="overflow-auto">
-      {/* <div className="flex items-center space-x-2 mb-4 pl-16">
-        <RiDashboard2Fill className="text-4xl mt-1" />
-        <h1 className="text-4xl font-bold">Dashboard</h1>
-      </div> */}
       <div className="grid grid-cols-3 gap-4 w-auto h-auto pl-16 mt-5">
-        
         <DashCards
           title="Total Number of Students"
-          count="1257"
+          count={studentCount !== undefined ? studentCount : "Loading..."}
           desc="20% more registrations"
         />
         <DashCards
           title="Todays Orders"
-          count={orderCount}
+          count={orderCount !== undefined ? orderCount : "Loading..."}
           desc="students are coming for the meal"
         />
         <DoughnutChart />
