@@ -403,6 +403,29 @@ function AddInventory() {
                       {item.subtotal}
                     </td>
                     <td className="border border-gray-400 text-center">
+                    {editIndex === index ? (
+                        <button
+                          onClick={() => handleSave(index)}
+                          className="bg-blackText text-white p-2 rounded-md "
+                        >
+                          Save
+                        </button>
+                      ) : (
+                        <>
+                          {/* <button
+                          onClick={() => handleEdit(index)}
+                          className="bg-black text-white p-2 rounded-md w-16"
+                        >
+                          Edit
+                        </button> */}
+                          <button
+                            onClick={() => handleDelete(index)}
+                            className="bg-red-500 text-white p-2 rounded-md ml-2 mt-1 mb-1 transition duration-300 ease-in-out hover:scale-105 hover:shadow-lg dark:hover:shadow-black"
+                          >
+                            Delete
+                          </button>
+                        </>
+                      )}
                     </td>
                   </tr>
                 ))}
