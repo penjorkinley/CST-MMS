@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import pic from "../assets/KSI.png";
+import CustomModal from "../components/Modal";
 
 export default function Feedback() {
   const [rating, setRating] = useState(1); // Set default rating to 1
   const [improvement, setImprovement] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -28,11 +31,19 @@ export default function Feedback() {
 
       if (!response.ok) {
         console.error("Error submitting feedback:", await response.text());
-        alert("Failed to submit feedback. Please try again later.");
+        setModalMessage("Failed to submit Feedback. Please try again later.");
+        setIsModalOpen(true);
+        setTimeout(() => {
+          setIsModalOpen(false);
+        }, 1500);
       } else {
         const responseData = await response.json();
         console.log("Feedback submitted successfully:", responseData);
-        alert("Feedback submitted successfully!");
+        setModalMessage("Thank you for your feedback!");
+        setIsModalOpen(true);
+        setTimeout(() => {
+          setIsModalOpen(false);
+        }, 2000);
         // Reset fields to default values
         setRating(1);
         setImprovement("");
@@ -99,6 +110,11 @@ export default function Feedback() {
             </div>
           </div>
         </div>
+        <CustomModal
+          isOpen={isModalOpen}
+          onRequestClose={() => setIsModalOpen(false)}
+          message={modalMessage}
+        />
       </div>
     </form>
   );

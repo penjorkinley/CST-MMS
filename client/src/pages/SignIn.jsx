@@ -9,6 +9,7 @@ import {
   MailIcon,
   LockClosedIcon,
 } from "@heroicons/react/solid";
+import CustomModal from "../components/Modal";
 
 function SignIn() {
   const navigate = useNavigate();
@@ -21,6 +22,8 @@ function SignIn() {
   });
 
   const [errors, setErrors] = useState({});
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
 
   const validate = () => {
     const tempErrors = {
@@ -59,17 +62,48 @@ function SignIn() {
 
         const data = await response.json();
         if (response.status === 201) {
-          alert("Successfully registered! Please login to continue.");
-          navigate("/login"); //redirect to login page
+          setModalMessage("Successfully registered! Please login to continue.");
+          setIsModalOpen(true);
+          setTimeout(() => {
+            setIsModalOpen(false);
+            navigate("/login"); //redirect to login page
+          }, 2000);
+
+          // alert("Successfully registered! Please login to continue.");
         } else {
           if (data.error.includes("username")) {
-            alert("Username already exists.");
+            setModalMessage(
+              "Username already exists"
+            );
+            setIsModalOpen(true);
+            setTimeout(() => {
+              setIsModalOpen(false);
+            }, 2000);
           } else if (data.error.includes("email")) {
-            alert("Email already exists.");
+            setModalMessage(
+              "Email already exists"
+            );
+            setIsModalOpen(true);
+            setTimeout(() => {
+              setIsModalOpen(false);
+            }, 2000);
           } else if (data.error.includes("phoneNumber")) {
-            alert("Phone number already exists.");
+            setModalMessage(
+              "Phone number already exists."
+            );
+            setIsModalOpen(true);
+            setTimeout(() => {
+              setIsModalOpen(false);
+            }, 2000);
           } else {
-            alert(data.error || "Registration failed for an unknown reason.");
+            // alert(data.error || "Registration failed for an unknown reason.");
+            setModalMessage(
+              "Registration failed for an unknown reason."
+            );
+            setIsModalOpen(true);
+            setTimeout(() => {
+              setIsModalOpen(false);
+            }, 2000);
           }
         }
       } catch (error) {
@@ -154,6 +188,11 @@ function SignIn() {
           className="w-3/5 h-auto object-cover mx-auto my-auto"
         />
       </div>
+      <CustomModal
+        isOpen={isModalOpen}
+        onRequestClose={() => setIsModalOpen(false)}
+        message={modalMessage}
+      />
     </div>
   );
 }

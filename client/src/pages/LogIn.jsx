@@ -47,7 +47,7 @@ function Login() {
           // Dispatch the loginChange event here
           window.dispatchEvent(new Event("loginChange"));
 
-          setModalMessage("Successfully logged in!");
+          setModalMessage("Kuzu Kuzu 🍲");
           setIsModalOpen(true);
           setTimeout(() => {
             setIsModalOpen(false);
@@ -137,11 +137,9 @@ function Login() {
               Sign Up
             </Link>
             <CustomModal
-            
               isOpen={isModalOpen}
               onRequestClose={() => setIsModalOpen(false)}
               message={modalMessage}
-              
             />
           </div>
         </div>

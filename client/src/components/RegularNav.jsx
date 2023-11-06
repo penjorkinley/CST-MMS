@@ -4,11 +4,14 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/Logo.PNG";
 import { HiOutlineLogout } from "react-icons/hi";
 import LogoutModal from "./LogoutModal.jsx";
+import CustomModal from "./Modal.jsx";
 
 export default function RegularNav() {
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
   const [isBlurry, setIsBlurry] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
 
   const navigate = useNavigate();
 
@@ -18,16 +21,24 @@ export default function RegularNav() {
   };
   const handleOrderClick = () => {
     if (!isLoggedIn) {
-      alert("Please login or sign up first.");
-      navigate("login");
+      setModalMessage("Please login or sign up first!");
+      setIsModalOpen(true);
+      setTimeout(() => {
+        setIsModalOpen(false);
+        navigate("login");
+      }, 1500);
     } else {
       navigate("/order");
     }
   };
   const handleFeedbackClick = () => {
     if (!isLoggedIn) {
-      alert("Please login or sign up first.");
-      navigate("login");
+      setModalMessage("Please login or sign up first!");
+      setIsModalOpen(true);
+      setTimeout(() => {
+        setIsModalOpen(false);
+        navigate("login");
+      }, 1500);
     } else {
       navigate("/feedback");
     }
@@ -134,6 +145,12 @@ export default function RegularNav() {
           window.dispatchEvent(new Event("loginChange"));
           setIsLogoutModalOpen(false);
         }}
+      />
+
+      <CustomModal
+        isOpen={isModalOpen}
+        onRequestClose={() => setIsModalOpen(false)}
+        message={modalMessage}
       />
     </div>
   );

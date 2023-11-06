@@ -18,7 +18,6 @@ import { AuthProvider } from "./contexts/AuthContext";
 import Dashboard from "./pages/Dashboard";
 import Bill from "./pages/Bill";
 import NotFound from "./pages/notFound";
-import { useMemo } from "react";
 
 function App() {
   return (
