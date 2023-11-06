@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { jsPDF } from "jspdf";
-import 'jspdf-autotable';
+import "jspdf-autotable";
 import { MdReceipt } from "react-icons/md";
 
 const Bill = () => {
@@ -8,6 +8,7 @@ const Bill = () => {
   const [totalFund, setTotalFund] = useState("");
   const [expenditures, setExpenditures] = useState("");
   const [totalStudents, setTotalStudents] = useState("");
+  const [balance, setBalance] = useState(""); // Added state for balance
   const [bills, setBills] = useState([]);
   const [selectedBillIndex, setSelectedBillIndex] = useState(null);
 
@@ -27,15 +28,16 @@ const Bill = () => {
   ];
 
   const addBill = () => {
-    if (month && totalFund && expenditures && totalStudents) {
+    if (month && totalFund && totalStudents && expenditures && balance) {
       if (selectedBillIndex !== null) {
         // If editing an existing bill
         const updatedBills = [...bills];
         updatedBills[selectedBillIndex] = {
           month,
           totalFund,
-          expenditures,
           totalStudents,
+          expenditures,
+          balance,
         };
         setBills(updatedBills);
         setSelectedBillIndex(null);
@@ -44,16 +46,18 @@ const Bill = () => {
         const newBill = {
           month,
           totalFund,
-          expenditures,
           totalStudents,
+          expenditures,
+          balance,
         };
         setBills([...bills, newBill]);
       }
       // Reset form fields
       setMonth("January");
       setTotalFund("");
-      setExpenditures("");
       setTotalStudents("");
+      setExpenditures("");
+      setBalance("");
     }
   };
 
@@ -63,6 +67,7 @@ const Bill = () => {
     setTotalFund(billToEdit.totalFund);
     setExpenditures(billToEdit.expenditures);
     setTotalStudents(billToEdit.totalStudents);
+    setBalance(billToEdit.balance);
     setSelectedBillIndex(index);
   };
 
@@ -77,30 +82,41 @@ const Bill = () => {
     setTotalFund("");
     setExpenditures("");
     setTotalStudents("");
+    setBalance("");
     setSelectedBillIndex(null);
   };
 
   const generatePDF = () => {
     const doc = new jsPDF();
-  
+
     doc.text("Monthly Bills 2023", 85, 10);
     doc.text("Note: ", 15, 20);
     doc.text("Each meal price as Nu.25", 15, 30);
 
-  
-    const tableHeaders = ['Month', 'Total Amount', 'Expenditures', 'Total Students'];
-    const tableData = bills.map(bill => [bill.month, bill.totalFund, bill.expenditures, bill.totalStudents]);
-  
+    const tableHeaders = [
+      "Month",
+      "Total Fund",
+      "Total Students",
+      "Expenditures",
+      "Balance",
+    ]; // Added Balance to headers
+    const tableData = bills.map((bill) => [
+      bill.month,
+      bill.totalFund,
+      bill.totalStudents,
+      bill.expenditures,
+      bill.balance,
+    ]); // Added balance to data
+
     doc.autoTable({
       head: [tableHeaders],
       body: tableData,
       startY: 40,
-      theme: 'striped', // Optional: you can apply different themes to the table
+      theme: "striped",
     });
-  
+
     doc.save("bills.pdf");
   };
-  
 
   return (
     <div className="flex-row w-1/2 items-center">
@@ -167,7 +183,18 @@ const Bill = () => {
           />
         </div>
 
-        
+        <div className="mt-4">
+          <label htmlFor="balance" className="block font-semibold">
+            Balance:
+          </label>
+          <input
+            type="number"
+            id="balance"
+            className="border p-2 rounded-md w-2/4"
+            value={balance}
+            onChange={(e) => setBalance(e.target.value)}
+          />
+        </div>
 
         <div className="mt-4">
           <button
@@ -189,27 +216,43 @@ const Bill = () => {
             <table className="w-full border-collapse border border-gray-400">
               <thead>
                 <tr>
-                  <th className="border border-gray-400">Month</th>
-                  <th className="border border-gray-400">Total Amount</th>
-                  <th className="border border-gray-400">Expenditures</th>
-                  <th className="border border-gray-400">Total Students</th>
-                  <th className="border border-gray-400">Actions</th>
+                  <th className="border border-gray-400 text-center">Month</th>
+                  <th className="border border-gray-400 text-center">
+                    Total Amount
+                  </th>
+                  <th className="border border-gray-400 text-center">
+                    Total Students
+                  </th>
+                  <th className="border border-gray-400 text-center">
+                    Expenditures
+                  </th>
+                  <th className="border border-gray-400 text-center">
+                    Balance
+                  </th>
+                  <th className="border border-gray-400 text-center">
+                    Actions
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {bills.map((bill, index) => (
                   <tr key={index} className="border border-gray-400">
-                    <td className="border border-gray-400">{bill.month}</td>
-                    <td className="border border-gray-400">
+                    <td className="border border-gray-400 text-center">
+                      {bill.month}
+                    </td>
+                    <td className="border border-gray-400 text-center">
                       {bill.totalFund}
                     </td>
-                    <td className="border border-gray-400">
-                      {bill.expenditures}
-                    </td>
-                    <td className="border border-gray-400">
+                    <td className="border border-gray-400 text-center">
                       {bill.totalStudents}
                     </td>
-                    <td className="border border-gray-400">
+                    <td className="border border-gray-400 text-center">
+                      {bill.expenditures}
+                    </td>
+                    <td className="border border-gray-400 text-center">
+                      {bill.balance}
+                    </td>
+                    <td className="border border-gray-400 text-center">
                       <button
                         onClick={() => editBill(index)}
                         className="bg-black text-white p-2 rounded-xl"
