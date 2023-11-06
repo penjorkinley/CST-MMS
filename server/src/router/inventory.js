@@ -61,7 +61,7 @@ router.post("/vessels", async (req, res) => {
 });
 
 // Route to update an inventory item
-router.put("/inventory/:type/:id", async (req, res) => {
+router.put("/:type/:id", async (req, res) => {
   const { type, id } = req.params;
   const Model = type === "essentials" ? Essentials : Vessels;
 
@@ -82,15 +82,16 @@ router.put("/inventory/:type/:id", async (req, res) => {
 });
 
 // Route to delete an inventory item
-router.delete("/inventory/:type/:id", async (req, res) => {
+router.delete("/:type/:id", async (req, res) => {
   const { type, id } = req.params;
   const Model = type === "essentials" ? Essentials : Vessels;
 
   try {
-    const item = await Model.findById(id);
-    if (!item) return res.status(404).json({ message: "Item not found" });
+    const item = await Model.findByIdAndDelete(id);
+    if (!item) {
+      return res.status(404).json({ message: "Item not found" });
+    }
 
-    await item.remove();
     res.json({ message: "Deleted" });
   } catch (error) {
     res.status(500).json({ message: error.message });
