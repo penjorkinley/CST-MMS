@@ -257,7 +257,7 @@ function AddInventory() {
             {editIndex === null ? (
               <button
                 onClick={handleAddInventory}
-                className="bg-blackText text-white p-2 rounded-xl"
+                className="bg-blackText text-white p-2 rounded-xl "
               >
                 Add Inventory
               </button>
