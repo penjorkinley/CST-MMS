@@ -101,7 +101,7 @@ const Bill = () => {
   };
 
   return (
-    <div className="flex-row w-1/2 items-center mt-[-200px]">
+    <div className="flex-row w-1/2 items-center">
       <div className="flex items-center space-x-2 mb-5">
         <MdReceipt className="text-4xl" />
         <h1 className="text-4xl font-bold">Bill Generation</h1>
