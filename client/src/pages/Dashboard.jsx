@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import DoughnutChart from "../components/DoughnutChart";
 import DashCards from "../components/DashCards";
 import GradientLineGraph from "../components/GradientLineGraph";
+import { TbDeviceDesktopAnalytics } from "react-icons/tb";
+
 
 function Dashboard() {
   const currentDate = new Date();
@@ -42,8 +44,13 @@ function Dashboard() {
   }, []);
 
   return (
+    <div className="m-auto">
+      <div className="flex items-center space-x-2 mb-5">
+        <TbDeviceDesktopAnalytics className="text-5xl" />
+        <h1 className="text-4xl font-bold">Dashboard</h1>
+      </div>
     <div className="overflow-auto">
-      <div className="grid grid-cols-3 gap-4 w-auto h-auto pl-16 mt-5">
+      <div className="grid grid-cols-3 gap-4 w-auto h-auto  mt-5">
         <DashCards
           title="Total Number of Students"
           count={studentCount !== undefined ? studentCount : "Loading..."}
@@ -56,12 +63,13 @@ function Dashboard() {
         />
         <DoughnutChart />
       </div>
-      <div className="ml-16 mt-8  w-[893px] h-[360px] bg-white text-black  shadow-md p-2 rounded-xl flex items-center justify-center flex-col">
+      <div className=" mt-8  w-[893px] h-[360px] bg-white text-black  shadow-md p-2 rounded-xl flex items-center justify-center flex-col">
         <h1 className="text-xl font-bold">
           Number of Meals Served in week {weekNumber}
         </h1>
         <GradientLineGraph />
       </div>
+    </div>
     </div>
   );
 }

@@ -79,7 +79,7 @@ export default function AddUser() {
     <div className="  min-h-fit  mt-4">
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-2xl px-8 pt-6 pb-8 mb-2"
+        className="bg-cute shadow-2xl px-8 pt-6 pb-8 mb-2"
       >
         {/* Name Input */}
         <div className="mb-4">
@@ -201,7 +201,7 @@ export default function AddUser() {
         <div className="flex items-center justify-between">
           <button
             type="submit"
-            className="bg-blackText hover:bg-buttons border border-cute text-lg text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
+            className="bg-blackText border border-cute text-lg text-white py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline transition duration-300 ease-in-out hover:scale-105 hover:shadow-lg dark:hover:shadow-black"
           >
             Submit
           </button>

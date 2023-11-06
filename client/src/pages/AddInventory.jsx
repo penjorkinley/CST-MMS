@@ -257,7 +257,7 @@ function AddInventory() {
             {editIndex === null ? (
               <button
                 onClick={handleAddInventory}
-                className="bg-blackText text-white p-2 rounded-xl"
+                className="bg-blackText text-white p-2 rounded-xl transition duration-300 ease-in-out hover:scale-105 hover:shadow-lg dark:hover:shadow-black"
               >
                 Add Inventory
               </button>
@@ -326,7 +326,7 @@ function AddInventory() {
                       {editIndex === index ? (
                         <button
                           onClick={() => handleSave(index)}
-                          className="bg-blackText text-white p-2 rounded-md"
+                          className="bg-blackText text-white p-2 rounded-md "
                         >
                           Save
                         </button>
@@ -340,7 +340,7 @@ function AddInventory() {
                         </button> */}
                           <button
                             onClick={() => handleDelete(index)}
-                            className="bg-red-500 text-white p-2 rounded-md ml-2 mt-1 mb-1"
+                            className="bg-red-500 text-white p-2 rounded-md ml-2 mt-1 mb-1 transition duration-300 ease-in-out hover:scale-105 hover:shadow-lg dark:hover:shadow-black"
                           >
                             Delete
                           </button>
@@ -414,7 +414,7 @@ function AddInventory() {
         <div className="mt-4 pb-48 ">
           <button
             onClick={() => generatePDF(storeType)}
-            className="bg-blackText text-white p-2 rounded-xl"
+            className="bg-blackText text-white p-2 rounded-xl transition duration-300 ease-in-out hover:scale-105 hover:shadow-lg dark:hover:shadow-black"
           >
             Download PDF
           </button>

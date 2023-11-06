@@ -13,7 +13,7 @@ const data = {
   datasets: [
     {
       data: [60, 30, 10],
-      backgroundColor: ["#83CDDD", "rgb(204, 223, 243)", "#F0F7F9"],
+      backgroundColor: ["#83CDDD", "#515151", "rgb(204, 223, 243)"],
       borderWidth: 1,
       radius: "100%",
     },
