@@ -239,13 +239,13 @@ const Bill = () => {
         <div className="mt-4">
           <button
             onClick={addBill}
-            className="bg-blackText text-white p-2 rounded-xl"
+            className="bg-blackText text-white p-2 rounded-xl transition duration-300 ease-in-out hover:scale-105 hover:shadow-lg dark:hover:shadow-black"
           >
             {selectedBillIndex !== null ? "Edit Bill" : "Generate Bill"}
           </button>
           <button
             onClick={resetForm}
-            className="bg-red-500 text-white p-2 rounded-xl ml-4"
+            className="bg-red-500 text-white p-2 rounded-xl ml-4 transition duration-300 ease-in-out hover:scale-105 hover:shadow-lg dark:hover:shadow-black"
           >
             Reset
           </button>
@@ -301,7 +301,7 @@ const Bill = () => {
                       </button> */}
                       <button
                         onClick={() => deleteBill(bill._id, index)} // Assuming bill has _id property from MongoDB
-                        className="bg-red-500 text-white p-2 rounded-xl ml-2 mt-2 mb-2"
+                        className="bg-red-500 text-white p-2 rounded-xl ml-2 mt-2 mb-2 transition duration-300 ease-in-out hover:scale-105 hover:shadow-lg dark:hover:shadow-black"
                       >
                         Delete
                       </button>
@@ -316,7 +316,7 @@ const Bill = () => {
         <div className="mt-4">
           <button
             onClick={generatePDF}
-            className="bg-blackText text-white p-2 rounded-xl"
+            className="bg-blackText text-white p-2 rounded-xl transition duration-300 ease-in-out hover:scale-105 hover:shadow-lg dark:hover:shadow-black"
           >
             Download PDF
           </button>
