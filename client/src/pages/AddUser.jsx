@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { BiSolidUserPlus } from "react-icons/bi";
 
-
-
 export default function AddUser() {
   const [formData, setFormData] = useState({
     username: "",
@@ -25,7 +23,7 @@ export default function AddUser() {
     event.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:3001/admin/addu  ser", {
+      const response = await fetch("http://localhost:3001/admin/adduser", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -76,138 +74,138 @@ export default function AddUser() {
         <h1 className="text-4xl font-bold">Add New User</h1>
       </div>
 
-    <div className="  min-h-fit  mt-4">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-cute shadow-2xl px-8 pt-6 pb-8 mb-2"
-      >
-        {/* Name Input */}
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-lg font-bold mb-2"
-            htmlFor="username"
-          >
-            User Name
-          </label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={formData.username}
-            onChange={handleInputChange}
-            placeholder="User Name"
-            required
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          />
-        </div>
-        {/* Student ID Input */}
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-lg font-bold mb-2"
-            htmlFor="studentId"
-          >
-            Student ID
-          </label>
-          <input
-            type="text"
-            id="studentId"
-            name="studentId"
-            value={formData.studentId}
-            onChange={handleInputChange}
-            placeholder="Student ID"
-            required
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          />
-        </div>
+      <div className="  min-h-fit  mt-4">
+        <form
+          onSubmit={handleSubmit}
+          className="bg-cute shadow-2xl px-8 pt-6 pb-8 mb-2"
+        >
+          {/* Name Input */}
+          <div className="mb-4">
+            <label
+              className="block text-gray-700 text-lg font-bold mb-2"
+              htmlFor="username"
+            >
+              User Name
+            </label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              value={formData.username}
+              onChange={handleInputChange}
+              placeholder="User Name"
+              required
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
+          {/* Student ID Input */}
+          <div className="mb-4">
+            <label
+              className="block text-gray-700 text-lg font-bold mb-2"
+              htmlFor="studentId"
+            >
+              Student ID
+            </label>
+            <input
+              type="text"
+              id="studentId"
+              name="studentId"
+              value={formData.studentId}
+              onChange={handleInputChange}
+              placeholder="Student ID"
+              required
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
 
-        {/* Email Input */}
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-lg font-bold mb-2"
-            htmlFor="email"
-          >
-            Email
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleInputChange}
-            placeholder="Email"
-            required
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          />
-        </div>
-        {/* Contact Input */}
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-lg font-bold mb-2"
-            htmlFor="phoneNumber"
-          >
-            Contact Number
-          </label>
-          <input
-            type="tel"
-            id="phoneNumber"
-            name="phoneNumber"
-            value={formData.phoneNumber}
-            onChange={handleInputChange}
-            placeholder="Contact Number"
-            required
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          />
-        </div>
-        {/* Role Selection */}
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-lg font-bold mb-2"
-            htmlFor="role"
-          >
-            Role
-          </label>
-          <select
-            id="role"
-            name="role"
-            value={formData.role}
-            onChange={handleInputChange}
-            required
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          >
-            <option value="user">user</option>
-            <option value="admin">admin</option>
-          </select>
-        </div>
-        {/* Password Input */}
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-lg font-bold mb-2"
-            htmlFor="password"
-          >
-            Password
-          </label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleInputChange}
-            placeholder="Password"
-            required
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          />
-        </div>
-        {/* Submit Button */}
-        <div className="flex items-center justify-between">
-          <button
-            type="submit"
-            className="bg-blackText border border-cute text-lg text-white py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline transition duration-300 ease-in-out hover:scale-105 hover:shadow-lg dark:hover:shadow-black"
-          >
-            Submit
-          </button>
-        </div>
-      </form>
+          {/* Email Input */}
+          <div className="mb-4">
+            <label
+              className="block text-gray-700 text-lg font-bold mb-2"
+              htmlFor="email"
+            >
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              placeholder="Email"
+              required
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
+          {/* Contact Input */}
+          <div className="mb-4">
+            <label
+              className="block text-gray-700 text-lg font-bold mb-2"
+              htmlFor="phoneNumber"
+            >
+              Contact Number
+            </label>
+            <input
+              type="tel"
+              id="phoneNumber"
+              name="phoneNumber"
+              value={formData.phoneNumber}
+              onChange={handleInputChange}
+              placeholder="Contact Number"
+              required
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
+          {/* Role Selection */}
+          <div className="mb-4">
+            <label
+              className="block text-gray-700 text-lg font-bold mb-2"
+              htmlFor="role"
+            >
+              Role
+            </label>
+            <select
+              id="role"
+              name="role"
+              value={formData.role}
+              onChange={handleInputChange}
+              required
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            >
+              <option value="user">user</option>
+              <option value="admin">admin</option>
+            </select>
+          </div>
+          {/* Password Input */}
+          <div className="mb-4">
+            <label
+              className="block text-gray-700 text-lg font-bold mb-2"
+              htmlFor="password"
+            >
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleInputChange}
+              placeholder="Password"
+              required
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
+          {/* Submit Button */}
+          <div className="flex items-center justify-between">
+            <button
+              type="submit"
+              className="bg-blackText border border-cute text-lg text-white py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline transition duration-300 ease-in-out hover:scale-105 hover:shadow-lg dark:hover:shadow-black"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-  </div>
   );
 }
