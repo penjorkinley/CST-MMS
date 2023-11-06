@@ -80,37 +80,101 @@ function AddInventory() {
   };
 
   const handleSave = (index) => {
-    if (storeType === "Essentials") {
-      const updatedData = [...essentialsData];
-      updatedData[index].inventoryName = inventoryName;
-      updatedData[index].quantity = quantity;
-      updatedData[index].singlePrice = singlePrice;
-      updatedData[index].subtotal = quantity * singlePrice;
-      setEssentialsData(updatedData);
-    } else if (storeType === "Vessels") {
-      const updatedData = [...vesselsData];
-      updatedData[index].inventoryName = inventoryName;
-      updatedData[index].quantity = quantity;
-      updatedData[index].singlePrice = singlePrice;
-      updatedData[index].subtotal = quantity * singlePrice;
-      setVesselsData(updatedData);
-    }
+    // Determine the correct array based on the store type
+    const dataArray = storeType === "Essentials" ? essentialsData : vesselsData;
+    const item = dataArray[index];
 
-    setEditIndex(null);
-    setInventoryName("");
-    setQuantity("");
-    setSinglePrice("");
+    // Create an object with the updated data
+    const updatedItem = {
+      ...item,
+      inventoryName: inventoryName,
+      quantity: quantity,
+      singlePrice: singlePrice,
+      subtotal: quantity * singlePrice,
+    };
+
+    // Make an API call to update the item in the backend
+    fetch(
+      `http://localhost:3001/inventory/${storeType.toLowerCase()}/${item.id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedItem),
+      }
+    )
+      .then((response) => response.json())
+      .then((updatedItemFromServer) => {
+        // Update the state with the new data returned from the server
+        const updatedData = dataArray.map((data, idx) =>
+          idx === index ? updatedItemFromServer : data
+        );
+
+        if (storeType === "Essentials") {
+          setEssentialsData(updatedData);
+        } else if (storeType === "Vessels") {
+          setVesselsData(updatedData);
+        }
+
+        // Reset edit index and form fields
+        setEditIndex(null);
+        setInventoryName("");
+        setQuantity("");
+        setSinglePrice("");
+
+        alert("Inventory updated successfully!");
+      })
+      .catch((error) => {
+        // Handle any errors here
+        alert(
+          "An error occurred while updating the inventory: " + error.message
+        );
+      });
   };
 
   const handleDelete = (index) => {
-    if (storeType === "Essentials") {
-      const updatedData = [...essentialsData];
-      updatedData.splice(index, 1);
-      setEssentialsData(updatedData);
-    } else if (storeType === "Vessels") {
-      const updatedData = [...vesselsData];
-      updatedData.splice(index, 1);
-      setVesselsData(updatedData);
+    // Determine the correct array and item ID based on the store type
+    const dataArray = storeType === "Essentials" ? essentialsData : vesselsData;
+    const itemId = dataArray[index]._id;
+
+    // Log the item ID to the console
+    console.log("Item ID to be deleted:", itemId);
+
+    // Ask for confirmation before deleting
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this inventory item?"
+    );
+
+    if (confirmDelete) {
+      // Make an API call to delete the item from the backend
+      fetch(
+        `http://localhost:3001/inventory/${storeType.toLowerCase()}/${itemId}`,
+        {
+          method: "DELETE",
+        }
+      )
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          // Filter out the deleted item from the state
+          const updatedData = dataArray.filter((_, idx) => idx !== index);
+
+          if (storeType === "Essentials") {
+            setEssentialsData(updatedData);
+          } else if (storeType === "Vessels") {
+            setVesselsData(updatedData);
+          }
+
+          alert("Inventory deleted successfully!");
+        })
+        .catch((error) => {
+          // Handle any errors here
+          alert(
+            "An error occurred while deleting the inventory: " + error.message
+          );
+        });
     }
   };
 
@@ -271,12 +335,12 @@ function AddInventory() {
                       </button>
                     ) : (
                       <>
-                        <button
+                        {/* <button
                           onClick={() => handleEdit(index)}
                           className="bg-black text-white p-2 rounded-md w-16"
                         >
                           Edit
-                        </button>
+                        </button> */}
                         <button
                           onClick={() => handleDelete(index)}
                           className="bg-black text-white p-2 rounded-md ml-2"
@@ -351,12 +415,12 @@ function AddInventory() {
                       </button>
                     ) : (
                       <>
-                        <button
+                        {/* <button
                           onClick={() => handleEdit(index)}
                           className="bg-black text-white p-2 rounded-md w-16 "
                         >
                           Edit
-                        </button>
+                        </button> */}
                         <button
                           onClick={() => handleDelete(index)}
                           className="bg-black text-white p-2 rounded-md ml-2"
