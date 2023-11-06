@@ -108,7 +108,7 @@ function AddMenu() {
         />
         <button
           onClick={handleAddMenuItem}
-          className="bg-black text-white p-3 rounded-xl font-bold"
+          className="bg-blackText text-white p-3 rounded-xl font-bold"
         >
           Add
         </button>
@@ -168,7 +168,7 @@ function AddMenu() {
       <div className="my-4">
         <button
           onClick={handleUpdateMenu}
-          className="bg-black font-bold text-white p-3 rounded-xl"
+          className="bg-blackText font-bold text-white p-3 rounded-xl"
         >
           Update
         </button>

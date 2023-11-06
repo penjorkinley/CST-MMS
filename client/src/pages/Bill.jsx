@@ -96,7 +96,7 @@ const Bill = () => {
     const tableHeaders = [
       "Month",
       "Total Fund",
-      "Total Students",
+      "No. of Students Dined",
       "Expenditures",
       "Balance",
     ]; // Added Balance to headers
@@ -199,7 +199,7 @@ const Bill = () => {
         <div className="mt-4">
           <button
             onClick={addBill}
-            className="bg-black text-white p-2 rounded-xl"
+            className="bg-blackText text-white p-2 rounded-xl"
           >
             {selectedBillIndex !== null ? "Edit Bill" : "Generate Bill"}
           </button>
@@ -218,10 +218,10 @@ const Bill = () => {
                 <tr>
                   <th className="border border-gray-400 text-center">Month</th>
                   <th className="border border-gray-400 text-center">
-                    Total Amount
+                    Total Fund
                   </th>
                   <th className="border border-gray-400 text-center">
-                    Total Students
+                    No. of Students Dined
                   </th>
                   <th className="border border-gray-400 text-center">
                     Expenditures
@@ -255,13 +255,13 @@ const Bill = () => {
                     <td className="border border-gray-400 text-center">
                       <button
                         onClick={() => editBill(index)}
-                        className="bg-black text-white p-2 rounded-xl"
+                        className="bg-yellow-500 text-white p-2 rounded-xl mt-2 mb-2"
                       >
                         Edit
                       </button>
                       <button
                         onClick={() => deleteBill(index)}
-                        className="bg-black text-white p-2 rounded-xl ml-2"
+                        className="bg-red-500 text-white p-2 rounded-xl ml-2 mt-2 mb-2"
                       >
                         Delete
                       </button>
@@ -276,7 +276,7 @@ const Bill = () => {
         <div className="mt-4">
           <button
             onClick={generatePDF}
-            className="bg-black text-white p-2 rounded-xl"
+            className="bg-blackText text-white p-2 rounded-xl"
           >
             Download PDF
           </button>

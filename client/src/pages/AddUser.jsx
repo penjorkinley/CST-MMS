@@ -201,7 +201,7 @@ export default function AddUser() {
         <div className="flex items-center justify-between">
           <button
             type="submit"
-            className="bg-black hover:bg-buttons border border-cute text-lg text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
+            className="bg-blackText hover:bg-buttons border border-cute text-lg text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
           >
             Submit
           </button>

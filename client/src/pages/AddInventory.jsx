@@ -257,7 +257,7 @@ function AddInventory() {
             {editIndex === null ? (
               <button
                 onClick={handleAddInventory}
-                className="bg-black text-white p-2 rounded-xl"
+                className="bg-blackText text-white p-2 rounded-xl"
               >
                 Add Inventory
               </button>
@@ -326,7 +326,7 @@ function AddInventory() {
                       {editIndex === index ? (
                         <button
                           onClick={() => handleSave(index)}
-                          className="bg-black text-white p-2 rounded-md"
+                          className="bg-blackText text-white p-2 rounded-md"
                         >
                           Save
                         </button>
@@ -340,7 +340,7 @@ function AddInventory() {
                         </button> */}
                           <button
                             onClick={() => handleDelete(index)}
-                            className="bg-black text-white p-2 rounded-md ml-2"
+                            className="bg-red-500 text-white p-2 rounded-md ml-2 mt-1 mb-1"
                           >
                             Delete
                           </button>
@@ -403,29 +403,6 @@ function AddInventory() {
                       {item.subtotal}
                     </td>
                     <td className="border border-gray-400 text-center">
-                      {editIndex === index ? (
-                        <button
-                          onClick={() => handleSave(index)}
-                          className="bg-green-500 text-white p-2 rounded-md"
-                        >
-                          Save
-                        </button>
-                      ) : (
-                        <>
-                          {/* <button
-                          onClick={() => handleEdit(index)}
-                          className="bg-black text-white p-2 rounded-md w-16 "
-                        >
-                          Edit
-                        </button> */}
-                          <button
-                            onClick={() => handleDelete(index)}
-                            className="bg-black text-white p-2 rounded-md ml-2"
-                          >
-                            Delete
-                          </button>
-                        </>
-                      )}
                     </td>
                   </tr>
                 ))}
@@ -437,9 +414,9 @@ function AddInventory() {
         <div className="mt-4 pb-48 ">
           <button
             onClick={() => generatePDF(storeType)}
-            className="bg-black text-white p-2 rounded-xl"
+            className="bg-blackText text-white p-2 rounded-xl"
           >
-            Generate PDF
+            Download PDF
           </button>
         </div>
       </div>
