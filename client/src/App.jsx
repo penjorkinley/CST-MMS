@@ -29,7 +29,7 @@ function App() {
       >
         <Router>
           <Navigation />
-          
+
           <div style={{ flex: 1 }}>
             {" "}
             {/* This div will grow to take up all available space */}
@@ -70,8 +70,8 @@ function Navigation() {
     location.pathname !== "/admin/adduser" &&
     location.pathname !== "/admin/dashboard" &&
     location.pathname !== "/admin/inventory" &&
-    location.pathname !== "/admin/addmenu";
-  
+    location.pathname !== "/admin/addmenu" &&
+    location.pathname !== "/admin/bill";
 
   // Conditional rendering of RegularNav
   return shouldShowNav ? <RegularNav /> : null;
