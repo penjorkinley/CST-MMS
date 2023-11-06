@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useRef, useEffect } from "react";
 import Modal from "react-modal";
 import MealCard from "../components/MenuCard";
@@ -30,7 +31,7 @@ function MealOrder() {
   const [menu, setMenu] = useState({ breakfast: [], lunch: [], dinner: [] });
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const modalRef = useRef(null); // Create a ref for the Modal content
+  const modalContentRef = useRef(null); // Create a ref for the Modal content
 
   useEffect(() => {
     const fetchMenu = async () => {
@@ -76,8 +77,7 @@ function MealOrder() {
   };
 
   const handleSave = () => {
-    // Capture the Modal content as an image using html2canvas
-    html2canvas(modalRef.current).then((canvas) => {
+    html2canvas(modalContentRef.current).then((canvas) => {
       const image = canvas.toDataURL("image/png");
 
       // Create a link element to download the image
@@ -109,7 +109,7 @@ function MealOrder() {
           background: "rgba(255, 255, 255, 0.7)",
           backdropFilter: "blur(1px)",
         }}
-        ref={modalRef}
+        ref={modalContentRef}
       >
         <p className="mt-4 font-extrabold text-black text-4xl flex items-center justify-center mb-4">
           Todays Menu
@@ -149,16 +149,14 @@ function MealOrder() {
         >
           Place Order
         </button>
-      </div>
-
-      <Modal
+        <Modal
         isOpen={isModalOpen}
         onRequestClose={closeModal}
         contentLabel="Order Successful"
         style={customStyles}
       >
         {orderSuccess ? (
-          <div className="text-center">
+          <div className="text-center" ref={modalContentRef}>
             <h2>Order Successful!</h2>
             <div className="checkmark">
               <div className="checkmark_circle"></div>
@@ -183,6 +181,8 @@ function MealOrder() {
           <p>Ordering...</p>
         )}
       </Modal>
+      </div>
+      
     </div>
   );
 }
