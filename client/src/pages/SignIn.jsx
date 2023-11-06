@@ -30,6 +30,11 @@ function SignIn() {
       email: formData.email ? "" : "Email is required.",
       password: formData.password ? "" : "Password is required.",
     };
+
+    if (formData.email && !formData.email.endsWith(".cst@rub.edu.bt")) {
+      tempErrors.email = "Email must end with '.cst@rub.edu.bt'.";
+    }
+
     setErrors(tempErrors);
     return Object.values(tempErrors).every((x) => x === "");
   };
