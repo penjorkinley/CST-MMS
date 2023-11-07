@@ -66,8 +66,7 @@ function AddInventory() {
           setVesselsData([...vesselsData, data]);
         }
         // Alert success message
-        alert("Inventory added successfully!")
-
+        alert("Inventory added successfully!");
       })
       .catch((error) => {
         // Handle any errors here
@@ -256,7 +255,7 @@ function AddInventory() {
               onChange={(e) => setSinglePrice(e.target.value)}
               className="border p-2 rounded-md w-full md:w-1/4"
             />
-             {editIndex === null ? (
+            {editIndex === null ? (
               <button
                 onClick={handleAddInventory}
                 className="bg-blackText text-white p-2 rounded-xl transition duration-300 ease-in-out hover:scale-105 hover:shadow-lg dark:hover:shadow-black"
@@ -265,9 +264,9 @@ function AddInventory() {
               </button>
             ) : (
               <button
-              onClick={() => handleSave(editIndex)}
-              className="bg-green-500 text-white p-2 rounded-md"
-             >
+                onClick={() => handleSave(editIndex)}
+                className="bg-green-500 text-white p-2 rounded-md"
+              >
                 Save
               </button>
             )}
@@ -275,7 +274,7 @@ function AddInventory() {
         </div>
 
         {storeType === "Essentials" && (
-          <div className="mt-8 overflow-auto h-[30em]">
+          <div className="mt-8 overflow-auto h-[29em]">
             <h2 className="text-xl font-semibold">Essentials Inventory</h2>
             <table className="w-full border-collapse border border-gray-400 bg-white shadow-xl">
               <thead>
@@ -354,8 +353,8 @@ function AddInventory() {
           </div>
         )}
 
-{storeType === "Vessels" && (
-          <div className="mt-8 overflow-auto h-[595px]">
+        {storeType === "Vessels" && (
+          <div className="mt-8 overflow-auto h-[29em]">
             <h2 className="text-xl font-semibold">Vessels Inventory</h2>
             <table className="w-full border-collapse border border-gray-400 bg-white shadow-xl">
               <thead>

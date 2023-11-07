@@ -47,12 +47,12 @@ function Login() {
           // Dispatch the loginChange event here
           window.dispatchEvent(new Event("loginChange"));
 
-          setModalMessage("Kuzu Kuzu 🍲");
+          setModalMessage("སྐུ་གཟུགས་བཟང་པོ་ལགས།");
           setIsModalOpen(true);
           setTimeout(() => {
             setIsModalOpen(false);
             navigate(data.redirectURL);
-          }, 1500);
+          }, 1600);
         } else {
           console.error(data.error);
           setModalMessage("Failed to login: " + data.error);
