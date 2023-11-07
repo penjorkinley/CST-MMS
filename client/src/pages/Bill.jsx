@@ -181,7 +181,7 @@ const Bill = () => {
         <h1 className="text-4xl font-bold">Bill Generation</h1>
       </div>
 
-      <div className="p-4 shadow-2xl bg-cute ">
+      <div className="p-4 shadow-2xl bg-white ">
         <div className="mt-4">
           <label htmlFor="month" className="block font-semibold ">
             Select Month:
