@@ -30,7 +30,7 @@ export default function Feedback() {
         <MdFeedback className="text-4xl" />
         <h1 className="text-4xl font-bold">Feedbacks</h1>
       </div>
-      <div className="card card-compact w-auto h-auto bg-base-100 shadow-2xl ml-auto mr-20 p-6">
+      <div className="card card-compact w-auto h-[590px] bg-base-100 shadow-2xl ml-auto mr-20 p-6 overflow-scroll">
         {feedbacks.length ? (
           feedbacks.map((feedback) => (
             <FeedbackCard key={feedback._id} dets={feedback.improvement} />

@@ -1,6 +1,6 @@
 function FeedbackCard({ dets }) {
   return (
-    <div className="mb-4 p-4 w-[500px]">
+    <div className="mb-4 p-4 w-[500px] " >
       <p className="text-center mb-4">{dets}</p>
       <div className="rating flex justify-center mt-2 mb-4">
         <input
