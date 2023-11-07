@@ -218,7 +218,7 @@ function AddInventory() {
   };
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center overflow-auto h-[595px]">
       <div className="flex items-center space-x-2 mb-5">
         <MdOutlineInventory className="text-5xl" />
         <h1 className="text-4xl font-bold">Inventory Management</h1>
