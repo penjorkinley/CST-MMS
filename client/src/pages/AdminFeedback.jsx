@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import FeedbackCard from "../components/FeedbackCard";
+import { FeedbackCard } from "../components/FeedbackCard";
 import { MdFeedback } from "react-icons/md";
 
 export default function Feedback() {
@@ -33,7 +33,11 @@ export default function Feedback() {
       <div className="card card-compact w-auto h-[590px] bg-base-100 shadow-2xl ml-auto mr-20 p-6 overflow-scroll">
         {feedbacks.length ? (
           feedbacks.map((feedback) => (
-            <FeedbackCard key={feedback._id} dets={feedback.improvement} />
+            <FeedbackCard
+              key={feedback._id}
+              dets={feedback.improvement}
+              rating={feedback.rating}
+            />
           ))
         ) : (
           <p className="text-center mt-4">No feedback available</p>
