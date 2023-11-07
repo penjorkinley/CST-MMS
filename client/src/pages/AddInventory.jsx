@@ -275,7 +275,7 @@ function AddInventory() {
         </div>
 
         {storeType === "Essentials" && (
-          <div className="mt-8 overflow-auto h-[595px]">
+          <div className="mt-8 overflow-auto h-[30em]">
             <h2 className="text-xl font-semibold">Essentials Inventory</h2>
             <table className="w-full border-collapse border border-gray-400 bg-white shadow-xl">
               <thead>
