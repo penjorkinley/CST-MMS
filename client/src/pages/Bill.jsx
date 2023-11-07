@@ -221,7 +221,10 @@ const Bill = () => {
               >
                 Number of Students Dined:
               </label>
-              <label id="totalStudents" className="font-bold p-2 rounded-md w-2/4">
+              <label
+                id="totalStudents"
+                className="font-bold p-2 rounded-md w-2/4"
+              >
                 {totalStudents}
               </label>
             </div>
@@ -233,7 +236,10 @@ const Bill = () => {
               >
                 Expenditures:
               </label>
-              <label id="expenditures" className="font-bold p-2 rounded-md w-2/4">
+              <label
+                id="expenditures"
+                className="font-bold p-2 rounded-md w-2/4"
+              >
                 {expenditures}
               </label>
             </div>
@@ -264,7 +270,7 @@ const Bill = () => {
           </button>
         </div>
 
-        <div className="mt-8 h-[350px] overflow-auto">
+        <div className="mt-8 h-[17em] overflow-auto">
           {bills.length > 0 && (
             <table className="w-full border-collapse border border-gray-400 bg-white shadow-xl ">
               <thead>
