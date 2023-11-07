@@ -10,7 +10,6 @@ const Bill = () => {
   const [bills, setBills] = useState([]);
   const [selectedBillIndex, setSelectedBillIndex] = useState(null);
 
-
   useEffect(() => {
     fetch("http://localhost:3001/auth/placeOrder")
       .then((response) => response.json())
@@ -79,8 +78,7 @@ const Bill = () => {
           }
           setBills([...bills, data.bill]);
 
-          alert("Bill Generated and saved successfully")
-          
+          alert("Bill Generated and saved successfully");
 
           // Reset form fields
           setMonth("January");
@@ -175,68 +173,80 @@ const Bill = () => {
   };
 
   return (
-    <div className="flex-row w-1/2 h-[590px] items-center overflow-auto">
+    <div className="flex-row w-1/2  items-center ">
       <div className="flex items-center space-x-2 mb-5">
         <MdReceipt className="text-4xl" />
         <h1 className="text-4xl font-bold">Bill Generation</h1>
       </div>
 
-      <div className="p-4 shadow-2xl bg-white ">
-        <div className="mt-4">
-          <label htmlFor="month" className="block font-semibold ">
-            Select Month:
-          </label>
-          <select
-            id="month"
-            className="border p-2 rounded-md w-2/4"
-            value={month}
-            onChange={(e) => setMonth(e.target.value)}
-          >
-            {months.map((m) => (
-              <option key={m} value={m}>
-                {m}
-              </option>
-            ))}
-          </select>
-        </div>
+      <div className="p-4  bg-cute ">
+        <div className="flex justify-between">
+          <div>
+            <div className="mt-4">
+              <label htmlFor="month" className="block font-semibold ">
+                Select Month:
+              </label>
+              <select
+                id="month"
+                className="border p-2 rounded-md w-52"
+                value={month}
+                onChange={(e) => setMonth(e.target.value)}
+              >
+                {months.map((m) => (
+                  <option key={m} value={m}>
+                    {m}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-        <div className="mt-4">
-          <label htmlFor="totalFund" className="block font-semibold">
-            Total Fund:
-          </label>
-          <input
-            type="number"
-            id="totalFund"
-            className="border p-2 rounded-md w-2/4"
-            value={totalFund}
-            onChange={(e) => setTotalFund(e.target.value)}
-          />
-        </div>
-        <div className="mt-4">
-          <label htmlFor="totalStudents" className="block font-semibold mb-3">
-            Number of Students Dined:
-          </label>
-          <label id="totalStudents" className="border p-2 rounded-md w-2/4">
-            {totalStudents}
-          </label>
-        </div>
+            <div className="mt-4">
+              <label htmlFor="totalFund" className="block font-semibold">
+                Total Fund:
+              </label>
+              <input
+                type="number"
+                id="totalFund"
+                className="border p-2 rounded-md w-52"
+                value={totalFund}
+                onChange={(e) => setTotalFund(e.target.value)}
+              />
+            </div>
+          </div>
+          <div>
+            <div className="mt-4">
+              <label
+                htmlFor="totalStudents"
+                className="block font-semibold mb-3"
+              >
+                Number of Students Dined:
+              </label>
+              <label id="totalStudents" className="font-bold p-2 rounded-md w-2/4">
+                {totalStudents}
+              </label>
+            </div>
 
-        <div className="mt-4">
-          <label htmlFor="expenditures" className="block font-semibold mb-3">
-            Expenditures:
-          </label>
-          <label id="expenditures" className="border p-2 rounded-md w-2/4">
-            {expenditures}
-          </label>
-        </div>
+            <div className="mt-4">
+              <label
+                htmlFor="expenditures"
+                className="block font-semibold mb-3"
+              >
+                Expenditures:
+              </label>
+              <label id="expenditures" className="font-bold p-2 rounded-md w-2/4">
+                {expenditures}
+              </label>
+            </div>
 
-        <div className="mt-4">
-          <label htmlFor="balance" className="block font-semibold mb-3">
-            Balance:
-          </label>
-          <label id="balance" className="border p-2 rounded-md w-2/4">
-            {balance}
-          </label>
+            <div className="mt-4">
+              <label htmlFor="balance" className="block font-semibold mb-3">
+                Balance:
+              </label>
+              <label id="balance" className="font-bold p-2 rounded-md w-2/4">
+                {balance}
+              </label>
+            </div>
+          </div>
         </div>
 
         <div className="mt-4">
@@ -254,9 +264,9 @@ const Bill = () => {
           </button>
         </div>
 
-        <div className="mt-8">
+        <div className="mt-8 h-[350px] overflow-auto">
           {bills.length > 0 && (
-            <table className="w-full border-collapse border border-gray-400">
+            <table className="w-full border-collapse border border-gray-400 bg-white shadow-xl ">
               <thead>
                 <tr>
                   <th className="border border-gray-400 text-center">Month</th>

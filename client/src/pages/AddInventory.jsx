@@ -218,13 +218,13 @@ function AddInventory() {
   };
 
   return (
-    <div className="flex flex-col items-center overflow-auto h-[595px]">
+    <div className="flex flex-col items-center ">
       <div className="flex items-center space-x-2 mb-5">
         <MdOutlineInventory className="text-5xl" />
         <h1 className="text-4xl font-bold">Inventory Management</h1>
       </div>
 
-      <div className="p-4 shadow-2xl bg-cute">
+      <div className="p-4  bg-cute ">
         <div className="mt-4 ">
           <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
             <input
@@ -275,7 +275,7 @@ function AddInventory() {
         </div>
 
         {storeType === "Essentials" && (
-          <div className="mt-8">
+          <div className="mt-8 overflow-auto h-[595px]">
             <h2 className="text-xl font-semibold">Essentials Inventory</h2>
             <table className="w-full border-collapse border border-gray-400 bg-white shadow-xl">
               <thead>
@@ -355,9 +355,9 @@ function AddInventory() {
         )}
 
 {storeType === "Vessels" && (
-          <div className="mt-8">
+          <div className="mt-8 overflow-auto h-[595px]">
             <h2 className="text-xl font-semibold">Vessels Inventory</h2>
-            <table className="w-full border-collapse border border-gray-400">
+            <table className="w-full border-collapse border border-gray-400 bg-white shadow-xl">
               <thead>
                 <tr>
                   <th className="border border-gray-400">Date</th>
