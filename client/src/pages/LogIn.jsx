@@ -47,7 +47,7 @@ function Login() {
           // Dispatch the loginChange event here
           window.dispatchEvent(new Event("loginChange"));
 
-          setModalMessage("Kuzu Kuzu 🍲");
+          setModalMessage("Kuzu Kuzu");
           setIsModalOpen(true);
           setTimeout(() => {
             setIsModalOpen(false);

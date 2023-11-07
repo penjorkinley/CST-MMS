@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
 import { MdReceipt } from "react-icons/md";
+import CustomModal from "../components/Modal";
 
 const Bill = () => {
   const [month, setMonth] = useState("January");
@@ -9,6 +10,8 @@ const Bill = () => {
   const [totalStudents, setTotalStudents] = useState(0);
   const [bills, setBills] = useState([]);
   const [selectedBillIndex, setSelectedBillIndex] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:3001/auth/placeOrder")
@@ -78,7 +81,14 @@ const Bill = () => {
           }
           setBills([...bills, data.bill]);
 
-          alert("Bill Generated and saved successfully");
+          // alert("Bill Generated and saved successfully");
+
+          setModalMessage("Bill Generated and saved successfully!");
+          setIsModalOpen(true);
+          setTimeout(() => {
+            setIsModalOpen(false);
+            window.location.reload();
+          }, 1600);
 
           // Reset form fields
           setMonth("January");
@@ -86,7 +96,11 @@ const Bill = () => {
           setTotalStudents(0);
         });
     } else {
-      alert("Bill Generation Failed");
+      setModalMessage("Bill Generation Failed");
+      setIsModalOpen(true);
+      setTimeout(() => {
+        setIsModalOpen(false);
+      }, 1600);
     }
   };
 
@@ -341,6 +355,11 @@ const Bill = () => {
           </button>
         </div>
       </div>
+      <CustomModal
+        isOpen={isModalOpen}
+        onRequestClose={() => setIsModalOpen(false)}
+        message={modalMessage}
+      />
     </div>
   );
 };
