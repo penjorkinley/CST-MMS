@@ -145,7 +145,7 @@ const Bill = () => {
 
     doc.text("Monthly Bills 2023", 85, 10);
     doc.text("Note: ", 15, 20);
-    doc.text("Each meal price as Nu.25", 15, 30);
+    doc.text("Each meal price = Nu.25", 15, 30);
 
     const tableHeaders = [
       "Month",
