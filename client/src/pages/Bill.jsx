@@ -286,7 +286,7 @@ const Bill = () => {
 
         <div className="mt-8 h-[17em] overflow-auto">
           {bills.length > 0 && (
-            <table className="w-full border-collapse border border-gray-400 bg-white shadow-xl ">
+            <table className="w-full border-collapse border border-gray-400 bg-white  ">
               <thead>
                 <tr>
                   <th className="border border-gray-400 text-center">Month</th>
