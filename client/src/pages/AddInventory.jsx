@@ -218,26 +218,26 @@ function AddInventory() {
   };
 
   return (
-    <div className="flex-row  items-center ">
+    <div className="flex flex-col items-center">
       <div className="flex items-center space-x-2 mb-5">
         <MdOutlineInventory className="text-5xl" />
         <h1 className="text-4xl font-bold">Inventory Management</h1>
       </div>
 
-      <div className="p-4 shadow-2xl bg-cute h-[590px] overflow-auto">
+      <div className="p-4 shadow-2xl bg-cute">
         <div className="mt-4 ">
-          <div className="flex space-x-4">
+          <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
             <input
               type="text"
               placeholder="Inventory Name"
               value={inventoryName}
               onChange={(e) => setInventoryName(e.target.value)}
-              className="border p-2 rounded-md w-1/4"
+              className="border p-2 rounded-md w-full md:w-1/4"
             />
             <select
               value={storeType}
               onChange={(e) => setStoreType(e.target.value)}
-              className="border p-2 rounded-md w-1/4"
+              className="border p-2 rounded-md w-full md:w-1/4"
             >
               <option value="Essentials">Essentials</option>
               <option value="Vessels">Vessels</option>
@@ -247,16 +247,16 @@ function AddInventory() {
               placeholder="Quantity"
               value={quantity}
               onChange={(e) => setQuantity(e.target.value)}
-              className="border p-2 rounded-md w-1/4"
+              className="border p-2 rounded-md w-full md:w-1/4"
             />
             <input
               type="number"
               placeholder="Single Price"
               value={singlePrice}
               onChange={(e) => setSinglePrice(e.target.value)}
-              className="border p-2 rounded-md w-1/4"
+              className="border p-2 rounded-md w-full md:w-1/4"
             />
-            {editIndex === null ? (
+             {editIndex === null ? (
               <button
                 onClick={handleAddInventory}
                 className="bg-blackText text-white p-2 rounded-xl transition duration-300 ease-in-out hover:scale-105 hover:shadow-lg dark:hover:shadow-black"
@@ -265,9 +265,9 @@ function AddInventory() {
               </button>
             ) : (
               <button
-                onClick={() => handleSave(editIndex)}
-                className="bg-green-500 text-white p-2 rounded-md"
-              >
+              onClick={() => handleSave(editIndex)}
+              className="bg-green-500 text-white p-2 rounded-md"
+             >
                 Save
               </button>
             )}
@@ -276,10 +276,8 @@ function AddInventory() {
 
         {storeType === "Essentials" && (
           <div className="mt-8">
-            <h2 className="text-xl font-semibold pl-96">
-              Essentials Inventory
-            </h2>
-            <table className="w-full mt-4 border-collapse border border-gray-400 bg-white shadow-xl">
+            <h2 className="text-xl font-semibold">Essentials Inventory</h2>
+            <table className="w-full border-collapse border border-gray-400 bg-white shadow-xl">
               <thead>
                 <tr>
                   <th className="border border-gray-400">Date</th>
@@ -356,10 +354,10 @@ function AddInventory() {
           </div>
         )}
 
-        {storeType === "Vessels" && (
+{storeType === "Vessels" && (
           <div className="mt-8">
-            <h2 className="text-xl font-semibold pl-96">Vessels Inventory</h2>
-            <table className="w-full mt-4 border-collapse border border-gray-400">
+            <h2 className="text-xl font-semibold">Vessels Inventory</h2>
+            <table className="w-full border-collapse border border-gray-400">
               <thead>
                 <tr>
                   <th className="border border-gray-400">Date</th>
@@ -436,7 +434,7 @@ function AddInventory() {
           </div>
         )}
 
-        <div className="mt-4 pb-48 ">
+        <div className="mt-4 pb-4 ">
           <button
             onClick={() => generatePDF(storeType)}
             className="bg-blackText text-white p-2 rounded-xl transition duration-300 ease-in-out hover:scale-105 hover:shadow-lg dark:hover:shadow-black"
