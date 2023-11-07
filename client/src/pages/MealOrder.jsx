@@ -31,7 +31,10 @@ function MealOrder() {
   const [menu, setMenu] = useState({ breakfast: [], lunch: [], dinner: [] });
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const modalContentRef = useRef(null); // Create a ref for the Modal content
+  const modalContentRef = useRef(null); 
+  const [randomString, setRandomString] = useState('');
+
+
 
   useEffect(() => {
     const fetchMenu = async () => {
@@ -56,6 +59,14 @@ function MealOrder() {
 
     fetchMenu();
   }, []);
+
+  useEffect(() => {
+    if (isModalOpen) {
+      const newRandomString = generateRandomString(10); // You can specify the length you want
+      setRandomString(newRandomString);
+    }
+  }, [isModalOpen]);
+  
 
   const handleOrder = () => {
     // Send a request to the backend to increment the order count
@@ -95,6 +106,19 @@ function MealOrder() {
   if (error) {
     return <div>Error: {error}</div>;
   }
+
+  function generateRandomString(length) {
+    const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let randomString = '';
+  
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * charset.length);
+      randomString += charset[randomIndex];
+    }
+  
+    return randomString;
+  }
+  
 
   return (
     <div className="flex items-center justify-center h-[83vh] relative overflow-hidden">
@@ -163,19 +187,15 @@ function MealOrder() {
               <div className="checkmark_stem"></div>
               <div className="checkmark_kick"></div>
             </div>
+            <p className="italic font-semibold">#{randomString}</p>
             <p>Your meal has been ordered.</p>
             <button
               onClick={handleSave}
-              className="bg-emerald-500 mt-4 mr-2 px-4 py-2 rounded-md text-white font-semibold hover:bg-black"
+              className="bg-emerald-500 mt-2  mr-2 px-4 py-2 rounded-md text-white font-semibold hover:bg-black"
             >
               Save
             </button>
-            <button
-              onClick={closeModal}
-              className="bg-emerald-500 mt-4 px-4 py-2 rounded-md text-white font-semibold hover:bg-red-500"
-            >
-              Close
-            </button>
+           
           </div>
         ) : (
           <p>Ordering...</p>
